@@ -1,8 +1,8 @@
-🚀 Laravel + React Starter Kit
-A simple starter kit combining Laravel (backend) and React (frontend) for full-stack web development. Ideal for rapid prototyping, learning, or building scalable applications.
+🚀 HobbyHive
+HobbyHive is a dynamic and interactive e-commerce platform designed to be a one-stop digital marketplace for hobbyists and DIY enthusiasts. Our mission is to build a vibrant online ecosystem that encourages creativity, problem-solving, and lifelong learning for users of all ages. By connecting makers with materials and a supportive community, we aim to become the ultimate destination for everything related to hobbies and crafts.
 
 📦 Tech Stack
-- Backend: Laravel 10+
+- Backend: Laravel 12+
 - Frontend: React 18+ (via Vite)
 - Database: MySQL / SQLite
 - Package Manager: Composer & npm
