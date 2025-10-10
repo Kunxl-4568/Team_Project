@@ -9,10 +9,10 @@ A simple starter kit combining Laravel (backend) and React (frontend) for full-s
 
 🛠️ Installation
 1. Clone the Repository
-git clone https://github.com/your-username/laravel-react-starter.git
-cd laravel-react-starter
+git clone https://github.com/Kunxl-4568/Team_Project_draft
+cd Team_Project_draft
 
-
+
 2. Install PHP Dependencies
 composer install
 
@@ -34,15 +34,11 @@ php artisan migrate
 
 
 ⚙️ Development
-Start Laravel Backend
-php artisan serve
+Start Development Server
+composer run dev
 
 
-Start React Frontend
-npm run dev
 
-
-React is powered by Vite and served from resources/js.
 
 
 
