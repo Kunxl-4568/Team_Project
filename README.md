@@ -11,7 +11,7 @@ HobbyHive is a dynamic and interactive e-commerce platform designed to be a one-
 1. Clone the Repository
    ```bash
    git clone https://github.com/Kunxl-4568/Team_Project_draft
-   cd Team_Project_draft
+   cd Team_Project_draft/HobbyHive
    
 
 2. Install PHP Dependencies
