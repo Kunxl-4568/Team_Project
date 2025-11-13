@@ -18,7 +18,7 @@ export default function AuthSimpleLayout({
 
         
 
-        <div className="grid h-screen grid-cols-2"> {/*two column grid for the split screen login, this is the yellow left side*/}
+        <div className="grid h-screen grid-cols-2 shadow-lg text-[#2C2C2C]"> {/*two column grid for the split screen login, this is the yellow left side*/}
             <div className="bg-[#FFC300]" >
             
             <div className="flex flex-col items-center justify-center px-6 py-12 lg:px-8 m-25"> {/*flex container for the form*/}
@@ -36,8 +36,8 @@ export default function AuthSimpleLayout({
                         </Link>
 
                         <div className="space-y-2 text-center">
-                            <h1 className="text-xl font-medium dark:text-[#2C2C2C]">{title}</h1> {/* Changed to dark text to match my figma design */}
-                            <p className="text-center text-sm text-muted-foreground dark:text-[#2C2C2C]">
+                            <h1 className="text-xl font-extrabold font-slab dark:text-[#2C2C2C]">{title}</h1> {/* Changed to dark text to match my figma design */}
+                            <p className="text-center text-sm text-muted-foreground dark:text-[#2C2C2C] font-slab">
                                 {description}
                             </p>
                             

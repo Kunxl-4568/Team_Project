@@ -14,7 +14,7 @@ export default function Register() {
     return (
         <AuthLayout
             title="Sign Up"
-            description="Enter your details below to create your account"
+            description="Start your creative journey today!"
         >
 
             
@@ -101,8 +101,9 @@ export default function Register() {
                             </div>
 
                             <Button
+                                variant="auth"
                                 type="submit"
-                                className="mt-2 w-full"
+                                className="mt-2 mx-auto"
                                 tabIndex={5}
                                 data-test="register-user-button"
                             >
@@ -113,9 +114,9 @@ export default function Register() {
                             </Button>
                         </div>
 
-                        <div className="text-center text-sm text-muted-foreground">
+                        <div className="text-center text-sm text-[#2C2C2C] font-slab font-light">
                             Already a member?{' '}
-                            <TextLink href={login()} tabIndex={6}>
+                            <TextLink href={login()} tabIndex={6} className='text-[#2C2C2C] font-slab font-bold'>
                                 Log in
                             </TextLink>
                         </div>
