@@ -18,10 +18,10 @@ export default function AuthSimpleLayout({
 
         
 
-        <div className="grid h-screen grid-cols-2 shadow-lg text-[#2C2C2C]"> {/*two column grid for the split screen login, this is the yellow left side*/}
+        <div className="grid h-screen grid-cols-2 shadow-lg text-[#2C2C2C] overflow-hidden"> {/*two column grid for the split screen login, this is the yellow left side*/}
             <div className="bg-[#FFC300] font-slab" >
             
-            <div className="flex flex-col items-center justify-center px-6  lg:px-8 m-25"> {/*flex container for the form*/}
+            <div className="flex flex-col items-center justify-center px-6  lg:px-8 m-20"> {/*flex container for the form*/}
             <div className="w-full max-w-sm">
                 <div className="flex flex-col gap-8">
                     <div className="flex flex-col items-center gap-4">
