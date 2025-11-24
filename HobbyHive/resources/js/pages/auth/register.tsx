@@ -103,18 +103,56 @@ export default function Register() {
                             <Button
                                 variant="auth"
                                 type="submit"
-                                className="mt-2 mx-auto"
+                                className="mt-2 mx-auto h-11"
                                 tabIndex={5}
                                 data-test="register-user-button"
                             >
                                 {processing && (
-                                    <LoaderCircle className="h-4 w-4 animate-spin" />
+                                    <LoaderCircle className="h-6 w-6 animate-spin" />
                                 )}
                                 START CREATING
                             </Button>
+
+
+                            <div className="grid gap-2">
+                                <h1 className='mx-auto font-slab font-bold text-base'> OR </h1>
+                            </div>
+
+                                <div className="grid gap-2">
+
+                                    <Button
+                                    variant="google"
+                                    type="button"
+                                    className='mx-auto'
+                                    tabIndex={6}
+                                    data-test="google-register-button"
+                                    
+                                    >
+                                          <img
+                                            src="/images/cont_google.png"
+                                            alt="Continue With Google"
+                                            
+                                            />
+
+
+
+                                    </Button>
+
+                                
+
+
+
+                            </div>
+                            
+
+
+
                         </div>
 
-                        <div className="text-center text-sm text-[#2C2C2C] font-slab font-light">
+
+                        
+
+                        <div className="text-center text-base text-[#2C2C2C] font-slab font-light">
                             Already a member?{' '}
                             <TextLink href={login()} tabIndex={6} className='text-[#2C2C2C] font-slab font-bold'>
                                 Log in
