@@ -19,10 +19,10 @@ interface LoginProps {
 export default function Login({ status, canResetPassword }: LoginProps) {
     return (
         <AuthLayout
-            title="Log in to your account"
-            description="Enter your email and password below to log in"
+            title="Log In"
+            description="Back for more inspiration?"
         >
-            <Head title="Log in" />
+            <Head title="Log In - HobbyHive" />
 
             <Form
                 {...AuthenticatedSessionController.store.form()}
@@ -42,24 +42,12 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                                     autoFocus
                                     tabIndex={1}
                                     autoComplete="email"
-                                    placeholder="email@example.com"
+                                    placeholder="Email"
                                 />
                                 <InputError message={errors.email} />
                             </div>
 
-                            <div className="grid gap-2">
-                                <div className="flex items-center">
-                                    
-                                    {canResetPassword && (
-                                        <TextLink
-                                            href={request()}
-                                            className="ml-auto text-sm"
-                                            tabIndex={5}
-                                        >
-                                            Forgot password?
-                                        </TextLink>
-                                    )}
-                                </div>
+                            
                                 <Input
                                     id="password"
                                     type="password"
@@ -72,36 +60,88 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                                 <InputError message={errors.password} />
                             </div>
 
-                            <div className="flex items-center space-x-3">
-                                <Checkbox
+                            <div className="grid gap-2">
+                                <div className="flex justify-center items-center  mx-auto whitespace-nowrap">
+                                    
+                                    {canResetPassword && (
+                                        <TextLink
+                                            href={request()}
+                                            className=" text-base font-slab text-[##2C2C2C] pr-22"
+                                            tabIndex={5}
+                                        >
+                                            Forgot Password?
+                                        </TextLink>
+                                    )}
+
+                                    <div className="flex items-center gap-1">
+                                    <Checkbox
                                     id="remember"
                                     name="remember"
                                     tabIndex={3}
+
                                 />
-                                <Label htmlFor="remember">Remember me</Label>
+                                <Label htmlFor="remember" className='text-center text-base'>Remember Me</Label>
+                                </div>
+
+                                </div>
+
+                            <div className="flex items-center space-x-3">
+                                
                             </div>
 
                             <Button
                                 variant="auth"
                                 type="submit"
-                                className="mt-4 mx-auto"
+                                className="mt-2 mx-auto h-11"
                                 tabIndex={4}
                                 disabled={processing}
                                 data-test="login-button"
                             >
                                 {processing && (
-                                    <LoaderCircle className="h-4 w-4 animate-spin" />
+                                    <LoaderCircle className="h-6 w-6 animate-spin" />
                                 )}
-                                Log in
+                                KEEP CREATING
                             </Button>
                         </div>
 
-                        <div className="text-center text-sm text-muted-foreground">
+                        <div className="text-center text-base text-[#2C2C2C] font-slab font-light">
                             Don't have an account?{' '}
-                            <TextLink href={register()} tabIndex={5}>
-                                Sign up
+                            <TextLink href={register()} tabIndex={5} className="text-[#2C2C2C] font-slab font-bold">
+                                Sign Up
                             </TextLink>
                         </div>
+
+
+
+                         <div className="grid gap-2">
+                                <h1 className='mx-auto font-slab font-bold text-base'> OR </h1>
+                            </div>
+
+                                <div className="grid gap-2">
+
+                                    <Button
+                                    variant="google"
+                                    type="button"
+                                    className='mx-auto'
+                                    tabIndex={6}
+                                    data-test="google-register-button"
+                                    
+                                    >
+                                          <img
+                                            src="/images/cont_google.png"
+                                            alt="Continue With Google"
+                                            
+                                            />
+
+
+
+                                    </Button>
+
+                                
+
+
+
+                            </div>
                     </>
                 )}
             </Form>
