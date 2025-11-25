@@ -33,7 +33,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                     <>
                         <div className="grid gap-6">
                             <div className="grid gap-2">
-                                <Label htmlFor="email">Email address</Label>
+                               
                                 <Input
                                     id="email"
                                     type="email"
@@ -49,7 +49,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
 
                             <div className="grid gap-2">
                                 <div className="flex items-center">
-                                    <Label htmlFor="password">Password</Label>
+                                    
                                     {canResetPassword && (
                                         <TextLink
                                             href={request()}
@@ -82,8 +82,9 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                             </div>
 
                             <Button
+                                variant="auth"
                                 type="submit"
-                                className="mt-4 w-full"
+                                className="mt-4 mx-auto"
                                 tabIndex={4}
                                 disabled={processing}
                                 data-test="login-button"
