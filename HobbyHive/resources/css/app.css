@@ -17,15 +17,13 @@
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
 @custom-variant dark (&:is(.dark *));
-<<<<<<< HEAD
 
-/* I've added support for Hepta Slab font, just use "font-slab" in the className of text */
 
-=======
+
 body {
   font-family: 'Hepta Slab', ui-sans-serif, system-ui, sans-serif;
 }
->>>>>>> Renee-HobbyHive
+
 @theme {
     --font-sans:
         "Instrument Sans", "Hepta Slab", ui-sans-serif, system-ui, sans-serif,
@@ -160,10 +158,11 @@ body {
 
 @layer base {
     * {
-        @apply border-border;
+        border: 1px solid var(--border); 
     }
 
     body {
         @apply bg-background text-foreground;
     }
 }
+
