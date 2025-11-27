@@ -7,9 +7,12 @@
   font-display: swap;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@1..900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 @plugin 'tailwindcss-animate';
 
@@ -35,6 +38,8 @@ body {
         'Hepta Slab', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif,
         'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
         'Noto Color Emoji'; 
+
+
 
     --radius-lg: var(--radius);
     --radius-md: calc(var(--radius) - 2px);
@@ -161,5 +166,28 @@ body {
     body {
         @apply bg-background text-foreground;
     }
+}
+
+
+body {
+    font-family: "Hepta Slab", serif;
+}
+
+.forgot-password-page {
+    background-color: #ffc300;
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.reset-password-page {
+    background-color: #ffc300;
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
 }
 
