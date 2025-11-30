@@ -24,8 +24,8 @@ const products = [
   {
     id: 1,
     name: "Faber-Castell Pencils 24 Pack",
-    price:30.00,
-    originalPrice: 25.00,
+    price:25.00,
+    originalPrice: 30.00,
     image:"/images/Faber Castell metal tin.png",
     isOnSale: true,
     isInWishlist:false,
