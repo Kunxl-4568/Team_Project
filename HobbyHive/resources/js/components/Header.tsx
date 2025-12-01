@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Search } from "./Search";
 import { home } from '@/routes';
 import { Link } from '@inertiajs/react';
+import { register } from '@/routes';
+import { login } from '@/routes';
 
 
 
@@ -31,10 +33,13 @@ export function Header(){
            <div className="w-full flex justify-start md:justify end gap-4  md:w-auto items-center ">
 
             <div className="flex flex-col items-center cursor pointer">
+              <Link
+              href={register()}> 
+              
             <img src="/images/Sign-up.png" alt="sign up" className="h-8 w-10 md:h-12 md:w-12"
            />
             <span className="text-xs md:text-sm mt-1 text-black">Sign Up</span>
-
+          </Link>
            </div>
            <div className="flex flex-col items-center cursor pointer">
            <button onClick={() => setIsWishlistWork(!isWishlistWork)}
