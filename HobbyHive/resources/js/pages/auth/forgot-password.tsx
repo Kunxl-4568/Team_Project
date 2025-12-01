@@ -62,7 +62,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
 
                 <div className="space-x-1 text-center text-sm text-muted-foreground">
                     <span className="text-center text-base text-[#2C2C2C] font-slab font-light">Remember now?</span>
-                    <TextLink href={login()} className='font-bold text-[#2C2C2C]'>Log in</TextLink>
+                    <TextLink href={login()} className='font-bold text-[#2C2C2C] text-base'>Log in</TextLink>
                 </div>
             </div>
         </AuthLayout>
