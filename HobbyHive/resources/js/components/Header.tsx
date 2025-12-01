@@ -3,12 +3,13 @@ import { Heart } from "lucide-react";
 import { useState } from "react";
 import { Search } from "./Search";
 import Basket from "../components/Basket";
-
+import { Link } from "@inertiajs/react"
 interface HeaderProps {
   basket: number[];
 }
 
 export function Header({ basket}: HeaderProps) {
+  const basketAmount = basket.length;
 
   const[isWishlistWork, setIsWishlistWork] = useState(false);
 
@@ -16,10 +17,12 @@ export function Header({ basket}: HeaderProps) {
        
         <div className="w-full px-4 mt-8 flex flex-col md:flex-row items-center md:items-center gap-6">
 
-        <div className="flex justify-start w-full md:w-auto">  
+      <div className="flex justify-start w-full md:w-auto">  
+        <Link href="/">
          <img src="/images/Title and Logo.png.png" alt="Logo" 
          className="order-2 md:order-1 h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem] w-auto" />
-        </div>
+        </Link>
+      </div>
 
          <div className="w-full md:flex-1 md:mx-4">
            <Search />

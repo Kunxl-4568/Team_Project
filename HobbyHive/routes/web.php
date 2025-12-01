@@ -13,6 +13,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
 });
+
 Route::get('/products', [ProductController::class, 'index']) ->name('products.index');
 
 // 👉 Add this route
