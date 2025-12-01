@@ -29,7 +29,7 @@ export default function AuthSimpleLayout({
                             href={home()}
                             className="flex flex-col items-center gap-2 font-medium"
                         >
-                            <div className="pb-1 flex h-9 w-9 items-center justify-center scale-1000">
+                            <div className="pb-1.5 flex h-9 w-9 items-center justify-center scale-1000">
                                 <img src="/images/hobbyhiveicon - Copy.png" alt="Logo"/>
                             </div>
                             <span className="sr-only">{title}</span>
