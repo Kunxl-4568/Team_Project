@@ -26,7 +26,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Kunxl-4568/Team_Project">
-    <img src="HobbyHive\public\images\hobbyhiveicon - Copy.png" alt="HobbyHive Logo" width="100" height="100">
+    <img src="HobbyHive\public\images\hobbyhiveicon - Copy.png" alt="HobbyHive Logo" width="500" height="500">
   </a>
 
 <h3 align="center"> HobbyHive </h3>
