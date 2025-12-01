@@ -6,9 +6,15 @@ import Navbar from "../components/Navbar";
 import Carousel from "@/components/Carousel"
 import {Header} from "../components/Header";
 import ProductCard from "../components/Productcard";
+import Footer from "@/components/Footer";
+import Basket from "@/components/Basket";
 
 
 export default function Home() {
+
+const [basket,setBasket] = useState<number[]>([]);
+const handleAddToBasket = (id: number) => { setBasket((prev) => [...prev, id])};
+
   const [bannerVisible, setBannerVisible] = useState(true);
   const [bannerHeight, setBannerHeight] = useState(0);
   const bannerRef = useRef<HTMLDivElement>(null);
@@ -58,7 +64,7 @@ const products = [
          </div>
 
          <div className="px-4 mt-4 md:-mt-2 lg:-mt-0">
-         <Header />
+         <Header basket={basket}/>
          </div>
 
       <Navbar bannerHeight={bannerVisible ? bannerHeight : 0} /> 
@@ -73,6 +79,7 @@ const products = [
       <h2 className="text 2xl font-hepta text-black md:text 3xl mb-6">Products you will Love</h2>
 </div>
 
+
 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
   {products.map((product) =>  (
     <ProductCard 
@@ -84,13 +91,17 @@ const products = [
     image={product.image}
     isOnSale={product.isOnSale}
     isInWishlist={product.isInWishlist}
-    onAddToBasket={(id) => console.log("Add to basket:", id)}
+    onAddToBasket={handleAddToBasket}
     onToggleWishlist={(id) => console.log("Toggle wishlist:", id)}
     />
 ))}
 
 </div>
     </div>
+    
+      <div className="mt-6">
+        <Footer />
+      </div>
   
     </div>
   

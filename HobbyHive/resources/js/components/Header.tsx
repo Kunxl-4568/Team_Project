@@ -2,13 +2,15 @@ import React from "react";
 import { Heart } from "lucide-react";
 import { useState } from "react";
 import { Search } from "./Search";
+import Basket from "../components/Basket";
 
+interface HeaderProps {
+  basket: number[];
+}
 
+export function Header({ basket}: HeaderProps) {
 
-export function Header(){
-
-    const [isWishlistWork, setIsWishlistWork] = useState(false);
-     const [basketAmount,setBasketAmount] = useState(0);
+  const[isWishlistWork, setIsWishlistWork] = useState(false);
 
     return(
        
@@ -42,15 +44,7 @@ export function Header(){
             <span className="text-xs md:text-sm mt-1 text-black">Wish List</span>
            </div>
 
-           <div className="relative flex flex-col items-center cursor pointer">
-           <img src="/images/Basket.png" alt="Basket symbol" className="h-10 w-10 curasor-pointer"
-           onClick={() => setBasketAmount(basketAmount + 1)}/>
-           {basketAmount > 0 && (
-            <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs font-bold rounded-full px-2 py-0.5">{basketAmount}</span>
-           )} 
-           <span className="text-xs md:text-sm mt-1 text-black">Basket</span>
-
-           </div>
+     <Basket basket={basket}/>
 
 
         </div>

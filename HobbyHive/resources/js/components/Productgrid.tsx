@@ -13,7 +13,7 @@ interface Product {
 
 interface ProductGridProps {
     products: Product[];
-    product: ProductGridProps;
+    onToggleWishlist: (id: number) => void;
     onAddToBasket:(id: number) => void;
 }
 
@@ -30,7 +30,7 @@ export default function ProductGrid({ products, onAddToBasket}: ProductGridProps
                 image={product.image}
                 isOnSale={product.isOnSale}
                 isInWishlist={product.isInWishlist}
-                onAddToBasket={(id) => console.log("Add to basket:", id)}
+                onAddToBasket={onAddToBasket}
                 onToggleWishlist={(id) => console.log("Toggle wishlist:", id)}
               />
             ))}
