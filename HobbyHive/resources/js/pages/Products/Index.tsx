@@ -63,18 +63,29 @@ export default function Products() {
 return (
      <div className="bg-white min-h-screen flex flex-col">
         <Head title='Products' />
+       
+        {bannerVisible && (
+        <div ref={bannerRef} className="w-full flex justify-center">
+        <div className="w-full px-4 md:px-8 lg:px-12 max-w-7xl">
+             <Banner onClose={() => setBannerVisible(false)} />
+         </div>
+     </div>
+        )}
 
-        <div ref={bannerRef}>{bannerVisible && <Banner onClose={() => setBannerVisible(false)} />}</div>
-
-
-      <div className="px-4 mt-4 md:-mt-2 lg:-mt-0">
+      <div className="w-full flex justify-center mt-4 px-4 md:px-8 lg-px-12">
+      <div className="w-full max-w-7xl">
         <Header basket={basket} />
       </div>
+      </div>
 
+        <div className="w-full flex justify-center mt-2 Md:px-8 lg:px-12 px-4">
+            <div className="w-full max-w-7xl">
          <Navbar bannerHeight={bannerVisible ? bannerHeight : 0} />
+         </div>
+         </div>
 
 
-        <div className="w-full px-4 md:px-8 lg:px-1 2mt-4">
+        <div className="w-full px-4 md:px-8 lg:px-12 mx-auto max-w-7xl mt-6">
             <ProductGrid 
             products ={productsList}
             onAddToBasket={handleAddToBasket}
@@ -82,8 +93,10 @@ return (
             />
          </div>
 
-         <div className="mt-6">
+         <div className="w-full flex justify-center mt-2 Md:px-8 lg:px-12 px-4mt-6">
+            <div className="w-full max-w-7xl">
            <Footer />
+           </div>
          </div>
 
         </div>

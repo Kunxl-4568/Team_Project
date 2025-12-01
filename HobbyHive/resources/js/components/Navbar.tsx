@@ -30,7 +30,7 @@ export default function Navbar({bannerHeight}: NavbarProps) {
         xl:-mt-8">
 
 
-            <ul className="w-full flex flex-wrap justify-center items-center md:justify-between md:px-10 gap-3  ">
+            <ul className="w-full flex flex-wrap justify-center md:justify-between gap-6 px-4 md:px-0 ">
                 {categories.map((category) => {
                     const slug = category.toLowerCase().replace(/ & /g, " and ").replace(/ /g, "-");
                     const isActive = selectedCategory === slug || (slug === "all" && !selectedCategory);

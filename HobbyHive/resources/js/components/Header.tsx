@@ -14,17 +14,17 @@ export function Header({ basket}: HeaderProps) {
   const[isWishlistWork, setIsWishlistWork] = useState(false);
 
     return(
-       
-        <div className="w-full px-4 mt-8 flex flex-col md:flex-row items-center md:items-center gap-6">
+    <div className="w-full px-4 mt-8">
+        <div className="mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-center gap-6">
 
-      <div className="flex justify-start w-full md:w-auto">  
-        <Link href="/">
+         <div className="flex justify-center md:justify-start w-full md:w-auto">  
+         <Link href="/">
          <img src="/images/Title and Logo.png.png" alt="Logo" 
          className="order-2 md:order-1 h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem] w-auto" />
-        </Link>
-      </div>
+         </Link>
+         </div>
 
-         <div className="w-full md:flex-1 md:mx-4">
+          <div className="w-full md:flex-1 md:mx-4">
            <Search />
            </div>
 
@@ -36,7 +36,7 @@ export function Header({ basket}: HeaderProps) {
             <span className="text-xs md:text-sm mt-1 text-black">Sign Up</span>
 
            </div>
-           <div className="flex flex-col items-center cursor pointer">
+           <div className="flex flex-col items-center cursor-pointer">
            <button onClick={() => setIsWishlistWork(!isWishlistWork)}
            className="cursor-pointer" >
 
@@ -47,11 +47,12 @@ export function Header({ basket}: HeaderProps) {
             <span className="text-xs md:text-sm mt-1 text-black">Wish List</span>
            </div>
 
-     <Basket basket={basket}/>
+            <Basket basket={basket}/>
 
 
         </div>
       </div>
+    </div>
     );
   }
   
