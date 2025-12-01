@@ -26,10 +26,10 @@
 <br />
 <div align="center">
   <a href="https://github.com/Kunxl-4568/Team_Project">
-    <img src="HobbyHive\public\images\hobbyhiveicon - Copy.png" alt="HobbyHive Logo" width="500" height="500">
+    <img src="HobbyHive\public\images\hobbyhiveicon - Copy.png" alt="HobbyHive Logo" width="300" height="300">
   </a>
 
-<h3 align="center"> HobbyHive </h3>
+<h1 align="center"> <strong> HobbyHive </strong> </h1>
 
   <p align="center">
     HobbyHive is a DIY-focused ecommerce platform built to help people get creative.
@@ -43,7 +43,7 @@
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary><strong> Table of Contents </strong> </summary>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
@@ -57,9 +57,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#license">License</a></li>
   </ol>
 </details>
 
@@ -177,9 +175,9 @@ NOTE: If an ADD TO PATH option is available, make sure it is checked for each in
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Chatbot
-- [ ] Wishlist
-- [ ] Product Search
+- [ ] Chatbot (TP2)
+- [ ] Wishlist (TP2)
+- [ ] Product Search (TP2)
 
 
 
@@ -190,14 +188,6 @@ NOTE: If an ADD TO PATH option is available, make sure it is checked for each in
 
 
 
-
-
-<!-- LICENSE -->
-## License
-
-See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
