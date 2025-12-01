@@ -26,7 +26,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Kunxl-4568/Team_Project">
-    <img src="public/images/titlelogo.png" alt="HobbyHive Title and Logo" width="80" height="80">
+    <img src="HobbyHive\public\images\hobbyhiveicon - Copy.png" alt="HobbyHive Logo" width="100" height="100">
   </a>
 
 <h3 align="center"> HobbyHive </h3>
@@ -68,7 +68,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 HobbyHive is a place where people can tap into their creativity and explore hands-on projects that actually interest them. Whether someone’s into crafts, building, painting, or trying something completely new, the site brings together a wide range of kits, tools, and ideas to make getting started easy.
 
@@ -82,11 +81,11 @@ HobbyHive isn’t just a shop, it’s a hub of creativity!
 
 ### Built With
 
-* [![Node][Node.js]][Node-url]
-* [![React][React.js]][React-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Tailwind][Tailwind.com]][Tailwind-url]
-* [![Composer][Composer.com]][Composer-url]
+ [![Node][Node.js]][Node-url]
+  [![React][React.js]][React-url]
+[![Laravel][Laravel.com]][Laravel-url]
+[![Tailwind][Tailwind.com]][Tailwind-url]
+[![Composer][Composer.com]][Composer-url]
 
 
 
