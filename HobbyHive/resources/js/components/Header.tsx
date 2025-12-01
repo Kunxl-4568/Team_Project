@@ -12,10 +12,10 @@ export function Header(){
 
     return(
        
-        <div className="w-full px-4 mt-8 flex flex-col md:flex-row items-center md:items-center gap-6">
+        <div className="w-full px-4 mt-8 flex flex-col md:flex-row items-center md:items-center gap-6 text-[#2C2C2C] font-slab">
 
         <div className="flex justify-start w-full md:w-auto">  
-         <img src="/images/Title and Logo.png.png" alt="Logo" 
+         <img src="/images/titlelogo.png" alt="Logo" 
          className="order-2 md:order-1 h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem] w-auto" />
         </div>
 
