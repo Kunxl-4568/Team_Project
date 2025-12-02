@@ -7,12 +7,10 @@ import { Link } from '@inertiajs/react';
 import { register } from '@/routes';
 import { login } from '@/routes';
 
+export function Header({ basket}: HeaderProps) {
+  const basketAmount = basket.length;
 
-
-export function Header(){
-
-    const [isWishlistWork, setIsWishlistWork] = useState(false);
-     const [basketAmount,setBasketAmount] = useState(0);
+  const[isWishlistWork, setIsWishlistWork] = useState(false);
 
     return(
        
@@ -26,7 +24,7 @@ export function Header(){
          </Link>
         </div>
 
-         <div className="w-full md:flex-1 md:mx-4">
+          <div className="w-full md:flex-1 md:mx-4">
            <Search />
            </div>
 
@@ -41,7 +39,7 @@ export function Header(){
             <span className="text-xs md:text-sm mt-1 text-black">Sign Up</span>
           </Link>
            </div>
-           <div className="flex flex-col items-center cursor pointer">
+           <div className="flex flex-col items-center cursor-pointer">
            <button onClick={() => setIsWishlistWork(!isWishlistWork)}
            className="cursor-pointer" >
 
@@ -52,19 +50,12 @@ export function Header(){
             <span className="text-xs md:text-sm mt-1 text-black">Wish List</span>
            </div>
 
-           <div className="relative flex flex-col items-center cursor pointer">
-           <img src="/images/Basket.png" alt="Basket symbol" className="h-10 w-10 curasor-pointer"
-           onClick={() => setBasketAmount(basketAmount + 1)}/>
-           {basketAmount > 0 && (
-            <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs font-bold rounded-full px-2 py-0.5">{basketAmount}</span>
-           )} 
-           <span className="text-xs md:text-sm mt-1 text-black">Basket</span>
-
-           </div>
+            <Basket basket={basket}/>
 
 
         </div>
       </div>
+    </div>
     );
   }
   

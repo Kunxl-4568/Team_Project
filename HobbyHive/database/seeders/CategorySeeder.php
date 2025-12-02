@@ -23,6 +23,8 @@ class CategorySeeder extends Seeder
             ['name' => 'Toys & Games'],
             ['name' => 'Textile Crafts'],
             ['name' => 'Books'],
+            ['name' => 'New'],
+            ['name' => 'Offers' ]
         // Add more categories as needed - DIY Kits, project mode
         ];
 

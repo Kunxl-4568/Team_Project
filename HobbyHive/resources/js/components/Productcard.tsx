@@ -51,7 +51,7 @@ export default function ProductCard({
       <div className="flex justify-center items-center gap-2 mt-1">
         <p className="font-hepta text-xl">£{price.toFixed(2)}</p>
 
-        {originalPrice && (
+        {isOnSale && originalPrice && (
           <p className="line-through text-gray-500"> £{originalPrice.toFixed(2)}</p>
         )}
       </div>

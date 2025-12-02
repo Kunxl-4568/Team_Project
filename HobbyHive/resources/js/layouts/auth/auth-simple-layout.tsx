@@ -29,7 +29,10 @@ export default function AuthSimpleLayout({
 
                             <div className="mt-4 mb-1 flex h-9 w-9 items-center justify-center rounded-md">
                                 <AppLogoIcon className="size-9 fill-current text-[#2c2c2c]" />
+// <<<<<<< Renee-frontend
 // >>>>>>> Stashed changes
+// =======
+// // >>>>>>> Stashed changes
 
         
 
@@ -45,6 +48,7 @@ export default function AuthSimpleLayout({
                                 <div className="pointer-events-none scale-1000 pb-1">
                                 <img src="/images/hobbyhiveicon - Copy.png" alt="Logo"/>
 <!-- >>>>>>> main -->
+<!-- >>>>>>> frontend -->
                             </div>
                             
                             <span className="sr-only">{title}</span>
