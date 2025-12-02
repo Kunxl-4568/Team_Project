@@ -4,10 +4,10 @@ import React from "react";
 export default function Banner({onClose}: { onClose: () => void }) {
 
   return (
-    <div className="bg-[#FFF9E4] text-center p-4 md:p-2 lg:p- relative">
-      <p className="font-hepta text-sm md:text-lg lg:text-xl font-medium">Shop Our Seasonal Collection</p>
+    <div className="bg-[#FFC300] text-center p-4 md:p-2 lg:p- relative text-[#2C2C2C] shadow-sm">
+      <p className="font-slab text-base md:text-lg lg:text-xl font-bold">Shop Our Seasonal Collection!</p>
       <button onClick={onClose}
-      className= "absolute top-2 right-2 text-lg">X</button>
+      className= "absolute top-2 right-2 text-lg pr-5 cursor-pointer font-bold">X</button>
 
     </div>
   );

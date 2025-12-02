@@ -70,7 +70,7 @@ const products = [
     <div className="w-full mt-10 px-4 md:px-8 lg:px-12">
       <div className="flex items-center justify-between">
         <img src="/images/Bee doodle.png" alt="Bee doodle" className="h-12 md:h-16 lg:h-20 ml-4"/>
-      <h2 className="text 2xl font-hepta text-black md:text 3xl mb-6">Products you will Love</h2>
+      <h2 className="text 2xl font-slab text-black md:text 3xl mb-6">Products you will Love</h2>
 </div>
 
 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
