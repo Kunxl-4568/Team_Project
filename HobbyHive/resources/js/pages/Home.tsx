@@ -28,10 +28,10 @@ useEffect(() => {
 const products = [
   {
     id: 1,
-    name: "Faber-Castell Pencils 24 Pack",
+    name: "Jenga Classic Game",
     price:25.00,
     originalPrice: 30.00,
-    image:"/images/Faber Castell metal tin.png",
+    image:"/images/Jenga.png",
     isOnSale: true,
     isInWishlist:false,
   },
@@ -46,10 +46,10 @@ const products = [
   },
     {
     id: 3,
-    name: "Faber-Castell Pencils 24 Pack",
+    name: "Finn Family Moomintroll Plush",
     price:30.00,
     originalPrice: 25.00,
-    image:"/images/Faber Castell metal tin.png",
+    image:"/images/Finn-Family-Moomintroll.png",
     isOnSale: true,
     isInWishlist:false,
   }
