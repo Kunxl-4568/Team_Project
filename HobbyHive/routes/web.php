@@ -33,6 +33,8 @@ Route::get('/transaction-demo', function () {
 });
 Route::get('/index', [ProductController::class, 'index'])->name('products.index');
 
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+
 
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';
