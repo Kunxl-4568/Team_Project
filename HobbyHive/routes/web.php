@@ -26,6 +26,9 @@ Route::get('/contact-us', function (){
 
 Route::get('/about-us', function (){
     return Inertia::render('AboutUs');
+// 👉 Add this route
+Route::get('/transaction-demo', function () {
+    return Inertia::render('TransactionDemo');
 });
 
 require __DIR__.'/settings.php';
