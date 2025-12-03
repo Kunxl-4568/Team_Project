@@ -1,5 +1,7 @@
 
 import React from "react";
+import { Link, usePage } from "@inertiajs/react";
+
 
 type NavbarProps = {
     bannerHeight: number
@@ -17,7 +19,9 @@ export default function Navbar({bannerHeight}: NavbarProps) {
         "Offers",
     ];
 
-    
+    const { selectedCategory } = usePage().props as { selectedCategory?: string };
+
+
     return (
         <nav className="w-full relative flex items-center p-4 bg-white shadow transition-all duration-300
         -mt-0
@@ -26,16 +30,21 @@ export default function Navbar({bannerHeight}: NavbarProps) {
         xl:-mt-8">
 
 
-            <ul className="w-full flex flex-wrap justify-center items-center md:justify-between md:px-10 gap-3  ">
+            <ul className="w-full flex flex-wrap justify-center md:justify-between gap-6 px-4 md:px-0 ">
                 {categories.map((category) => {
-                    const slug = category.toLowerCase().replace(/ & /g, "-").replace(/ /g, "-");
-                    return (
-                        <li key={category}>
-                            <a href={`/products?category=${slug}`}
-                            className="font-hepta hover:text-yellow-600 transition">
+                    const slug = category.toLowerCase().replace(/ & /g, " and ").replace(/ /g, "-");
+                    const isActive = selectedCategory === slug || (slug === "all" && !selectedCategory);
+
+                 return (
+                   <li key={category}>
+                        <Link
+                            href={`/products?category=${slug}`}
+                            className={`font-hepta transition ${isActive ? "text-yellow-600" : "hover:text-yellow-600"}`}
+                           preserveScroll
+                         >
                        
-                        {category}
-                        </a>
+                            {category}
+                        </Link>
                   </li>
                     );
                 })}
@@ -55,4 +64,3 @@ export default function Navbar({bannerHeight}: NavbarProps) {
         </nav>
     );
 }
-
