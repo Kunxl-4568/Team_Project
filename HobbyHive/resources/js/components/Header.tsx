@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { Heart } from "lucide-react";
 import { Search } from "./Search";
-import { Basket } from "./Basket";          // 👈 IMPORTANT
+import { Basket } from "./Basket";          
 import { home, register } from "@/routes";
 import { Link } from "@inertiajs/react";
 
 interface HeaderProps {
-  basket?: any[]; // change type later if you want
+  basket?: any[]; 
 }
 
-export function Header({ basket = [] }: HeaderProps) {  // 👈 default []
+export function Header({ basket = [] }: HeaderProps) {  =
   const basketAmount = basket.length;
   const [isWishlistWork, setIsWishlistWork] = useState(false);
 
@@ -62,7 +62,7 @@ export function Header({ basket = [] }: HeaderProps) {  // 👈 default []
           <span className="text-xs md:text-sm mt-1 text-black">Wish List</span>
         </div>
 
-        {/* Basket */}
+       =
         <Basket basket={basket} />
       </div>
     </div>

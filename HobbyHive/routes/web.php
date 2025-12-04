@@ -28,25 +28,24 @@ Route::get('/about-us', function () {
     return Inertia::render('AboutUs');
 });
 
-/*
-Route::get('/cart', function(){
-    return Inertia::render('CartPage', [
-        'cartItems' => [],
-        'subtotal' => 0,
-    ]);
-});
-*/
+// /*
+// Route::get('/cart', function(){
+//     return Inertia::render('CartPage', [
+//         'cartItems' => [],
+//         'subtotal' => 0,
+//     ]);
+// });
+// */
 
 
 Route::get('/cart', function (){
     return Inertia::render('CartPage', [
         'cartItems' => [
             ['id' => 1, 'title' => 'Faber Castell Pencils', 'image' => '/images/Faber Castell metal tin.png', 'price' => 69.95, 'quantity' => 1],
-            ['id' => 2, 'title' => 'Faber Coloured Pencils', 'image' => '/images/Faber Castell metal tin.png', 'price' => 12.00, 'quantity' => 2],
         ],
         'subtotal' => 93.95,
     ]);
-});
+}) ->name('cart');
 
 
 Route::get('/Checkout', function (){
@@ -62,6 +61,8 @@ Route::get('/transaction-demo', function () {
 Route::get('/index', [ProductController::class, 'index'])->name('products.index');
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+
+
 
 
 require __DIR__ . '/settings.php';
