@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from '../components/Navbar';
 import {NavFooter} from '../components/nav-footer';
+import { usePage } from '@inertiajs/react';
 
 type CheckoutProps = {
     subtotal: number;
@@ -8,9 +9,17 @@ type CheckoutProps = {
 };
 
 const Checkout: React.FC = () => {
-    const subtotal = 93.95;
-    const shipping = 5.0;
-    const total = subtotal + shipping;
+    //const { subtotal = 0 } = usePage<{ subtotal?: number }>().props;
+
+    const page = usePage<{ subtotal?: number }>();
+    console.log('Page props:', page.props);  // <-- inspect what the server sent
+    
+    const { subtotal = 0 } = page.props;
+    console.log('Subtotal from props:', subtotal);  // <-- inspect subtotal value
+    
+    const shipping = 0;
+    const vat = subtotal * 0.2;
+    const total = subtotal + shipping + vat;
     return(
         <div className = 'bg-white min-h-screen py-12 flex flex-col'>
         <NavBar bannerHeight={0}/>
@@ -97,12 +106,13 @@ const Checkout: React.FC = () => {
                     <span>Shipping:</span>
                     <span>Free</span>
                 </div>
+                
 
                 <hr className='border-t-1 border-black mb-5'/>
 
                 <div className='flex justify-between text-lg text-[#2c2c2c]'>
                     <span>Order Total:</span>
-                    <span>£{(subtotal).toFixed(2)}</span>
+                    <span>£{total.toFixed(2)}</span>
                 </div>
 
 
