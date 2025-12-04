@@ -134,7 +134,7 @@ NOTE: If an ADD TO PATH option is available, make sure it is checked for each in
 3. Install Composer within the Repo Folder
    ```sh
    composer install
-   composer -v #will return a version number if its installed correctly
+   composer -V #will return a version number if its installed correctly
    ```
 
 
@@ -151,9 +151,10 @@ NOTE: If an ADD TO PATH option is available, make sure it is checked for each in
 
    ```
 
-6. Create Database
+6. Create Database & Run Seeders
     ```sh
     php artisan migrate
+    php artisan db:seed
     ```
 
 7. Starting your local server
