@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@1..900&display=swap");
 @import 'tailwindcss';
 @font-face {
   font-family: 'Hepta Slab';
@@ -7,7 +8,6 @@
   font-display: swap;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@1..900&display=swap");
 
 @tailwind base;
 @tailwind components;
