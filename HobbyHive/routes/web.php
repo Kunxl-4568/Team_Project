@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -13,17 +14,17 @@ Route::get('/preview-reset-password', function () {
     ]);
 });
 
-Route::middleware(['auth', 'verified']) ->group(function () {
-    Route::get('dashboard', function () {
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
 });
 
-Route::get('/contact-us', function (){
+Route::get('/contact-us', function () {
     return Inertia::render('contact-us');
 });
 
-Route::get('/about-us', function (){
+Route::get('/about-us', function () {
     return Inertia::render('AboutUs');
 });
 
@@ -55,6 +56,13 @@ Route::get('/Checkout', function (){
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
 
+Route::get('/transaction-demo', function () {
+    return Inertia::render('TransactionDemo');
+});
+Route::get('/index', [ProductController::class, 'index'])->name('products.index');
+
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 
 
-
+require __DIR__ . '/settings.php';
+require __DIR__ . '/auth.php';
