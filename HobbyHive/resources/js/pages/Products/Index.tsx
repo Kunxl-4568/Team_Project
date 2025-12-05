@@ -63,15 +63,15 @@ export default function Products() {
   const [bannerHeight, setBannerHeight] = useState(0);
   const bannerRef = useRef<HTMLDivElement>(null);
 
-  
 
   useEffect(() => {
     if (bannerRef.current) setBannerHeight(bannerRef.current.offsetHeight);
   }, [bannerVisible]);
  
-     useEffect(() => {
-          localStorage.setItem("basket", JSON.stringify(basket));
-      },[basket]);
+  useEffect(() => {
+    const stored = sessionStorage.getItem("basket");
+    if (stored) setBasket(JSON.parse(stored));
+}, []);
   
 return (
      <div className="bg-white min-h-screen flex flex-col">
@@ -116,3 +116,4 @@ return (
    
 );
 }
+  
