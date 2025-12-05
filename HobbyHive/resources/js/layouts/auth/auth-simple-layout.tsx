@@ -19,9 +19,10 @@ export default function AuthSimpleLayout({
 
 
         <div className="grid h-screen grid-cols-1 md:grid-cols-2 shadow-lg text-[#2C2C2C] overflow-hidden"> {/*two column grid for the split screen login, this is the yellow left side*/}
-            <div className="bg-[#FFC300] font-slab drop-shadow-lg " >
+           <div className="bg-[#FFC300] font-slab drop-shadow-lg flex items-center justify-center">
 
-            <div className="flex flex-col items-center justify-center px-6  lg:px-8 m-20" > {/*flex container for the form*/}
+            <div className="flex flex-col items-center justify-center px-6 lg:px-8 py-12 w-full max-w-md">
+
             <div className="w-full max-w-sm">
                 <div className="flex flex-col gap-8">
                     <div className="flex flex-col items-center gap-4">
@@ -50,9 +51,28 @@ export default function AuthSimpleLayout({
             </div>
             </div> {/* closing div for the flex container of the form*/}
             </div> {/*closing div for the yellow side*/}
-            <div className="bg-white"> {/*white section of page, ill add hobbyhive stuff later*/}
+            <div className="bg-white flex items-center justify-center  "> {/*right side of the split screen, white side*/}
+
+               <div className="flex flex-col items-center justify-center pb-26 ">
+
+                        <div className = 'flex flex-col items-start gap-y-3 mx-auto text-4xl text-shadow-2xl '>
+                            <span className='text-[#2FFFFF]  font-bold '>FREEDOM</span>
+                            <span className='text-[#FF381B] font-bold '>CREATIVITY</span>
+                            <span className='text-[#33FF76]  font-bold '>DISCOVERY</span>
+                        
+                            <Link href={home()}>
+                            <img src="/images/HobbyHiveLogo.png" alt="Hobby Hive Logo" className="mt-5 sm:h-40 w-auto mx-auto" /> {/* image needs centering - jb */}
+                            </Link>
+                        
+                            <span className='text-[#FF67AB]  font-bold  '>IMAGINATION</span>
+                            <span className='text-[#FF9700]  font-bold '>EXPRESSION </span>
+                            <span className='text-[#8672FF]  font-bold '>PASSION</span>
+                            </div>
+                        </div>
+                    </div> 
+                
             </div>
-        </div>
+        
 
     );
 }
