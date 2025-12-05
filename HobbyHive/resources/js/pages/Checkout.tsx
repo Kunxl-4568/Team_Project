@@ -1,6 +1,18 @@
 import React from 'react';
 import NavBar from '../components/Navbar';
 import {NavFooter} from '../components/nav-footer';
+import { usePage } from '@inertiajs/react';
+import { useState, useRef, useEffect } from "react";
+import { Trash2, Plus, Minus, ArrowLeft } from 'lucide-react';
+import CartItem from "../components/CartItem";
+import CartSummary from '../components/CartSummary';
+import Banner from "@/components/Banner";
+import Navbar from "@/components/Navbar";
+import Carousel from "@/components/Carousel"
+import {Header} from "@/components/Header";
+import ProductCard from "@/components/Productcard";
+import Footer from "@/components/Footer";
+import Basket from "@/components/Basket";
 
 type CheckoutProps = {
     subtotal: number;
@@ -8,14 +20,49 @@ type CheckoutProps = {
 };
 
 const Checkout: React.FC = () => {
-    const subtotal = 93.95;
-    const shipping = 5.0;
-    const total = subtotal + shipping;
+    //const { subtotal = 0 } = usePage<{ subtotal?: number }>().props;
+    const [bannerVisible, setBannerVisible] = useState(true);
+    const fixedHeight=80;
+    const fixedRef = useRef<HTMLDivElement>(null);
+    const [basket,setBasket] = useState<number[]>([]);
+
+    const page = usePage<{ subtotal?: number }>();
+    console.log('Page props:', page.props);  // <-- inspect what the server sent
+    
+    const { subtotal = 0 } = page.props;
+    console.log('Subtotal from props:', subtotal);  // <-- inspect subtotal value
+    
+    const shipping = 0;
+    const vat = subtotal * 0.2;
+    const total = subtotal + shipping + vat;
     return(
         <div className = 'bg-white min-h-screen py-12 flex flex-col'>
-        <NavBar bannerHeight={0}/>
+        
+        {bannerVisible && (
+            <div className="fixed top-0 left-0 w-full z-50 flex justify-center">
+                <div className="w-full px-4 md:px-8 lg:px-12 max-w-7xl">
+                    <Banner onClose={() => setBannerVisible(false)} />
+                </div>
+            </div>
+        )}
+                    
+        
+        <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col">
+            <div className="w-full flex justify-center">
+                <div className="w-full px-4 md:px-8 lg:px-12 max-w-7xl">
+                    <Header basket={basket}/>
+                </div>
+            </div> 
+                            
+            <div className="flex justify-center w-full mt-2">
+                <div className="w-full px-4 md:px-8 lg:px-12 mx-auto max-w-7xl mt-2">
+                    <Navbar bannerHeight={bannerVisible ? fixedHeight : 0} /> 
+                </div>
+            </div>
+        </div>
 
-        <div className='flex items-center justify-center gap-8 mt-5'>
+
+        <div className='flex items-center justify-center gap-8 mt-40'>
             <div className='flex flex-col items-center gap-2'>
                 <div className='w-8 h-8 rounded-full border-black flex items-center justify-center text-[#2c2c2c] font-bold'>
                     1
@@ -36,7 +83,7 @@ const Checkout: React.FC = () => {
         </div>
 
     
-        <div className ='grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto '>
+        <div className ='grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mt-2 '>
 
             <div className = 'space-y-8'>
                 <section>
@@ -97,12 +144,13 @@ const Checkout: React.FC = () => {
                     <span>Shipping:</span>
                     <span>Free</span>
                 </div>
+                
 
                 <hr className='border-t-1 border-black mb-5'/>
 
                 <div className='flex justify-between text-lg text-[#2c2c2c]'>
                     <span>Order Total:</span>
-                    <span>£{(subtotal).toFixed(2)}</span>
+                    <span>£{total.toFixed(2)}</span>
                 </div>
 
 

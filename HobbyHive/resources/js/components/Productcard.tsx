@@ -1,4 +1,5 @@
 import { Heart, ShoppingBasket } from "lucide-react";
+import { router } from "@inertiajs/react";
 
 interface ProductCardProps {
   id: number;
@@ -24,13 +25,13 @@ export default function ProductCard({
   onToggleWishlist,
 }: ProductCardProps) {
   return (
-    <div className="bg-white rounded-lg shadow p-4 text-center">
-      <button onClick={() => onToggleWishlist(id)}
+    <div className="bg-white rounded-lg text-black shadow p-4 text-center">
+      <button onClick={() => router.visit("/register")}
         className="float-right"
       >
         <Heart
           className={`w-6 h-6 ${
-            isInWishlist ? "fill-red-500 text-yellow-500" : "text-gray-600"
+            isInWishlist ? "fill-red-500 text-yellow-500" : "fill-none text-black hover:fill-yellow-400 hover:text-yellow-400"
           }`}
         />
       </button>
@@ -45,11 +46,11 @@ export default function ProductCard({
       )}
 
       
-      <h3 className="font-hepta text-lg mt-3">{name}</h3>
+      <h3 className="font-hepta text-black text-lg mt-3">{name}</h3>
 
      
       <div className="flex justify-center items-center gap-2 mt-1">
-        <p className="font-hepta text-xl">£{price.toFixed(2)}</p>
+        <p className="font-hepta text-black text-xl">£{price.toFixed(2)}</p>
 
         {isOnSale && originalPrice && (
           <p className="line-through text-gray-500"> £{originalPrice.toFixed(2)}</p>

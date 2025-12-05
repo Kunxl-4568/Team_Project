@@ -12,8 +12,14 @@ import Basket from "@/components/Basket";
 
 export default function Home() {
 
-const [basket,setBasket] = useState<number[]>([]);
-const handleAddToBasket = (id: number) => { setBasket((prev) => [...prev, id])};
+ const [basket,setBasket] = useState<number[]>([]);
+
+    const handleAddToBasket = (id: number) => {
+      setBasket(prev => {const updated = [...prev, id];
+      sessionStorage.setItem("basket", JSON.stringify(updated));
+      return updated;
+    });  
+   };
 
   const [bannerVisible, setBannerVisible] = useState(true);
   const [fixedHeight, setFixedHeight] = useState(0);
@@ -24,6 +30,11 @@ useEffect(() => {
     setFixedHeight(fixedRef.current.offsetHeight);
   }
 }, [bannerVisible]); 
+
+  useEffect(() => {
+    const stored = sessionStorage.getItem("basket");
+    if (stored) setBasket(JSON.parse(stored));
+}, []);
 
 const products = [
   {
@@ -88,7 +99,7 @@ const products = [
     <div className="w-full mt-10 ">
       <div className="flex items-center justify-between">
         <img src="/images/Bee doodle.png" alt="Bee doodle" className="h-12 md:h-16 lg:h-20 ml-4"/>
-      <h2 className="text 2xl font-slab text-black md:text 3xl mb-6">Products you will Love</h2>
+      <h2 className="text-2xl font-slab text-black md:text 3xl mb-6">Products you will Love</h2>
 </div>
 
 

@@ -55,18 +55,18 @@ export default function AuthSimpleLayout({
 
                <div className="flex flex-col items-center justify-center pb-26 ">
 
-                        <div className = 'flex flex-col items-start gap-y-3 mx-auto text-4xl text-shadow-2xl '>
-                            <span className='text-[#2FFFFF]  font-bold '>FREEDOM</span>
-                            <span className='text-[#FF381B] font-bold '>CREATIVITY</span>
-                            <span className='text-[#33FF76]  font-bold '>DISCOVERY</span>
+                        <div className = 'flex flex-col items-start gap-y-3 mx-auto text-4xl text-shadow-2xl ml-15'>
+                            <span className='text-[#2FFFFF]  font-bold ml-37'>FREEDOM</span>
+                            <span className='text-[#FF381B] font-bold ml-37'>CREATIVITY</span>
+                            <span className='text-[#33FF76]  font-bold ml-37'>DISCOVERY</span>
                         
                             <Link href={home()}>
                             <img src="/images/HobbyHiveLogo.png" alt="Hobby Hive Logo" className="mt-5 sm:h-40 w-auto mx-auto" /> {/* image needs centering - jb */}
                             </Link>
                         
-                            <span className='text-[#FF67AB]  font-bold  '>IMAGINATION</span>
-                            <span className='text-[#FF9700]  font-bold '>EXPRESSION </span>
-                            <span className='text-[#8672FF]  font-bold '>PASSION</span>
+                            <span className='text-[#FF67AB]  font-bold ml-37 '>IMAGINATION</span>
+                            <span className='text-[#FF9700]  font-bold ml-37'>EXPRESSION </span>
+                            <span className='text-[#8672FF]  font-bold ml-37'>PASSION</span>
                             </div>
                         </div>
                     </div> 
