@@ -4,11 +4,14 @@ import { useState } from "react";
 import { Search } from "./Search";
 import Basket from "../components/Basket";
 import { Link } from "@inertiajs/react"
+import { router } from "@inertiajs/react";
+
 interface HeaderProps {
   basket: number[];
+  searchQuery?: string;
 }
 
-export function Header({ basket}: HeaderProps) {
+export function Header({ basket, searchQuery =""}: HeaderProps) {
   const basketAmount = basket.length;
 
   const[isWishlistWork, setIsWishlistWork] = useState(false);
@@ -25,23 +28,25 @@ export function Header({ basket}: HeaderProps) {
          </div>
 
           <div className="w-full md:flex-1 md:mx-4">
-           <Search />
+           <Search initialQuery={searchQuery} />
            </div>
 
-           <div className="w-full flex justify-start md:justify end gap-4  md:w-auto items-center ">
+           <div className="w-full flex justify-start md:justify-end gap-4  md:w-auto items-center ">
 
-            <div className="flex flex-col items-center cursor pointer">
+            <div className="flex flex-col items-center cursor-pointer">
+            <button onClick={() => router.visit("/register")} className="flex flex-col items-center">
             <img src="/images/Sign-up.png" alt="sign up" className="h-8 w-10 md:h-12 md:w-12"
            />
+           </button>
             <span className="text-xs md:text-sm mt-1 text-black">Sign Up</span>
 
            </div>
            <div className="flex flex-col items-center cursor-pointer">
-           <button onClick={() => setIsWishlistWork(!isWishlistWork)}
+           <button onClick={() => router.visit("/register")}
            className="cursor-pointer" >
 
             <Heart className={`w-8 h-8 transition-colors ${
-                isWishlistWork ? "fill-yellow-500 text-yellow-500" : "text-black"
+                isWishlistWork ? "fill-red-500 text-yellow-500" : "fill-none text-black hover:fill-yellow-400 hover:text-yellow-400"
             }`}/>
            </button>
             <span className="text-xs md:text-sm mt-1 text-black">Wish List</span>

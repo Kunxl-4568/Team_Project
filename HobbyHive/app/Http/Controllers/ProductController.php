@@ -11,6 +11,7 @@ class ProductController extends Controller {
     public function index( Request $request)
     {
         $selectedCategory = $request->query('category', 'all');
+        $searchQuery = $request->query('search',null);
 
         $productQuery = Product::with('category');
 
@@ -22,6 +23,10 @@ class ProductController extends Controller {
         $productQuery->whereHas('category', function ($query) use ($categoryName) {
            $query->where('name', $categoryName); 
         });
+     }
+
+     if ($searchQuery) {
+      $productQuery->where('name', 'like', "%{$searchQuery}%");
      }
 
 $products = $productQuery->get()->map(function ($product) {
@@ -44,6 +49,7 @@ $products = $productQuery->get()->map(function ($product) {
         return Inertia::render('Products/Index', [
             'products' => $products,
             'selectedCategory' => $selectedCategory,
+            'searchQuery' => $searchQuery,
     ]);
   } 
 }

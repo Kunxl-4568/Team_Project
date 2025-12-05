@@ -1,5 +1,6 @@
 
 import { FaFacebook, FaInstagram, FaTwitch } from "react-icons/fa";
+import { Link } from "@inertiajs/react";
 import React from "react";
 
 
@@ -18,10 +19,10 @@ export default function Footer() {
             <div>
                <h2 className="font-hepta text-black text-lg mb-4 text-black">Help Center</h2> 
                <ul>
-                <li><a href="resources/js/pages" className="hover:underline text-black font-hepta">Home</a></li>
+                <li><Link href="/" className="hover:underline text-black font-hepta">Home</Link></li>
                  <li><a href="resources/js/pages" className="hover:underline text-black font-hepta">About us</a></li>
                   <li><a href="resources/js/pages" className="hover:underline text-black font-hepta">Contact us</a></li>
-                   <li><a href="resources/js/pages" className="hover:underline text-black font-hepta">Login</a></li>
+                   <li><Link href="/login" className="hover:underline text-black font-hepta">Login</Link></li>
                </ul>
             </div>
             <div>

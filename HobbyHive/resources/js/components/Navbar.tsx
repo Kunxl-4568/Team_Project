@@ -23,7 +23,7 @@ export default function Navbar({bannerHeight}: NavbarProps) {
 
 
     return (
-        <nav className="w-full relative flex items-center p-4 bg-white shadow transition-all duration-300
+        <nav className="w-full relative text-black flex items-center p-4 bg-white shadow transition-all duration-300 
         -mt-0
         md:-mt-4
         lg:-mt-6
@@ -39,7 +39,7 @@ export default function Navbar({bannerHeight}: NavbarProps) {
                    <li key={category}>
                         <Link
                             href={`/products?category=${slug}`}
-                            className={`font-hepta transition ${isActive ? "text-yellow-600" : "hover:text-yellow-600"}`}
+                            className={`font-hepta text-black transition ${isActive ? "text-yellow-600" : "hover:text-yellow-600"}`}
                            preserveScroll
                          >
                        

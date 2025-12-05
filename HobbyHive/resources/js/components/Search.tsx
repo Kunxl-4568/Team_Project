@@ -1,14 +1,30 @@
 
-import React from "react"
+import React, { useState, useEffect } from "react"
+import { router } from "@inertiajs/react"
 
-export function Search() {
+interface SearchProps {
+    initialQuery?: string;
+  }
+
+export function Search({initialQuery =""}: SearchProps) {
+  const [query, setQuery] = useState(initialQuery);
+  
+  useEffect(() => {setQuery(initialQuery);}, [initialQuery])
+
+  const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); 
+  router.visit("/products", {method: "get", data:{search: query.trim()} });
+};
+
     return(
-        <form className="flex gap-2 w-full max-w-md md:max-w-xl">
+      <form onSubmit = {handleSubmit} className="flex gap-2 w-full max-w-md md:max-w-xl">
   <input
+    type="text"
     placeholder="Search products..."
-    className="flex-grow p-2 border rounded"
+    value={query}
+    onChange={(e) => setQuery(e.target.value)}
+    className="flex-grow p-2 border rounded focus:outline-none focus:ring-2 focus:ring-black"
   />
-  <button className="px-4 bg-yellow-500 text-white rounded">Search</button>
+  <button type="submit" className="px-4 bg-yellow-500 text-white rounded">Search</button>
 </form>
 
     );
