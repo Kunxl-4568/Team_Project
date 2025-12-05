@@ -36,7 +36,7 @@ export default function Products() {
     const [productsList, setProductsList] = useState<Product[]>(products || []);
 
     const [basket,setBasket] = useState<number[]>(() => {
-        const stored = localStorage.getItem("basket");
+        const stored = sessionStorage.getItem("basket");
         return stored ? JSON.parse(stored) : [];
     });
     const handleAddToBasket = (id: number) => {setBasket((prev) => {
