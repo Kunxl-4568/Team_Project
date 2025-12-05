@@ -37,6 +37,7 @@ const CartSummary: React.FC<CartSummaryProps> =({subtotal, onCheckout}) => {
                 </div>
                 
             
+            
             <Link href='/Checkout' className='block bg-[#ffc300] text-[#2c2c2c] hover:underline text-center px-y py-2 rounded w-65 justify-center mt-3'>
                 PROCEED TO CHECKOUT
             </Link>
