@@ -2,7 +2,7 @@
 import { FaFacebook, FaInstagram, FaTwitch } from "react-icons/fa";
 import { Link } from "@inertiajs/react";
 import React from "react";
-import {Link} from '@inertiajs/react';
+
 
 
 export default function Footer() {

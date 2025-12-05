@@ -64,7 +64,32 @@ const CartPage: React.FC = () => {
     return (
       <div className="flex flex-col bg-white min-h-screen">
         <div className="mt-6">
-          <NavBar bannerHeight={0} />
+
+            {bannerVisible && (
+                          <div className="fixed top-0 left-0 w-full z-50 flex justify-center">
+                            <div className="w-full px-4 md:px-8 lg:px-12 max-w-7xl">
+                        <Banner onClose={() => setBannerVisible(false)} />
+                          </div>
+                      </div>
+                      )}
+                  
+      
+                  <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col">
+                      <div className="w-full flex justify-center">
+                          <div className="w-full px-4 md:px-8 lg:px-12 max-w-7xl">
+                              <Header basket={basket}/>
+                          </div>
+                      </div> 
+                          
+                      <div className="flex justify-center w-full mt-2">
+                          <div className="w-full px-4 md:px-8 lg:px-12 mx-auto max-w-7xl mt-2">
+                              <Navbar bannerHeight={bannerVisible ? fixedHeight : 0} /> 
+                          </div>
+                      </div>
+                  </div>
+          
+
+
         </div>
 
         <div className="flex flex-col items-center justify-center flex-grow text-l">
