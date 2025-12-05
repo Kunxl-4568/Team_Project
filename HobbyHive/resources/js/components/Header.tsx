@@ -19,9 +19,9 @@ export function Header({ basket = [] }: HeaderProps) {  // 👈 default []
       <div className="flex justify-start w-full md:w-auto mx-auto">
         <Link href={home()}>
           <img
-            src="/images/titlelogo.png"
+            src="/images/CroppedLogo.png"
             alt="Logo"
-            className="order-2 md:order-1 h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem] w-auto"
+            className="order-2 md:order-1 h-20 sm:h-24 md:h-28 lg:h-30 xl:h-[28rem] w-auto object-contain"
           />
         </Link>
       </div>
