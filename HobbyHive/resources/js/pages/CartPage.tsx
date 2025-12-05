@@ -1,57 +1,91 @@
 import React from 'react';
+import { Head, Link, router, usePage } from '@inertiajs/react';
+import { Trash2, Plus, Minus, ArrowLeft } from 'lucide-react';
 import CartItem from "../components/CartItem";
 import CartSummary from '../components/CartSummary';
 import NavBar from '../components/Navbar';
 import {NavFooter} from '../components/nav-footer';
-import {Link} from '@inertiajs/react';
+
 
 type CartItemType = {
     id: number;
+    product_id: number;
     title: string;
     image: string;
     price: number;
     quantity: number;
+    stock: number;
+    line_total: number;
 };
 
 type CartPageProps = {
     cartItems: CartItemType[];
     subtotal: number;
-    onIncrease: (id: number) => void;
-    onDecrease: (id: number) => void;
-    onRemove: (id: number) => void;
-    onCheckout: () => void; 
+    itemCount?: number;
+    flash?: {
+        success?: string;
+        error?: string;
+    };
 };
 
-const CartPage: React.FC<CartPageProps> = ({
-    cartItems,
-    subtotal,
-    onIncrease,
-    onDecrease,
-    onRemove,
-    onCheckout,
-}) => {
-    if (cartItems.length === 0){
+export default function CartPage() {
+    const { cartItems = [], subtotal = 0, itemCount = 0, flash = {} } = usePage<CartPageProps>().props;
+
+    const updateQuantity = (itemId: number, newQuantity: number) => {
+        if (newQuantity < 1) return;
+
+        const item = cartItems.find(i => i.id === itemId);
+        if (!item) return;
+
+        if (newQuantity > item.stock) {
+            alert('Not enough stock available');
+            return;
+        }
+
+        router.put(`/cart/${itemId}`, { quantity: newQuantity }, {
+            preserveScroll: true,
+            onSuccess: () => console.log('Quantity updated'),
+        });
+    };
+
+    const removeItem = (itemId: number) => {
+        if (!confirm('Remove this item from cart?')) return;
+        router.delete(`/cart/${itemId}`, { preserveScroll: true });
+    };
+
+    const clearCart = () => {
+        if (!confirm('Clear entire cart?')) return;
+        router.post('/cart/clear', {}, { preserveScroll: true });
+    };
+
+    if (!cartItems || cartItems.length === 0) {
         return (
             <div className='flex flex-col bg-white min-h-screen'>
                 <div className='mt-6'>
                 <NavBar bannerHeight={0}/>
                 </div>
-                <div className='flex flex-col items-center justify-center flex-grow text-l'>
-                <p className='text-[#2c2c2c] mb-4'>YOUR CART IS EMPTY</p>
-                <Link href='/index'className = 'bg-[#ffc300] text-[#2c2c2c] px-4 py-2 rounded hover:underline'>
-                    GO SHOPPING
-                </Link>
+                <div className="flex flex-col items-center justify-center flex-grow text-lg">
+                    <p className="text-[#2c2c2c] mb-4">YOUR CART IS EMPTY</p>
+                    <Link href="/products" className="bg-[#ffc300] text-[#2c2c2c] px-4 py-2 rounded hover:underline">
+                        GO SHOPPING
+                    </Link>
                 </div>
-                <NavFooter items={[]}/>
+                <NavFooter items={[]} />
             </div>
         );
     }
 
+    const handleCheckout = () => {
+    // navigate to the checkout route
+    router.visit('/checkout'); // or router.get('/checkout')
+  };
+
     return (
-        <div className='bg-[#fff8dc] min-h-screen flex flex-col pt-7'>
-            <NavBar bannerHeight={0}/>
-        
-        <div className='flex items-center justify-center gap-8 mt-5'>
+        <div className="bg-[#fff8dc] min-h-screen flex flex-col pt-7">
+            <Head title="Shopping Cart" />
+            <NavBar bannerHeight={0} />
+
+            <div className='flex items-center justify-center gap-8 mt-5'>
             <div className='flex flex-col items-center gap-2'>
                 <div className='w-8 h-8 rounded-full bg-[#ffc300] flex items-center justify-center text-[#2c2c2c] font-bold'>
                     1
@@ -71,41 +105,70 @@ const CartPage: React.FC<CartPageProps> = ({
 
         </div>
 
-        <div className='bg-white max-w-6xl mx-auto p-10 min-h-[500px] mt-10 mb-20 rounded-lg'>
-
-        <div className='flex items-center mb-3'>
-         <button className='text-[#2c2c2c] flex-grow text-left underline '>Back to Shopping</button>   
-        <h1 className='text-[#2c2c2c] font-bold text-xl text-center fex-grow mb-8 mt-5 mr-28'>Shopping Cart</h1>
-        <div className='flex-grow'></div>
-        </div>
-
-        <hr className='border-t-1 border-black mb-5'/>
-        
-            <h1 className='text-[#2c2c2c] mb-5'>Cart Items</h1>
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-            <div className = 'md:col-span-2 space-y-6'>
-                {cartItems.map((item) => (
-                    <CartItem
-                        key={item.id}
-                        title={item.title}
-                        image={item.image}
-                        price ={item.price}
-                        quantity={item.quantity}
-                        onIncrease={() => onIncrease(item.id)}
-                        onDecrease={() => onDecrease(item.id)}
-                        onRemove={() => onRemove(item.id)}
-                    />
-                ))}
+            <div className="max-w-6xl mx-auto p-4 w-full">
+                {flash?.success && <div className="mb-4 p-3 bg-green-100 text-green-800 rounded">{flash.success}</div>}
+                {flash?.error && <div className="mb-4 p-3 bg-red-100 text-red-800 rounded">{flash.error}</div>}
             </div>
-            
-            <CartSummary subtotal={subtotal} onCheckout={onCheckout}/>
-        </div>
 
-        </div>
-        <NavFooter items={[]}/>
-        </div>
+            <div className="bg-white max-w-6xl mx-auto p-10 min-h-[500px] mt-2 mb-20 rounded-lg w-full">
+                <div className="flex items-center justify-between mb-6">
+                    <Link href="/products" className="flex items-center text-[#2c2c2c] hover:underline">
+                        <ArrowLeft className="w-4 h-4 mr-2" />
+                        Back to Shopping
+                    </Link>
+                    <h1 className="text-[#2c2c2c] font-bold text-2xl">Shopping Cart ({itemCount})</h1>
+                    <button onClick={clearCart} className="text-red-600 hover:text-red-800 text-sm">
+                        Clear Cart
+                    </button>
+                </div>
 
-    )
-};
+                <hr className="border-t-1 border-gray-300 mb-6" />
 
-export default CartPage;
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="md:col-span-2 space-y-4">
+                        {cartItems.map((item) => (
+                            <div key={item.id} className="flex items-center border rounded p-4 bg-gray-50">
+                                <img src={item.image} alt={item.title} className="w-24 h-24 object-cover rounded mr-4" />
+                                <div className="flex-1">
+                                    <h3 className="font-semibold text-[#2c2c2c]">{item.title}</h3>
+                                    <p className="text-sm text-gray-600">£{item.price.toFixed(2)}</p>
+                                    <p className="text-xs text-gray-500">Stock: {item.stock}</p>
+                                </div>
+
+                                <div className="flex items-center space-x-3 mr-4">
+                                    <button
+                                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                                        className="p-1 border rounded hover:bg-gray-200"
+                                    >
+                                        <Minus className="w-4 h-4" />
+                                    </button>
+                                    <span className="w-8 text-center font-semibold">{item.quantity}</span>
+                                    <button
+                                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                        disabled={item.quantity >= item.stock}
+                                        className="p-1 border rounded hover:bg-gray-200 disabled:opacity-50"
+                                    >
+                                        <Plus className="w-4 h-4" />
+                                    </button>
+                                </div>
+
+                                <div className="text-right">
+                                    <p className="font-semibold">£{item.line_total.toFixed(2)}</p>
+                                    <button
+                                        onClick={() => removeItem(item.id)}
+                                        className="text-red-600 hover:text-red-800 mt-2"
+                                    >
+                                        <Trash2 className="w-4 h-4" />
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <CartSummary subtotal={subtotal} onCheckout={() => router.visit('/checkout')} />
+                </div>
+            </div>
+            <NavFooter items={[]} />
+        </div>
+    );
+}

@@ -6,7 +6,7 @@ import {Header} from "@/components/Header";
 import Banner from "@/components/Banner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Head, usePage, } from "@inertiajs/react";
+import { Head, usePage, router} from "@inertiajs/react";
 import type { PageProps } from "@inertiajs/core";
 
 
@@ -41,9 +41,22 @@ export default function Products() {
     });
     const handleAddToBasket = (id: number) => {setBasket((prev) => {
         const updated = [...prev, id];
-        sessionStorage.setItem("basket", JSON.stringify(updated));
+        localStorage.setItem("basket", JSON.stringify(updated));
         return updated;
     });
+
+     // send to backend
+        router.post('/cart', { product_id: id, quantity: 1 }, {
+            preserveScroll: true,
+            onSuccess: () => {
+                // remove later
+                console.log('Added to cart (server)');
+            },
+            onError: (errors) => {
+                console.error('Add to cart failed', errors);
+                // remove later
+            }
+        });
 };
 
   const [bannerVisible, setBannerVisible] = useState(true);
