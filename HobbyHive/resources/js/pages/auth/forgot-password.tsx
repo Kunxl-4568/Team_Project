@@ -9,7 +9,6 @@ import InputError from '@/components/input-error';
 import TextLink from '@/components/text-link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import AuthLayout from '@/layouts/auth-layout';
 
 export default function ForgotPassword({ status }: { status?: string }) {
@@ -70,10 +69,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
                 </div>
             </div>
 
-        </AuthLayout>
-    </div>
-
-    <div className='py-6 flex justify-center'>
+            <div className='py-6 flex justify-center'>
         <div className = 'flex flex-col items-start gap-y-3 mt-8'>
             <span className='text-[#2FFFFF] text-2xl font-bold mr-20'>FREEDOM</span>
             <span className='text-[#FF381B] text-2xl font-bold mr-20'>CREATIVITY</span>
@@ -87,9 +83,10 @@ export default function ForgotPassword({ status }: { status?: string }) {
             <span className='text-[#FF9700] text-2xl font-bold ml-20'>EXPRESSION</span>
             <span className='text-[#8672FF] text-2xl font-bold ml-20'>PASSION</span>
         </div>
-    </div>
+    </div> 
 
-    </>
+        </AuthLayout>
+    
 
     );
 }
