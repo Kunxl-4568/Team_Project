@@ -9,7 +9,7 @@ interface HeaderProps {
   basket?: any[]; 
 }
 
-export function Header({ basket = [] }: HeaderProps) {  =
+export function Header({ basket = [] }: HeaderProps) {  
   const basketAmount = basket.length;
   const [isWishlistWork, setIsWishlistWork] = useState(false);
 
