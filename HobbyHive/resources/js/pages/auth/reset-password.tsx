@@ -23,7 +23,7 @@ export default function ResetPassword({ token, email }: ResetPasswordProps) {
 
     return (
     <>
-    <div className = "reset-password-page">
+   {/* <div className = "reset-password-page">*/}
         <AuthLayout>
             <Head title="Reset password" />
             <div className='px-6 rounded-lg text-center space-y-4'>
@@ -123,7 +123,7 @@ export default function ResetPassword({ token, email }: ResetPasswordProps) {
         </div>    
         </AuthLayout>
       
-    </div>
+    {/*</div>
 
     <div className='bg-white py-6 flex justify-center'>
         <div className = 'flex flex-col items-start gap-y-3 mt-8'>
@@ -139,7 +139,7 @@ export default function ResetPassword({ token, email }: ResetPasswordProps) {
             <span className='text-[#FF9700] text-2xl font-bold ml-20'>EXPRESSION</span>
             <span className='text-[#8672FF] text-2xl font-bold ml-20'>PASSION</span>
         </div>
-    </div>
+    </div>*/}
 
     </>
     
