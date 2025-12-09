@@ -14,13 +14,28 @@ export default function ContactUs() {
     const [basket,setBasket] = useState<number[]>([]);
     const handleAddToBasket = (id: number) => { setBasket((prev) => [...prev, id])};
     const [formData, setFormData] = useState({ Fname: "", Lname: "", email: "", phone: "", message: ""});
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+    
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
+    
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         console.log("submitted", formData);
+        
+        // Show success message
+        setShowSuccessMessage(true);
+        
+        // Clear form
+        setFormData({ Fname: "", Lname: "", email: "", phone: "", message: "" });
+        
+        // Hide message after 5 seconds
+        setTimeout(() => {
+            setShowSuccessMessage(false);
+        }, 5000);
     };
+    
     return (
         <div className='min-h-screen bg-white p-6 bg-[url("/images/honeycomb.png")] bg-no-repeat bg-right-bottom bg-contain overflow-x-hidden' >
 
@@ -47,9 +62,28 @@ export default function ContactUs() {
                 </div>
             </div>
 
-            
-
-
+            {/* Success Message */}
+            {showSuccessMessage && (
+                <div className="fixed top-24 right-4 z-50 animate-slide-in">
+                    <div className="bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg flex items-center space-x-3">
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <div>
+                            <p className="font-semibold">Success!</p>
+                            <p className="text-sm">Your details have been saved. We will get in touch with you soon.</p>
+                        </div>
+                        <button 
+                            onClick={() => setShowSuccessMessage(false)}
+                            className="ml-4 text-white hover:text-gray-200"
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            )}
 
             <div className='sm:mt-50 sm:ml-15 mt-5 ml-0'>
             <h1 className='sm:text-4xl text-2xl font-bold sm:mb-8 sm:ml-10 mb-8 text-[#2c2c2c]'>GET IN TOUCH</h1>
@@ -115,4 +149,3 @@ export default function ContactUs() {
         </div>
     );
 }
-    
