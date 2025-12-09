@@ -14,56 +14,59 @@ export function Header({ basket = [] }: HeaderProps) {
   const [isWishlistWork, setIsWishlistWork] = useState(false);
 
   return (
-    <div className="w-full px-4 mt-8 flex flex-col md:flex-row items-center md:items-center gap-6 text-[#2C2C2C] font-slab">
+    
+    <div className="w-full px-4  flex flex-col md:flex-row items-center gap-2 text-[#2C2C2C] font-slab mt-0  ">
       {/* Logo */}
-      <div className="flex justify-start w-full md:w-auto mx-auto">
+      
         <Link href={home()}>
           <img
-            src="/images/CroppedLogo.png"
+            src="/images/titlelogo.png"
             alt="Logo"
-            className="order-2 md:order-1 h-20 sm:h-24 md:h-28 lg:h-30 xl:h-[28rem] w-auto object-contain"
+            className="order-2 md:order-1 h-20 sm:h-24 md:h-28 xl:h-112 w-auto object-contain pt-20 mr-10"
           />
         </Link>
-      </div>
+     
 
       {/* Search */}
-      <div className="w-full md:flex-1 md:mx-4">
+      <div className="w-full md:flex-1 mx-auto md:mx-4">
         <Search />
       </div>
 
       {/* Right side: sign up, wishlist, basket */}
-      <div className="w-full flex justify-start md:justify-end gap-4 md:w-auto items-center">
+      <div className="w-full h-full flex  md:justify-end gap-4 md:w-auto items-start  ml-10  mb-5 ">
         {/* Sign up */}
-        <div className="flex flex-col items-center cursor-pointer">
-          <Link href={register()}>
+        <div className="flex flex-col items-center cursor-pointer ">
+          <Link href={register()} className="flex flex-col items-center">
             <img
               src="/images/Sign-up.png"
               alt="sign up"
               className="h-8 w-10 md:h-12 md:w-12"
             />
-            <span className="text-xs md:text-sm mt-1 text-black">Sign Up</span>
+            <span className="text-xs md:text-sm  text-[#2c2c2c]">Sign Up</span>
           </Link>
         </div>
 
         {/* Wishlist */}
-        <div className="flex flex-col items-center cursor-pointer">
+        <div className="flex flex-col items-center cursor-pointer w-8 h-10 whitespace-nowrap px-10">
           <button
             onClick={() => setIsWishlistWork(!isWishlistWork)}
             className="cursor-pointer"
           >
             <Heart
-              className={`w-8 h-8 transition-colors ${
+              className={`w-8 h-10 transition-colors  ${
                 isWishlistWork
                   ? "fill-yellow-500 text-yellow-500"
-                  : "text-black"
+                  : "text-[#2c2c2c]"
               }`}
             />
           </button>
-          <span className="text-xs md:text-sm mt-1 text-black">Wish List</span>
+          <span className="text-xs md:text-sm mt-2 text-[#2c2c2c]">Wish List</span>
         </div>
 
         {/* Basket */}
-        <Basket basket={basket} />
+         <div className="flex flex-col items-center cursor-pointer w-8 h-10 pl-5 mt-1 ">
+        <Basket basket={basket}  />
+        </div>
       </div>
     </div>
   );

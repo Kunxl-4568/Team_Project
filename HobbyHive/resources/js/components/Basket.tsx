@@ -16,7 +16,7 @@ export function Basket({ basket = [] }) {
         </span>
 
       )}
-      <span className="text-xs md:text-sm mt-1 text-black">Basket</span>
+      <span className="text-xs md:text-sm mt-1 text-[#2c2c2c]">Basket</span>
     </Link>
   );
 }
