@@ -24,10 +24,7 @@ export default function Navbar({bannerHeight}: NavbarProps) {
 
     return (
         <nav className="w-full relative text-black flex items-center p-4 bg-white shadow transition-all duration-300 
-        -mt-0
-        md:-mt-4
-        lg:-mt-6
-        xl:-mt-8">
+        mt-4">
 
 
             <ul className="w-full flex flex-wrap justify-center md:justify-between gap-6 px-4 md:px-0 ">

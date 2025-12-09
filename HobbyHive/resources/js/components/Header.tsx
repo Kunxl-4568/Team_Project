@@ -15,14 +15,16 @@ export function Header({ basket = [] }: HeaderProps) {
 
   return (
     
-    <div className="w-full px-4  flex flex-row items-center gap-2 text-[#2C2C2C] font-slab mt-0  ">
+    <div className="w-full px-4  flex flex-row items-center gap-2 text-[#2C2C2C] font-slab mt-6  ">
       {/* Logo */}
       
         <Link href={home()}>
           <img
-            src="/images/titlelogo.png"
+            src="/images/HobbyHiveLogo.png"
             alt="Logo"
-            className="order-1 h-20 xl:h-112 w-auto object-contain pt-20 mr-10"
+            className="h-18 w-full pr-8  "
+
+
           />
         </Link>
      
@@ -33,7 +35,7 @@ export function Header({ basket = [] }: HeaderProps) {
       </div>
 
       {/* Right side: sign up, wishlist, basket */}
-      <div className=" h-full flex   gap-4 w-auto items-start  ml-10  mb-5 ">
+      <div className=" h-full flex   gap-4 w-auto items-start  ml-8 ">
         {/* Sign up */}
         <div className="flex flex-col items-center cursor-pointer ">
           <Link href={register()} className="flex flex-col items-center">
