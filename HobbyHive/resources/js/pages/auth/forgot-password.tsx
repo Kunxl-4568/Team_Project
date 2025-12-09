@@ -54,12 +54,13 @@ export default function ForgotPassword({ status }: { status?: string }) {
 
                             <div className="my-6 flex items-center justify-center">
                                 <Button
-                                    className="w-40 bg-[#2c2c2c] text-white hover:bg-gray-800"
+                                    variant="auth"
+                                    className="mx-auto"
                                     disabled={processing}
                                     data-test="email-password-reset-link-button"
                                 >
                                     {processing && (
-                                        <LoaderCircle className="h-4 w-4 animate-spin" />
+                                        <LoaderCircle className="h-6 w-6 animate-spin" />
                                     )}
                                     SEND EMAIL
                                 </Button>
@@ -70,7 +71,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
 
                 <div className="space-x-1 text-center text-sm text-[#2c2c2c]">
                     <span>Remember now?</span>
-                    <TextLink href={login()} className="text-black font-bold no-underline">log in</TextLink>
+                    <TextLink href={login()} className="text-black font-bold no-underline">Log in</TextLink>
                 </div>
             </div>
 
@@ -78,29 +79,6 @@ export default function ForgotPassword({ status }: { status?: string }) {
 
         </AuthLayout>
 
-    {/*</div>
-
-    <div className='py-6 flex justify-center'>
-
-        <div className = 'flex flex-col items-start gap-y-3 mt-8'>
-            <span className='text-[#2FFFFF] text-2xl font-bold mr-20'>FREEDOM</span>
-            <span className='text-[#FF381B] text-2xl font-bold mr-20'>CREATIVITY</span>
-            <span className='text-[#33FF76] text-2xl font-bold mr-20'>DISCOVERY</span>
-        </div>
-
-        <img src="/images/HobbyHiveLogo.png" alt="Hobby Hive Logo" className="mt-6 sm:h-40 w-auto" />
-
-        <div className='flex flex-col items-start gap-y-3 mt-6'>
-            <span className='text-[#FF67AB] text-2xl font-bold ml-20'>IMAGINATION</span>
-            <span className='text-[#FF9700] text-2xl font-bold ml-20'>EXPRESSION</span>
-            <span className='text-[#8672FF] text-2xl font-bold ml-20'>PASSION</span>
-        </div>
-
-    </div> 
-    </div>
-
-
-        </AuthLayout>*/}
     </>
 
     );
