@@ -100,7 +100,7 @@ HobbyHive isn’t just a shop, it’s a hub of creativity!
 
 Here's the link to the live version of our project. (*May be outdated compared to Repo)
 
-<a href="http://cs2team68.cs2410-web01pvm.aston.ac.uk/"> </a>
+http://cs2team68.cs2410-web01pvm.aston.ac.uk/
 
 
 
