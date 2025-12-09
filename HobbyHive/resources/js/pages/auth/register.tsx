@@ -21,6 +21,7 @@ export default function Register() {
 
             <Head title="Register - HobbyHive" />
             <Form
+                
                 {...RegisteredUserController.store.form()}
                 resetOnSuccess={['password', 'password_confirmation']}
                 disableWhileProcessing

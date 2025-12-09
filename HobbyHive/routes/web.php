@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 Route::get('/', function () {
     return Inertia::render('Home');
@@ -30,7 +32,28 @@ Route::get('/about-us', function () {
     return Inertia::render('AboutUs');
 });
 
+//login and register routes
+Route::middleware('guest')->group(function () {
+    // Login routes
+    Route::get('/login', [AuthenticatedSessionController::class, 'create'])
+        ->name('login');
+    
+    Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
+    // Register routes
+    Route::get('/register', [RegisteredUserController::class, 'create'])
+        ->name('register');
+    
+    Route::post('/register', [RegisteredUserController::class, 'store']);
+});
+
+//destroy doesn't exist. uncomment when implemented
+
+// Route::middleware('auth')->group(function () {
+//     // Logout route
+//     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+//         ->name('logout');
+// });
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
