@@ -11,7 +11,7 @@ import Carousel from "@/components/Carousel"
 import {Header} from "@/components/Header";
 import ProductCard from "@/components/Productcard";
 import Footer from "@/components/Footer";
-import Basket from "@/components/Basket";
+
 
 type CartItemType = {
   id: number;
@@ -74,7 +74,7 @@ const CartPage: React.FC = () => {
                       )}
                   
       
-                  <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col">
+                  <div ref={fixedRef} className="sticky top-0 left-0 w-full z-40 bg-white flex flex-col">
                       <div className="w-full flex justify-center">
                           <div className="w-full px-4 md:px-8 lg:px-12 max-w-7xl">
                               <Header basket={basket}/>
@@ -92,20 +92,20 @@ const CartPage: React.FC = () => {
 
         </div>
 
-        <div className="flex flex-col items-center justify-center flex-grow text-l">
-          <p className="text-[#2c2c2c] mb-4">YOUR CART IS EMPTY</p>
-          <Link
-            href="/products"
-            className="bg-[#ffc300] text-[#2c2c2c] px-4 py-2 rounded hover:underline"
-          >
-            GO SHOPPING
-          </Link>
-        </div>
+            <div className="flex flex-col items-center justify-center flex-1 text-lg">
+              <p className="text-[#2c2c2c] mb-4">YOUR CART IS EMPTY</p>
+              <Link
+                href="/products"
+                className="bg-[#ffc300] text-[#2c2c2c] px-4 py-2 rounded hover:underline"
+              >
+                GO SHOPPING
+              </Link>
+            </div>
 
-        <NavFooter items={[]} />
-      </div>
-    );
-  }
+            <NavFooter items={[]} />
+          </div>
+        );
+      }
 
   
   return (
