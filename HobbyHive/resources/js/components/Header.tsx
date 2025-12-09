@@ -15,34 +15,34 @@ export function Header({ basket = [] }: HeaderProps) {
 
   return (
     
-    <div className="w-full px-4  flex flex-col md:flex-row items-center gap-2 text-[#2C2C2C] font-slab mt-0  ">
+    <div className="w-full px-4  flex flex-row items-center gap-2 text-[#2C2C2C] font-slab mt-0  ">
       {/* Logo */}
       
         <Link href={home()}>
           <img
             src="/images/titlelogo.png"
             alt="Logo"
-            className="order-2 md:order-1 h-20 sm:h-24 md:h-28 xl:h-112 w-auto object-contain pt-20 mr-10"
+            className="order-1 h-20 xl:h-112 w-auto object-contain pt-20 mr-10"
           />
         </Link>
      
 
       {/* Search */}
-      <div className="w-full md:flex-1 mx-auto md:mx-4">
+      <div className="w-full flex-1 mx-auto">
         <Search />
       </div>
 
       {/* Right side: sign up, wishlist, basket */}
-      <div className="w-full h-full flex  md:justify-end gap-4 md:w-auto items-start  ml-10  mb-5 ">
+      <div className=" h-full flex   gap-4 w-auto items-start  ml-10  mb-5 ">
         {/* Sign up */}
         <div className="flex flex-col items-center cursor-pointer ">
           <Link href={register()} className="flex flex-col items-center">
             <img
               src="/images/Sign-up.png"
               alt="sign up"
-              className="h-8 w-10 md:h-12 md:w-12"
+              className="h-12 w-12"
             />
-            <span className="text-xs md:text-sm  text-[#2c2c2c]">Sign Up</span>
+            <span className="text-sm  text-[#2c2c2c]">Sign Up</span>
           </Link>
         </div>
 
@@ -60,7 +60,7 @@ export function Header({ basket = [] }: HeaderProps) {
               }`}
             />
           </button>
-          <span className="text-xs md:text-sm mt-2 text-[#2c2c2c]">Wish List</span>
+          <span className="text-sm mt-2 text-[#2c2c2c]">Wish List</span>
         </div>
 
         {/* Basket */}
