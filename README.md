@@ -52,6 +52,9 @@
       </ul>
     </li>
     <li>
+      <a href="#live-demo">Live Demo</a>
+      </li>
+    <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#installation">Installation</a></li>
@@ -91,6 +94,13 @@ HobbyHive isn’t just a shop, it’s a hub of creativity!
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## LIVE DEMO
+
+Here's the link to the live version of our project. (*May be outdated compared to Repo)
+
+<a href="http://cs2team68.cs2410-web01pvm.aston.ac.uk/"> </a>
 
 
 
