@@ -61,7 +61,7 @@ export default function AuthSimpleLayout({
                             <span className='text-[#33FF76]  font-bold ml-37'>DISCOVERY</span>
                         
                             <Link href={home()}>
-                            <img src="/images/HobbyHiveLogo.png" alt="Hobby Hive Logo" className="mt-5 sm:h-40 w-auto mx-auto" /> {/* image needs centering - jb */}
+                            <img src="/images/HobbyHiveLogo.png" alt="Hobby Hive Logo" className="mt-5 sm:h-30 w-auto mx-auto" /> {/* image needs centering - jb */}
                             </Link>
                         
                             <span className='text-[#FF67AB]  font-bold ml-37 '>IMAGINATION</span>
