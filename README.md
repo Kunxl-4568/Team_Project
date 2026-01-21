@@ -188,7 +188,7 @@ NOTE: If an ADD TO PATH option is available, make sure it is checked for each in
 
 - [ ] Chatbot (TP2)
 - [ ] Wishlist (TP2)
-- [ ] Product Search (TP2)
+
 
 
 
