@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -77,3 +77,5 @@ Route::get('/Checkout', [CheckoutController::class, 'index'])->name('checkout');
 
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';
+// contact
+Route::post('/contact-us', [ContactController::class, 'store'])->name('contact.store');
