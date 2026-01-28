@@ -18,11 +18,11 @@ Route::get('/preview-reset-password', function () {
     ]);
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('dashboard');
-    })->name('dashboard');
-});
+// Route::middleware(['auth', 'verified'])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return Inertia::render('dashboard');
+//     })->name('dashboard');
+// });
 
 Route::get('/contact-us', function () {
     return Inertia::render('contact-us');
@@ -49,11 +49,11 @@ Route::middleware('guest')->group(function () {
 
 //destroy doesn't exist. uncomment when implemented
 
-// Route::middleware('auth')->group(function () {
-//     // Logout route
-//     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-//         ->name('logout');
-// });
+Route::middleware('auth')->group(function () {
+    // Logout route
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->name('logout');
+});
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';

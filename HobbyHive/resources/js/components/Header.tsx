@@ -2,16 +2,41 @@ import React, { useState } from "react";
 import { Heart } from "lucide-react";
 import { Search } from "./Search";
 import { Basket } from "./Basket";          
-import { home, register } from "@/routes";
-import { Link } from "@inertiajs/react";
+import { home, login, register } from "@/routes";
+// import { Link } from "@inertiajs/react";
+import { usePage, Link, router } from '@inertiajs/react';
+
 
 interface HeaderProps {
   basket?: any[]; // change type later if you want
 }
 
+interface User {
+    id: number;
+    name?: string;
+    email: string;
+    email_verified_at?: string;
+    created_at?: string;
+    updated_at?: string;
+}
+
+interface PageProps {
+    auth: {
+        user: User | null;
+    };
+    // Add other shared props here as needed
+    flash?: {
+        success?: string;
+        error?: string;
+    };
+    errors?: Record<string, string>;
+    [key: string]: any;
+}
+
 export function Header({ basket = [] }: HeaderProps) {  
   const basketAmount = basket.length;
   const [isWishlistWork, setIsWishlistWork] = useState(false);
+  const { auth } = usePage<PageProps>().props; // for auth user data - used in logout
 
   return (
     
@@ -36,7 +61,7 @@ export function Header({ basket = [] }: HeaderProps) {
 
       {/* Right side: sign up, wishlist, basket */}
       <div className=" h-full flex   gap-4 w-auto items-start  ml-8 ">
-        {/* Sign up */}
+        {/* Sign up
         <div className="flex flex-col items-center cursor-pointer ">
           <Link href={register()} className="flex flex-col items-center">
             <img
@@ -46,7 +71,37 @@ export function Header({ basket = [] }: HeaderProps) {
             />
             <span className="text-sm  text-[#2c2c2c]">Sign Up</span>
           </Link>
-        </div>
+        </div> */}
+
+        {/* Sign up / Logout */}
+        {auth.user ? (
+          // User is logged in - Show Logout
+          <div className="flex flex-col items-center cursor-pointer">
+            <button 
+              onClick={() => router.post('/logout')}
+              className="flex flex-col items-center"
+            >
+              <img
+                src="/images/Sign-up.png"
+                alt="logout"
+                className="h-12 w-12"
+              />
+              <span className="text-sm text-[#2c2c2c]">Logout</span>
+            </button>
+          </div>
+        ) : (
+          // User is NOT logged in - Show Sign Up
+          <div className="flex flex-col items-center cursor-pointer">
+            <Link href={login()} className="flex flex-col items-center">
+              <img
+                src="/images/Sign-up.png"
+                alt="sign up"
+                className="h-12 w-12"
+              />
+              <span className="text-sm text-[#2c2c2c]">Log In</span>
+            </Link>
+          </div>
+        )}
 
         {/* Wishlist */}
         <div className="flex flex-col items-center cursor-pointer w-8 h-10 whitespace-nowrap px-10">
