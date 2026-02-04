@@ -25,32 +25,38 @@ export default function ProductCard({
   onToggleWishlist,
 }: ProductCardProps) {
   return (
-    <div className="bg-white rounded-lg text-black shadow p-4 text-center">
+    <div className="relative bg-white rounded-lg text-[#2C2C2C] shadow h-full text-center overflow-hidden flex flex-col mx-4">
+
       <button onClick={() => router.visit("/register")}
-        className="float-right"
+        className="absolute top-2 right-2 z-10 cursor-pointer m-2"
       >
         <Heart
           className={`w-6 h-6 ${
-            isInWishlist ? "fill-red-500 text-yellow-500" : "fill-none text-black hover:fill-yellow-400 hover:text-yellow-400"
+            isInWishlist ? "fill-red-500 text-yellow-500" : "fill-none text-[#2C2C2C] hover:fill-yellow-400 hover:text-yellow-400"
           }`}
         />
       </button>
 
+      <div className="relative h-40 flex items-center justify-center  "> 
       <img src={image} alt={name}
-        className="w-full h-48 object-contain rounded-md mt-2"
+      className = "w-full h-full object-contain mt-4"
+        
         />
+        </div>
 
     
       {isOnSale && (
-        <p className="mt-2 inline-block bg-red-500 text-white px-3 py-1 rounded text-sm">Sale</p>
+        <p className="my-4 flex items-center justify-center bg-red-500 text-white px-3 py-1 rounded text-lg text-center font-bold"> LIMITED TIME SALE!</p>
       )}
 
-      
-      <h3 className="font-hepta text-black text-lg mt-3">{name}</h3>
+      <div className="flex flex-col flex-1 px-2 text-center">
+      <h3 className="font-slab text-lg mt-1 text-[#2C2C2C]">{name}</h3>
+
+      </div>
 
      
       <div className="flex justify-center items-center gap-2 mt-1">
-        <p className="font-hepta text-black text-xl">£{price.toFixed(2)}</p>
+        <p className="font-slab text-[#2C2C2C] text-xl font-semibold">£{price.toFixed(2)}</p>
 
         {isOnSale && originalPrice && (
           <p className="line-through text-gray-500"> £{originalPrice.toFixed(2)}</p>
@@ -58,9 +64,11 @@ export default function ProductCard({
       </div>
 
      
-      <button onClick={() => onAddToBasket(id)}
-        className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-hepta mt-4 py-2 rounded-lg flex items-center justify-center gap-2" >
-        <ShoppingBasket className="w-5 h-5" />Add to Basket</button>
+       <button
+          onClick={() => onAddToBasket(id)}
+          className="mt-4  mx-auto w-78 bg-yellow-400 hover:bg-yellow-500 text-[#2C2C2C] font-slab my-4 py-2 rounded-lg flex items-center justify-center gap-2 cursor-pointer text-center"
+        >
+        <ShoppingBasket  />Add to Basket</button>
     </div>
   );
 }
