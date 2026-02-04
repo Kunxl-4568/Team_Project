@@ -32,7 +32,7 @@ export default function ProductCard({
       >
         <Heart
           className={`w-6 h-6 ${
-            isInWishlist ? "fill-red-500 text-yellow-500" : "fill-none text-[#2C2C2C] hover:fill-yellow-400 hover:text-yellow-400"
+            isInWishlist ? "fill-red-500 text-yellow-500" : "fill-none text-[#2C2C2C] hover:fill-yellow-400 hover:text-yellow-400 shadow-2xl"
           }`}
         />
       </button>
@@ -50,7 +50,7 @@ export default function ProductCard({
       )}
 
       <div className="flex flex-col flex-1 px-2 text-center">
-      <h3 className="font-slab text-lg mt-1 text-[#2C2C2C]">{name}</h3>
+      <h3 className="font-slab text-lg mt-4 text-[#2C2C2C]">{name}</h3>
 
       </div>
 
@@ -66,7 +66,7 @@ export default function ProductCard({
      
        <button
           onClick={() => onAddToBasket(id)}
-          className="mt-4  mx-auto w-78 bg-yellow-400 hover:bg-yellow-500 text-[#2C2C2C] font-slab my-4 py-2 rounded-lg flex items-center justify-center gap-2 cursor-pointer text-center"
+          className="mt-4  mx-auto w-58 bg-yellow-400 hover:bg-yellow-500 text-[#2C2C2C] font-slab my-4 py-2 rounded-lg flex items-center justify-center gap-2 cursor-pointer text-center shadow-sm"
         >
         <ShoppingBasket  />Add to Basket</button>
     </div>
