@@ -51,14 +51,14 @@ export default function Register() {
 
 
                             <div className="grid gap-2">
-                                <Label htmlFor="email" className='sr-only'>Confirm your Email Address</Label> 
+                                <Label htmlFor="email_confirmation" className='sr-only'>Confirm your Email Address</Label> 
                                 <Input
-                                    id="email"
+                                    id="email_confirmation"
                                     type="email"
                                     required
                                     tabIndex={2}
                                     autoComplete="email"
-                                    name="email"
+                                    name="email_confirmation"
                                     placeholder="Confirm Email"
                                 />
                                 <InputError message={errors.email} />
