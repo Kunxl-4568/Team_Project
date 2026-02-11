@@ -33,7 +33,7 @@ Route::prefix('admin')
     ->name('admin.')
     ->middleware(['auth', 'admin'])  // must be logged in AND admin
     ->group(function () {
-        Route::get('/dashboard', fn () => Inertia::render('Admin/Dashboard'))
+        Route::get('/dashboard', fn () => Inertia::render('admin/dashboard'))
             ->name('dashboard');
 
         Route::get('/inventory', [InventoryController::class, 'index'])
