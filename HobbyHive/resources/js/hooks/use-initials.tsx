@@ -1,15 +1,18 @@
 import { useCallback } from 'react';
 
 export function useInitials() {
-    return useCallback((fullName: string): string => {
-        const names = fullName.trim().split(' ');
+  return useCallback((fullName?: string | null): string => {
+    const cleaned = (fullName ?? '').trim();
+    if (!cleaned) return '';
 
-        if (names.length === 0) return '';
-        if (names.length === 1) return names[0].charAt(0).toUpperCase();
+    // Split on any whitespace and remove empty entries
+    const names = cleaned.split(/\s+/).filter(Boolean);
 
-        const firstInitial = names[0].charAt(0);
-        const lastInitial = names[names.length - 1].charAt(0);
+    if (names.length === 1) return names[0].charAt(0).toUpperCase();
 
-        return `${firstInitial}${lastInitial}`.toUpperCase();
-    }, []);
+    const firstInitial = names[0].charAt(0);
+    const lastInitial = names[names.length - 1].charAt(0);
+
+    return `${firstInitial}${lastInitial}`.toUpperCase();
+  }, []);
 }
