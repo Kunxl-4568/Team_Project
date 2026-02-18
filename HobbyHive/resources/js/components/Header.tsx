@@ -96,7 +96,7 @@ export function Header({ basket = [] }: HeaderProps) {
         ) : (
           // User is NOT logged in - Show Sign Up
           <div className="flex flex-col items-center cursor-pointer hover:underline">
-            <Link href={login()} className="flex flex-col items-center">
+            <Link href={register()} className="flex flex-col items-center">
               <img
                 src="/images/Sign-up.png"
                 alt="sign up"
