@@ -71,8 +71,8 @@ const products = [
     <div className="bg-white min-h-screen flex flex-col">
 
       {bannerVisible && (
-        <div className="fixed top-0 left-0 w-full z-50 flex justify-center">
-          <div className="w-full px-4 md:px-8 lg:px-12 max-w-7xl">
+        <div className="top-0 left-0 w-full z-50 flex justify-center">
+          <div className="w-full  ">
       <Banner onClose={() => setBannerVisible(false)} />
         </div>
     </div>
@@ -80,26 +80,27 @@ const products = [
 
       <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col">
         <div className="w-full flex justify-center">
-         <div className="w-full px-4 md:px-8 lg:px-12 max-w-7xl">
+         <div className="w-full px-4 md:px-8 lg:px-12 ">
          <Header basket={basket}/>
          </div>
          </div> 
 
          <div className="flex justify-center w-full mt-2">
-         <div className="w-full px-4 md:px-8 lg:px-12 mx-auto max-w-7xl mt-2">
+         <div className="w-full px-4 md:px-8 lg:px-12 mx-auto  mt-2">
          <Navbar bannerHeight={bannerVisible ? fixedHeight : 0} /> 
            </div>
          </div>
         </div>
 
-         <div style={{ paddingTop: fixedHeight }} className="px-4 md:px-8 lg:px-12 mx-auto max-w-7xl">
+         <div style={{ paddingTop: fixedHeight }} className="px-4 md:px-8 lg:px-12 mx-auto ">
       <Carousel />
     
 
     <div className="w-full mt-10 ">
       <div className="flex items-center justify-between">
+        <h2 className="px-4 text-2xl font-slab text-black md:text 3xl mb-6">Products you will Love</h2>
         <img src="/images/Bee doodle.png" alt="Bee doodle" className="h-12 md:h-16 lg:h-20 ml-4"/>
-      <h2 className="text-2xl font-slab text-black md:text 3xl mb-6">Products you will Love</h2>
+      
 </div>
 
 
@@ -122,7 +123,7 @@ const products = [
      </div>
     </div>
         <div className="mt-6 flex justify-center">
-          <div className="w-full px-4 md:px-8 lg:px-12 max-w-7xl">
+          <div className="w-full px-4 md:px-8 lg:px-12 ">
           <Footer />
           </div>
         </div>

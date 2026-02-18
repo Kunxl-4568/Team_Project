@@ -62,35 +62,23 @@ const CartPage: React.FC = () => {
   // if cart is empty
   if (!cartItems || cartItems.length === 0) {
     return (
-      <div className="flex flex-col bg-white min-h-screen">
-        <div className="mt-6">
-
-            {bannerVisible && (
-                          <div className="fixed top-0 left-0 w-full z-50 flex justify-center">
-                            <div className="w-full px-4 md:px-8 lg:px-12 max-w-7xl">
-                        <Banner onClose={() => setBannerVisible(false)} />
-                          </div>
-                      </div>
-                      )}
-                  
-      
-                  <div ref={fixedRef} className="sticky top-0 left-0 w-full z-40 bg-white flex flex-col">
-                      <div className="w-full flex justify-center">
-                          <div className="w-full px-4 md:px-8 lg:px-12 max-w-7xl">
-                              <Header basket={basket}/>
-                          </div>
-                      </div> 
-                          
-                      <div className="flex justify-center w-full mt-2">
-                          <div className="w-full px-4 md:px-8 lg:px-12 mx-auto max-w-7xl mt-2">
-                              <Navbar bannerHeight={bannerVisible ? fixedHeight : 0} /> 
-                          </div>
-                      </div>
-                  </div>
-          
-
-
-        </div>
+      <div className="bg-white min-h-screen flex flex-col">
+     
+           
+     
+           <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col">
+             <div className="w-full flex justify-center">
+              <div className="w-full px-4 md:px-8 lg:px-12 ">
+              <Header basket={basket}/>
+              </div>
+              </div> 
+     
+              <div className="flex justify-center w-full mt-2">
+              <div className="w-full px-4 md:px-8 lg:px-12 mx-auto  mt-2">
+              <Navbar bannerHeight={bannerVisible ? fixedHeight : 0} /> 
+                </div>
+              </div>
+             </div>
 
             <div className="flex flex-col items-center justify-center flex-1 text-lg">
               <p className="text-[#2c2c2c] mb-4">YOUR CART IS EMPTY</p>
@@ -109,31 +97,26 @@ const CartPage: React.FC = () => {
 
   
   return (
-    <div className="bg-[#fff8dc] min-h-screen flex flex-col pt-7">
+    
       
 
-      {bannerVisible && (
-                          <div className="fixed top-0 left-0 w-full z-50 flex justify-center">
-                            <div className="w-full px-4 md:px-8 lg:px-12 max-w-7xl">
-                        <Banner onClose={() => setBannerVisible(false)} />
-                          </div>
-                      </div>
-                      )}
-                  
-      
-                  <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col">
-                      <div className="w-full flex justify-center">
-                          <div className="w-full px-4 md:px-8 lg:px-12 max-w-7xl">
-                              <Header basket={basket}/>
-                          </div>
-                      </div> 
-                          
-                      <div className="flex justify-center w-full mt-2">
-                          <div className="w-full px-4 md:px-8 lg:px-12 mx-auto max-w-7xl mt-2">
-                              <Navbar bannerHeight={bannerVisible ? fixedHeight : 0} /> 
-                          </div>
-                      </div>
-                  </div>
+       <div className="bg-[#fff8dc] min-h-screen flex flex-col pt-7">
+     
+           
+     
+           <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col">
+             <div className="w-full flex justify-center">
+              <div className="w-full px-4 md:px-8 lg:px-12 ">
+              <Header basket={basket}/>
+              </div>
+              </div> 
+     
+              <div className="flex justify-center w-full mt-2">
+              <div className="w-full px-4 md:px-8 lg:px-12 mx-auto  mt-2">
+              <Navbar bannerHeight={bannerVisible ? fixedHeight : 0} /> 
+                </div>
+              </div>
+             </div>
 
       {/* Progress */}
       <div className="flex items-center justify-center gap-8 mt-47">

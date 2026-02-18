@@ -23,7 +23,7 @@ export default function Navbar({bannerHeight}: NavbarProps) {
 
 
     return (
-        <nav className="w-full relative text-black flex items-center p-4 bg-white shadow transition-all duration-300 
+        <nav className="w-full relative text-black flex items-center p-4 bg-white transition-all duration-300 
         mt-4">
 
 

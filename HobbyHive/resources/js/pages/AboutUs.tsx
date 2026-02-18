@@ -14,32 +14,25 @@ function AboutUs () {
     const [basket,setBasket] = useState<number[]>([]);
     const handleAddToBasket = (id: number) => { setBasket((prev) => [...prev, id])};
     return(
-        <div className = 'min-h-screen sm:w-auto bg-white p-4 sm:p-8'>
+        <div className="bg-white min-h-screen flex flex-col">
+            
+                  
+            
+                  <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col">
+                    <div className="w-full flex justify-center">
+                     <div className="w-full px-4 md:px-8 lg:px-12 ">
+                     <Header basket={basket}/>
+                     </div>
+                     </div> 
+            
+                     <div className="flex justify-center w-full mt-2">
+                     <div className="w-full px-4 md:px-8 lg:px-12 mx-auto  mt-2">
+                     <Navbar bannerHeight={bannerVisible ? fixedHeight : 0} /> 
+                       </div>
+                     </div>
+                    </div>
 
-        {bannerVisible && (
-                <div className="fixed top-0 left-0 w-full z-50 flex justify-center">
-                  <div className="w-full px-4 md:px-8 lg:px-12 max-w-7xl">
-              <Banner onClose={() => setBannerVisible(false)} />
-                </div>
-            </div>
-            )}
-        
-
-        <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col">
-                <div className="w-full flex justify-center">
-                 <div className="w-full px-4 md:px-8 lg:px-12 max-w-7xl">
-                 <Header basket={basket}/>
-                 </div>
-                 </div> 
-        
-                 <div className="flex justify-center w-full mt-2">
-                 <div className="w-full px-4 md:px-8 lg:px-12 mx-auto max-w-7xl mt-2">
-                 <Navbar bannerHeight={bannerVisible ? fixedHeight : 0} /> 
-                   </div>
-                 </div>
-                </div>
-
-            <div className='flex justify-center items-center mb-5'>
+            <div className='flex justify-center items-center mb-6 mt-6'>
             <div className='bg-[#F4F3EF] p-4 sm:p-8 rounded-lg max-w-3xl sm:mt-50 sm:ml-9 mt-25 ml-4'>
             
             <div className='flex flex-col items-center'>

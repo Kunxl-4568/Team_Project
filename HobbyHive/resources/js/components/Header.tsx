@@ -40,27 +40,31 @@ export function Header({ basket = [] }: HeaderProps) {
 
   return (
     
-    <div className="w-full px-4  flex flex-row items-center gap-2 text-[#2C2C2C] font-slab mt-6  ">
+    <div className="w-full px-4 flex items-center gap-2 text-[#2C2C2C] font-slab mt-8">
+
       {/* Logo */}
+
+      <div className="flex-none justify-start ">
       
         <Link href={home()}>
           <img
             src="/images/HobbyHiveLogo.png"
             alt="Logo"
-            className="h-18 w-full pr-8  "
+            className="h-18 w-full "
 
 
           />
         </Link>
+        </div>
      
 
       {/* Search */}
-      <div className="w-full flex-1 mx-auto">
+      <div className="w-xl flex-1 flex justify-center ">
         <Search />
       </div>
 
       {/* Right side: sign up, wishlist, basket */}
-      <div className=" h-full flex   gap-4 w-auto items-start  ml-8 ">
+      <div className="flex flex-row justify-end w-auto gap-4 mx-auto ">
         {/* Sign up
         <div className="flex flex-col items-center cursor-pointer ">
           <Link href={register()} className="flex flex-col items-center">
@@ -76,7 +80,7 @@ export function Header({ basket = [] }: HeaderProps) {
         {/* Sign up / Logout */}
         {auth.user ? (
           // User is logged in - Show Logout
-          <div className="flex flex-col items-center cursor-pointer">
+          <div className="flex flex-col items-center cursor-pointer hover:underline">
             <button 
               onClick={() => router.post('/logout')}
               className="flex flex-col items-center"
@@ -86,25 +90,25 @@ export function Header({ basket = [] }: HeaderProps) {
                 alt="logout"
                 className="h-12 w-12"
               />
-              <span className="text-sm text-[#2c2c2c]">Logout</span>
+              <span className="text-sm text-[#2c2c2c] " >Logout</span>
             </button>
           </div>
         ) : (
           // User is NOT logged in - Show Sign Up
-          <div className="flex flex-col items-center cursor-pointer">
+          <div className="flex flex-col items-center cursor-pointer hover:underline">
             <Link href={login()} className="flex flex-col items-center">
               <img
                 src="/images/Sign-up.png"
                 alt="sign up"
                 className="h-12 w-12"
               />
-              <span className="text-sm text-[#2c2c2c]">Log In</span>
+              <span className="text-sm text-[#2c2c2c]">Sign in</span>
             </Link>
           </div>
         )}
 
         {/* Wishlist */}
-        <div className="flex flex-col items-center cursor-pointer w-8 h-10 whitespace-nowrap px-10">
+        <div className="flex flex-col items-center cursor-pointer w-8 h-10 whitespace-nowrap px-10 hover:underline">
           <button
             onClick={() => setIsWishlistWork(!isWishlistWork)}
             className="cursor-pointer"
@@ -121,7 +125,7 @@ export function Header({ basket = [] }: HeaderProps) {
         </div>
 
         {/* Basket */}
-         <div className="flex flex-col items-center cursor-pointer w-8 h-10 pl-5 mt-1 ">
+         <div className="flex flex-col items-center cursor-pointer w-8 h-10 pl-5 mt-1 hover:underline ">
         <Basket basket={basket}  />
         </div>
       </div>
