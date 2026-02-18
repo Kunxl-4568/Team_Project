@@ -73,9 +73,8 @@ Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.dest
 Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 
 //checkout
-Route::get('/Checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 
-require __DIR__ . '/settings.php';
-require __DIR__ . '/auth.php';
+
 // contact
 Route::post('/contact-us', [ContactController::class, 'store'])->name('contact.store');
