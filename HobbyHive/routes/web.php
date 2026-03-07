@@ -5,10 +5,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return Inertia::render('Home');
-})->name('home');
 
 Route::get('/preview-reset-password', function () {
     return Inertia::render('auth/reset-password', [
@@ -54,3 +52,10 @@ Route::get('/Checkout', [CheckoutController::class, 'index'])->name('checkout');
 
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';
+
+//Home page
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Individual Product page & product context 
+Route::get('/products', [ProductController::class, 'index']) ->name('products.index');
+Route::get('/products/{id}', [ProductController::class, 'show']) ->name('products.show');

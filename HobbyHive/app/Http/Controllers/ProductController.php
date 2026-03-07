@@ -52,4 +52,27 @@ $products = $productQuery->get()->map(function ($product) {
             'searchQuery' => $searchQuery,
     ]);
   } 
+ public function show($id) {
+
+  $product = Product::with('category')
+     ->where ('product_id', $id)
+     ->firstOrFail();
+
+  $onSale = $product->sale_price !== null && $product->sale_price < $product->price;
+    return Inertia::render('Products/ProductContext', [
+      'product' => [
+            'id' => $product->product_id,
+            'name' => $product->name,
+            'description' => $product->description,
+            'price' => $onSale ? $product->sale_price : $product->price,
+            'originalPrice' => $onSale ? $product->price : null,
+            'image' => $product->image_url,
+            'isOnSale' => $product->sale_price < $product->price,
+            'isInWishlist' => false, 
+            'category' => [
+                'name' => $product->category->name ?? 'Unknown'
+              ]
+            ]
+    ]);
+  }
 }

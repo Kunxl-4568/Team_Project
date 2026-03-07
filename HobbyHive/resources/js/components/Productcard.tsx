@@ -24,8 +24,10 @@ export default function ProductCard({
   onAddToBasket,
   onToggleWishlist,
 }: ProductCardProps) {
+
   return (
-    <div className="bg-white rounded-lg text-black shadow p-4 text-center">
+    <div className="bg-white rounded-lg text-black shadow p-4 text-center" onClick={() => router.visit(`/products/${id}`)}>
+
       <button onClick={() => router.visit("/register")}
         className="float-right"
       >
@@ -35,12 +37,15 @@ export default function ProductCard({
           }`}
         />
       </button>
+      <div className="cursor-pointer"
+      onClick={() => router.visit(`/products/${id}`)} >
+      </div>
 
       <img src={image} alt={name}
         className="w-full h-48 object-contain rounded-md mt-2"
         />
 
-    
+      
       {isOnSale && (
         <p className="mt-2 inline-block bg-red-500 text-white px-3 py-1 rounded text-sm">Sale</p>
       )}
@@ -57,8 +62,8 @@ export default function ProductCard({
         )}
       </div>
 
-     
-      <button onClick={() => onAddToBasket(id)}
+     {/* Add to basket button */}
+      <button onClick={(e) => {e.stopPropagation(); onAddToBasket(id);}}
         className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-hepta mt-4 py-2 rounded-lg flex items-center justify-center gap-2" >
         <ShoppingBasket className="w-5 h-5" />Add to Basket</button>
     </div>
