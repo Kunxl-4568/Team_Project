@@ -8,8 +8,8 @@ import Footer from "@/components/Footer";
 import { Head, usePage, router} from "@inertiajs/react";
 import type { PageProps } from "@inertiajs/core";
 import ProductCard from "@/components/Productcard";
-import ProductContextCarousel from "@/components/ProductContextCarousel"
-
+import ProductContextCarousel from "@/components/ProductContextCarousel";
+import { Link } from "@inertiajs/react";
 
 interface Product {
     id: number;
@@ -32,7 +32,7 @@ interface ShowPageProps {
 
 
 export default function Products() {
-    const { product, randomProducts, selectedCategory } = usePage<PageProps & ShowPageProps>().props;
+    const { product, randomProducts} = usePage<PageProps & ShowPageProps>().props;
     
   const [bannerVisible, setBannerVisible] = useState(true);
   const [bannerHeight, setBannerHeight] = useState(0);

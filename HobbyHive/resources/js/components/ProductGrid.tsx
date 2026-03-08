@@ -1,5 +1,6 @@
 import React from "react";
 import ProductCard from "./Productcard.js";
+import { Link } from "lucide-react";
 
 interface Product {
     id: number;

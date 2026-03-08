@@ -14,7 +14,7 @@ class HomeController extends Controller {
                'name' => $product->name,
                'price' => $onSale ? $product->sale_price : $product->price,
                'originalPrice' => $onSale ? $product->price : null,
-               'image' => $product->image_url,
+                'image' => asset($product->image_url),
                'isOnSale' => $product->sale_price < $product->price,
                'isInWishlist' => false, 
                'category' => [

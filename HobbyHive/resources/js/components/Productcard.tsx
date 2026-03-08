@@ -1,5 +1,6 @@
 import { Heart, ShoppingBasket } from "lucide-react";
 import { router } from "@inertiajs/react";
+import { Link } from "@inertiajs/react";
 
 interface ProductCardProps {
   id: number;
@@ -37,16 +38,15 @@ export default function ProductCard({
           }`}
         />
       </button>
-      <div className="cursor-pointer"
-      onClick={() => router.visit(`/products/${id}`)} >
-      </div>
 
-      <div className="relative h-40 flex items-center justify-center  "> 
-      <img src={image} alt={name}
-      className = "w-full h-full object-contain mt-4"
-        
-        />
+
+      <Link href={`/products/${id}`} className="cursor-pointer block">
+       <div className="relative h-40 flex items-center justify-center  "> 
+         <img src={image} alt={name}
+            className = "w-full h-full object-contain mt-4"
+         />
         </div>
+      </Link>
 
       
       {isOnSale && (
@@ -55,6 +55,8 @@ export default function ProductCard({
 
       <div className="flex flex-col flex-1 px-2 text-center">
       <h3 className="font-slab text-lg mt-4 text-[#2C2C2C]">{name}</h3>
+      
+      
 
       </div>
 
