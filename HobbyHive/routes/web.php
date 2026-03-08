@@ -73,7 +73,12 @@ Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.dest
 Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 
 //checkout
-Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+
+Route::get('/order-confirmation', function () {
+    return Inertia::render('OrderConfirmation');
+})->name('order.confirmation');
 
 
 // contact
