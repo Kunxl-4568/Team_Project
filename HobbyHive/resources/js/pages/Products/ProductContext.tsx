@@ -7,6 +7,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Head, usePage, router} from "@inertiajs/react";
 import type { PageProps } from "@inertiajs/core";
+import ProductCard from "@/components/Productcard";
+import ProductContextCarousel from "@/components/ProductContextCarousel"
 
 
 interface Product {
@@ -23,14 +25,14 @@ interface Product {
 
 interface ShowPageProps {
     product: Product;
+    randomProducts: Product[];
     
 }
 
 
 
-
 export default function Products() {
-    const { product, selectedCategory } = usePage<PageProps & ShowPageProps>().props;
+    const { product, randomProducts, selectedCategory } = usePage<PageProps & ShowPageProps>().props;
     
   const [bannerVisible, setBannerVisible] = useState(true);
   const [bannerHeight, setBannerHeight] = useState(0);
@@ -83,7 +85,7 @@ return (
         )}
        
         {/*Head*/}
-      <div className="w-full flex justify-center mt-4 px-4 md:px-8 lg-px-12">
+      <div className="w-full flex justify-center mt-4 px-4 md:px-8 lg:px-12">
       <div className="w-full max-w-7xl">
         <Header basket={basket} />
       </div>
@@ -127,12 +129,17 @@ return (
          </div>
          </div>
 
-
-            <div className="w-full max-w-7xl">
+<div className="w-full px-4 md:px-8 lg:px-12 mx-auto max-w-7xl mt-16">
+    <h2 className="text-sxl font-slab mb-6">You might also like</h2>
+    <ProductContextCarousel 
+    products={randomProducts}
+    onAddToBasket={handleAddToBasket}
+    />
+        </div>
+        
+        <div className="w-full max-w-7xl">
            <Footer />
-           </div>
-         </div>
-
-   
-);
+        </div>
+     </div>
+   );
 }

@@ -59,6 +59,25 @@ $products = $productQuery->get()->map(function ($product) {
      ->firstOrFail();
 
   $onSale = $product->sale_price !== null && $product->sale_price < $product->price;
+  $randomProducts = Product::inRandomOrder()
+  ->where('product_id', '!=', $id)
+  ->limit(3)
+  ->get()
+  ->map(function ($product) {
+
+    $onSale = $product->sale_price !== null && $product->sale_price < $product->price;
+
+    return [
+      'id' => $product->product_id,
+            'name' => $product->name,
+            'description' => $product->description,
+            'price' => $onSale ? $product->sale_price : $product->price,
+            'originalPrice' => $onSale ? $product->price : null,
+            'image' => $product->image_url,
+            'isOnSale' => $product->sale_price < $product->price,
+            'isInWishlist' => false, 
+    ];
+  });
     return Inertia::render('Products/ProductContext', [
       'product' => [
             'id' => $product->product_id,
@@ -72,7 +91,8 @@ $products = $productQuery->get()->map(function ($product) {
             'category' => [
                 'name' => $product->category->name ?? 'Unknown'
               ]
-            ]
+            ],
+            'randomProducts' => $randomProducts
     ]);
   }
 }

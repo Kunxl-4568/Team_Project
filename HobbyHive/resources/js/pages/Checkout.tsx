@@ -36,30 +36,23 @@ const Checkout: React.FC = () => {
     const vat = subtotal * 0.2;
     const total = subtotal + shipping + vat;
     return(
-        <div className = 'bg-white min-h-screen py-12 flex flex-col'>
-        
-        {bannerVisible && (
-            <div className="fixed top-0 left-0 w-full z-50 flex justify-center">
-                <div className="w-full px-4 md:px-8 lg:px-12 max-w-7xl">
-                    <Banner onClose={() => setBannerVisible(false)} />
-                </div>
-            </div>
-        )}
-                    
-        
-        <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col">
-            <div className="w-full flex justify-center">
-                <div className="w-full px-4 md:px-8 lg:px-12 max-w-7xl">
-                    <Header basket={basket}/>
-                </div>
-            </div> 
-                            
-            <div className="flex justify-center w-full mt-2">
-                <div className="w-full px-4 md:px-8 lg:px-12 mx-auto max-w-7xl mt-2">
-                    <Navbar bannerHeight={bannerVisible ? fixedHeight : 0} /> 
-                </div>
-            </div>
-        </div>
+         <div className="bg-white min-h-screen flex flex-col mt-12">
+             
+                   
+             
+                   <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col">
+                     <div className="w-full flex justify-center">
+                      <div className="w-full px-4 md:px-8 lg:px-12 ">
+                      <Header basket={basket}/>
+                      </div>
+                      </div> 
+             
+                      <div className="flex justify-center w-full mt-2">
+                      <div className="w-full px-4 md:px-8 lg:px-12 mx-auto  mt-2">
+                      <Navbar bannerHeight={bannerVisible ? fixedHeight : 0} /> 
+                        </div>
+                      </div>
+                     </div>
 
 
         <div className='flex items-center justify-center gap-8 mt-40'>
