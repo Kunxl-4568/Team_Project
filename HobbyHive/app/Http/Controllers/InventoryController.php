@@ -6,5 +6,9 @@ use Illuminate\Http\Request;
 
 class InventoryController extends Controller
 {
-    //
+    public function index()
+    {
+        return inertia('admin/inventory');
+    }
+
 }
