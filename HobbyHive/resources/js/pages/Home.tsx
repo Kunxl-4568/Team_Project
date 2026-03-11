@@ -1,14 +1,29 @@
 import { useState, useRef, useEffect } from "react";
+import { Head, usePage, router} from "@inertiajs/react";
 import Banner from "@/components/Banner";
 import Navbar from "@/components/Navbar";
 import Carousel from "@/components/Carousel"
 import {Header} from "@/components/Header";
 import ProductCard from "@/components/Productcard";
 import Footer from "@/components/Footer";
-import Basket from "@/components/Basket";
+
+
+
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  originalPrice?: number;
+  image: string;
+  isOnSale?: boolean;
+  isInWishlist: boolean;
+  onAddToBasket: (id: number) => void;
+  onToggleWishlist: (id: number) => void;
+}
 
 
 export default function Home() {
+  const { products } = usePage<{ products: Product[] }>().props;
 
  const [basket,setBasket] = useState<number[]>([]);
 
@@ -34,35 +49,6 @@ useEffect(() => {
     if (stored) setBasket(JSON.parse(stored));
 }, []);
 
-const products = [
-  {
-    id: 1,
-    name: "Jenga Classic Game",
-    price:25.00,
-    originalPrice: 30.00,
-    image:"/images/Jenga.png",
-    isOnSale: true,
-    isInWishlist:false,
-  },
-    {
-    id: 2,
-    name: "Faber-Castell Pencils 24 Pack",
-    price:30.00,
-    originalPrice: 25.00,
-    image:"/images/Faber Castell metal tin.png",
-    isOnSale: true,
-    isInWishlist:false,
-  },
-    {
-    id: 3,
-    name: "Finn Family Moomintroll Plush",
-    price:30.00,
-    originalPrice: 25.00,
-    image:"/images/Finn-Family-Moomintroll.png",
-    isOnSale: true,
-    isInWishlist:false,
-  }
-];
 
   return (
 

@@ -8,10 +8,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\InventoryController;
-
-Route::get('/', function () {
-    return Inertia::render('Home');
-})->name('home');
+use App\Http\Controllers\HomeController;
 
 Route::get('/preview-reset-password', function () {
     return Inertia::render('auth/reset-password', [
@@ -19,15 +16,14 @@ Route::get('/preview-reset-password', function () {
     ]);
 });
 
-// Route::middleware(['auth', 'verified'])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return Inertia::render('dashboard');
-//     })->name('dashboard');
-// });
-
-// Route::get('/dashboard', function () {
-//         return Inertia::render('dashboard');
-// })->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+       return Inertia::render('dashboard');
+    })->name('dashboard');
+});
+ Route::get('/dashboard', function () {
+        return Inertia::render('dashboard');
+})->name('dashboard');
 
 Route::prefix('admin')
     ->name('admin.')
@@ -93,3 +89,9 @@ Route::get('/Checkout', [CheckoutController::class, 'index'])->name('checkout');
 
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';
+
+//Home page
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Individual Product page & product context 
+Route::get('/products/{id}', [ProductController::class, 'show']) ->name('products.show');
