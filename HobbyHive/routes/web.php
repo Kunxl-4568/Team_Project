@@ -37,7 +37,7 @@ Route::prefix('admin')
             ->name('dashboard');
 
         Route::get('/inventory', [InventoryController::class, 'index'])
-            ->name('inventory.index');
+            ->name('inventory');
     });
 
 Route::get('/contact-us', function () {
