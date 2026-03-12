@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WishlistController;
 
 Route::get('/preview-reset-password', function () {
     return Inertia::render('auth/reset-password', [
@@ -95,3 +96,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Individual Product page & product context 
 Route::get('/products/{id}', [ProductController::class, 'show']) ->name('products.show');
+
+Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
+Route::post('/wishlist/toggle', [WishlistController::class, 'toggle'])->name('wishlist.toggle');
+Route::post('/wishlist/clear', [WishlistController::class, 'clear'])->name('wishlist.clear');
+Route::delete('/wishlist/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
+Route::get('/wishlist/ids', [WishlistController::class, 'getWishlistIds'])->name('wishlist.ids');
