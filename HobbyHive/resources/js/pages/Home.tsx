@@ -8,7 +8,6 @@ import ProductCard from "@/components/Productcard";
 import Footer from "@/components/Footer";
 
 
-
 interface Product {
   id: number;
   name: string;
@@ -17,41 +16,44 @@ interface Product {
   image: string;
   isOnSale?: boolean;
   isInWishlist: boolean;
-  onAddToBasket: (id: number) => void;
-  onToggleWishlist: (id: number) => void;
 }
 
 
 export default function Home() {
   const { products } = usePage<{ products: Product[] }>().props;
 
- const [basket,setBasket] = useState<number[]>([]);
+  const [basket, setBasket] = useState<number[]>([]);
 
-    const handleAddToBasket = (id: number) => {
-      setBasket(prev => {const updated = [...prev, id];
+  const handleAddToBasket = (id: number) => {
+    router.post('/cart', { product_id: id, quantity: 1 }, { preserveScroll: true });
+    setBasket(prev => {
+      const updated = [...prev, id];
       sessionStorage.setItem("basket", JSON.stringify(updated));
       return updated;
-    });  
-   };
+    });
+  };
+
+  // Toggle wishlist — calls backend, Inertia refreshes page with updated isInWishlist
+  const handleToggleWishlist = (id: number) => {
+    router.post('/wishlist/toggle', { product_id: id }, { preserveScroll: true });
+  };
 
   const [bannerVisible, setBannerVisible] = useState(true);
   const [fixedHeight, setFixedHeight] = useState(0);
   const fixedRef = useRef<HTMLDivElement>(null);
 
-useEffect(() => { 
-  if (fixedRef.current)  {
-    setFixedHeight(fixedRef.current.offsetHeight);
-  }
-}, [bannerVisible]); 
+  useEffect(() => {
+    if (fixedRef.current) {
+      setFixedHeight(fixedRef.current.offsetHeight);
+    }
+  }, [bannerVisible]);
 
   useEffect(() => {
     const stored = sessionStorage.getItem("basket");
     if (stored) setBasket(JSON.parse(stored));
-}, []);
-
+  }, []);
 
   return (
-
     <div className="bg-white min-h-screen flex flex-col">
 
       {bannerVisible && (
@@ -97,16 +99,14 @@ useEffect(() => {
                 isOnSale={product.isOnSale}
                 isInWishlist={product.isInWishlist}
                 onAddToBasket={handleAddToBasket}
-                onToggleWishlist={(id) => console.log("Toggle wishlist:", id)}
+                onToggleWishlist={handleToggleWishlist}
               />
             ))}
           </div>
         </div>
       </div>
 
-      
       <Footer />
-
     </div>
   );
 }
