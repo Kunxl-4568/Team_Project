@@ -75,5 +75,48 @@ Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear')
 //checkout
 Route::get('/Checkout', [CheckoutController::class, 'index'])->name('checkout');
 
+Route::prefix('admin')->group(function (){
+    Route::get('/users', function (){
+        return inertia('admin/users');
+    });
+});
+
+Route::prefix('admin')->group(function (){
+    Route::get('/products', function (){
+        return inertia('admin/products');
+    });
+});
+
+Route::prefix('admin')->group(function (){
+    Route::get('/dashboard', function (){
+        return inertia('admin/dashboard');
+    });
+});
+
+Route::prefix('admin')->group(function (){
+    Route::get('/orders', function (){
+        return inertia('admin/orders');
+    });
+});
+
+Route::prefix('admin')->group(function (){
+    Route::get('/account', function (){
+        return inertia('admin/account');
+    });
+});
+
+Route::get('admin/users/{id}', function ($id) {
+    return Inertia::render('admin/ViewUserPage', [
+        'id' => $id
+    ]);
+});
+
+Route::get('admin/orders/{id}', function ($id) {
+    return Inertia::render('admin/ViewOrderPage', [
+        'id' => $id
+    ]);
+});
+
+
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';
