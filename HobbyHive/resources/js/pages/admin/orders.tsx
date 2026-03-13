@@ -4,6 +4,8 @@ import {router} from "@inertiajs/react";
 
 export default function Orders() {
     const [openRow, setOpenRow] = useState<number | null>(null);
+    const [search, setSearch] = useState("");
+    const [statusFilter, setStatusFilter] = useState("All");
     const orders = [
         {
             id: "#1234",
@@ -37,10 +39,47 @@ export default function Orders() {
             total: "£54",
             status: "Incomplete",
         }
-    ]
+    ];
+
+    const filteredOrders = orders.filter(order => {
+        const matchesSearch =
+            order.id.toLowerCase().includes(search.toLowerCase()) ||
+            order.customer.toLowerCase().includes(search.toLowerCase()) ||
+            order.email.toLowerCase().includes(search.toLowerCase());
+
+            const matchesStatus =
+               statusFilter === "All" || order.status === statusFilter;
+            
+            return matchesSearch && matchesStatus;
+    });
+
+
     return (
         <AdminLayout title="Orders">
-            <p className="text-[#2c2c2c] mb-8">{orders.length} orders found</p>
+            <p className="text-[#2c2c2c] mb-8">{filteredOrders.length} orders found</p>
+
+            <div className = "text-[#2c2c2c] mb-8 flex gap-2">
+                <input
+                   type="text"
+                   placeholder = "Search by ID, customer or email"
+                   value={search}
+                   onChange={(e) => setSearch(e.target.value)}
+                   className="border border-gray-300 rounded-lg px-3 py-2 w-72 text-sm outline-none focus:border-[#2c2c2c]"
+                />
+
+                <select
+                   value={statusFilter}
+                   onChange={(e) => setStatusFilter(e.target.value)}
+                   className="border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-[#2c2c2c]"
+                >
+                    <option value="All">All statuses</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Incomplete">Incomplete</option>
+
+                </select>   
+
+            </div>
 
             <div className="bg-white rounded-xl overflow-visible">
                 <table className="w-full border-collapse">
@@ -57,7 +96,7 @@ export default function Orders() {
                     </thead>
                     
                     <tbody>
-                        {orders.map((order, index) => (
+                        {filteredOrders.map((order, index) => (
                             <tr 
                             key={index} 
                             className="hover:bg-transparent">

@@ -30,9 +30,8 @@ export default function AdminLayout({children, title}: PropsWithChildren & {titl
               <div style={{fontWeight: 600, fontSize: "1.2rem", color: "#2c2c2c"}}>{title}</div>
 
 
-
             <div className="relative flex items-center gap-3">
-                <input
+             {/**    <input
                type="text"
                placeholder="Search..."
                style={{
@@ -42,7 +41,7 @@ export default function AdminLayout({children, title}: PropsWithChildren & {titl
                 width: "250px",
                 color: "#2c2c2c",
                }}
-            />
+            /> */}
                 {/**<img src="/icons/AccountIcon.svg" className="w-8 h-8"/> {/**allow for pfp */}
                 <button onClick={() =>  setOpenMenu(!openMenu)}>
                     <img src="/icons/dropdown.svg" className="w-8 h-8"/>

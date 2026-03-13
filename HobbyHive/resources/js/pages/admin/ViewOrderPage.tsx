@@ -11,7 +11,11 @@ export default function ViewOrderPage({id}: any){
             total: "£43",
             status: "Pending",
             phone: "07876457848",
-            address: "12 cherry tree drive B34"
+            address: "12 cherry tree drive B34",
+            items: [
+                {name: "candle", qty: 1, price: 30},
+                {name: "Stickers", qty: 2, price: 2}
+            ]
         },
         {
             id: "#5678",
@@ -171,6 +175,39 @@ export default function ViewOrderPage({id}: any){
                     </div>
                 </div>
             )}
+
+            <div className="mb-10">
+    <div className="bg-[#fefaf1] border rounded-xl p-6 w-full max-w-2xl mx-auto">
+        
+        <h3 className="text-xl text-[#2c2c2c] mb-4 text-center">
+            <strong>Items Purchased:</strong>
+        </h3>
+
+        <table className="w-full text-left">
+            <thead>
+                <tr className="border-b last:border-none border-[#e8e3e3] transition-transform ]">
+                    <th className="pb-3 font-semibold text-[#2c2c2c]">Item</th>
+                    <th className="pb-3 font-semibold text-[#2c2c2c]">Qty</th>
+                    <th className="pb-3 font-semibold text-[#2c2c2c]">Price</th>
+                    <th className="pb-3 font-semibold text-[#2c2c2c]">Subtotal</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {data?.items?.map((item: any, index: number) => (
+                    <tr key={index} className="border-b border-[#2c2c2c]">
+                        <td className="py-3 text-[#2c2c2c]">{item.name}</td>
+                        <td className="py-3 text-[#2c2c2c]">{item.qty}</td>
+                        <td className="py-3 text-[#2c2c2c]">£{item.price}</td>
+                        <td className="py-3 text-[#2c2c2c]">£{item.qty * item.price}</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
 
             
             <div className= "flex justify-center gap-4 mt-6">

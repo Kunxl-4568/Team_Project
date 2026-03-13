@@ -97,12 +97,15 @@ export default function Account({id}: any) {
 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-        <div className="border border-[#2c2c2c] bg-white rounded-lg p-4">
+        <div className="border border-[#2c2c2c] rounded-lg p-4">
             <div className="grid grid-cols-[140px_1fr] gap-y-4 items-center">
 
-                <p className="col-span-2 text-[#2c2c2c]">
-                    First Login - Please set your new password
+                <div className="col-span-2 bg-[#fff1c4] border border-#2c2c2c rounded-lg p-3 ">
+                <p className="text-[#2c2c2c] text-sm">
+                    *First Login - Please set your new password
                 </p>
+                </div>
+
 
                 <p className="text-[#2c2c2c] font-semibold">New Password</p>
                 <input

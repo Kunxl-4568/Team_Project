@@ -6,7 +6,7 @@ export default function Sidebar(){
 
     const linkStyle = (path: string) => ({
         padding: "0.75rem 1rem",
-        borderRadius: url.startsWith(path) ? "20px 40px 40px 20px" : "12px",
+        borderRadius: url.startsWith(path) ? "9999px" : "12px",
         fontWeight: 600,
         backgroundColor: url.startsWith(path) ? "white" : "transparent",
         color: url.startsWith(path) ? "black" : "#2c2c2c",
@@ -15,9 +15,11 @@ export default function Sidebar(){
         marginBottom: "3.5rem",
         transition: "all 0.2s ease",
         
-        marginRight: url.startsWith(path) ? "-40px" : "0px",
-        paddingRight: url.startsWith(path) ? "32px" : "1rem",
-        width: url.startsWith(path) ? "calc(100% + 20px)" : "100%",
+        marginRight: url.startsWith(path) ? "-50px" : "0px",
+        paddingRight: url.startsWith(path) ? "40px" : "1rem",
+        paddingLeft: "1rem",
+        width: url.startsWith(path) ? "calc(100% + 23px)" : "100%",
+        position: "relative",
         zIndex: 2,
         
         
