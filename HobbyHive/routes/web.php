@@ -7,10 +7,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-
-Route::get('/', function () {
-    return Inertia::render('Home');
-})->name('home');
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\HomeController;
 
 Route::get('/preview-reset-password', function () {
     return Inertia::render('auth/reset-password', [
@@ -20,9 +18,23 @@ Route::get('/preview-reset-password', function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
-        return Inertia::render('dashboard');
+       return Inertia::render('dashboard');
     })->name('dashboard');
 });
+ Route::get('/dashboard', function () {
+        return Inertia::render('dashboard');
+})->name('dashboard');
+
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware(['auth', 'admin'])  // must be logged in AND admin
+    ->group(function () {
+        Route::get('/dashboard', fn () => Inertia::render('admin/dashboard'))
+            ->name('dashboard');
+
+        Route::get('/inventory', [InventoryController::class, 'index'])
+            ->name('inventory');
+    });
 
 Route::get('/contact-us', function () {
     return Inertia::render('contact-us');
@@ -49,11 +61,11 @@ Route::middleware('guest')->group(function () {
 
 //destroy doesn't exist. uncomment when implemented
 
-// Route::middleware('auth')->group(function () {
-//     // Logout route
-//     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-//         ->name('logout');
-// });
+Route::middleware('auth')->group(function () {
+    // Logout route
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->name('logout');
+});
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
@@ -120,3 +132,9 @@ Route::get('admin/orders/{id}', function ($id) {
 
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';
+
+//Home page
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Individual Product page & product context 
+Route::get('/products/{id}', [ProductController::class, 'show']) ->name('products.show');

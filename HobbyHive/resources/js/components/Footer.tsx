@@ -6,11 +6,11 @@ import { Link } from "@inertiajs/react";
 
 export default function Footer() {
     return (
-        <footer className="bg-yellow-500 px-4 md:px-16 lg:px-28 py-6">
-            <div className="grid grid-cols-1 md:grid-cols-2">
+      <footer className="bg-yellow-500 px-4 md:px-8 lg:px-12 py-6 mt-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 max-w-7xl mx-auto text-center">
                 
-                <div className="mr-10">
-                    <h2 className="font-hepta text-black text-lg mb-4 ml-19">Help Center</h2>
+                <div className="mx-auto">
+                    <h2 className="font-hepta text-black text-lg mb-4">Help Center</h2>
                     <ul>
                         <div className="grid grid-cols-2 md:grid-cols-2">
                             <Link href="/" className="hover:underline text-black font-hepta">Home</Link>
@@ -21,10 +21,10 @@ export default function Footer() {
                     </ul>
                 </div>
 
-                <div className="ml-25">
-                    <h2 className="font-hepta text-black text-lg mb-4 ml-19">Follow Us</h2>
+                <div className="mx-auto ">
+                    <h2 className="font-slab text-black text-lg ">Follow Us</h2>
                     <ul className="flex space-x-4">
-                        <li className="flex items-center space-x-1">
+                        <li className="flex items-center space-x-1 ">
                             <FaFacebook />
                             <a href="#" className="hover:underline text-black font-hepta">Facebook</a>
                         </li>
