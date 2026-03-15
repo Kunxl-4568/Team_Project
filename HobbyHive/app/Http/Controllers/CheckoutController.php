@@ -22,7 +22,7 @@ class CheckoutController extends Controller
 
     public function index(Request $request)
     {
-        // keep your logic, just using local getCart
+        // using local getCart
         $cart = $this->getCart();
         $cartItems = $cart->items()->get();
 

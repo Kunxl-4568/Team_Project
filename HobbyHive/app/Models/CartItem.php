@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CartItem extends Model
 {
+    protected $primaryKey = 'product_id';
     protected $fillable = ['cart_id', 'product_product_id', 'quantity', 'price'];
 
     public function cart()
@@ -16,7 +17,7 @@ class CartItem extends Model
 
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class, 'product_product_id', 'product_id');
     }
 
     // Calculate subtotal for this item
