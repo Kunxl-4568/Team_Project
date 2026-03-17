@@ -1,7 +1,6 @@
 import React from 'react';
 import NavBar from '../components/Navbar';
 import {NavFooter} from '../components/nav-footer';
-import { usePage } from '@inertiajs/react';
 import { useState, useRef, useEffect } from "react";
 import { Trash2, Plus, Minus, ArrowLeft } from 'lucide-react';
 import CartItem from "../components/CartItem";
@@ -13,6 +12,7 @@ import {Header} from "@/components/Header";
 import ProductCard from "@/components/Productcard";
 import Footer from "@/components/Footer";
 import Basket from "@/components/Basket";
+import { Link, router, usePage } from "@inertiajs/react";
 
 type CheckoutProps = {
     subtotal: number;
@@ -36,23 +36,30 @@ const Checkout: React.FC = () => {
     const vat = subtotal * 0.2;
     const total = subtotal + shipping + vat;
     return(
-         <div className="bg-white min-h-screen flex flex-col mt-12">
-             
-                   
-             
-                   <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col">
-                     <div className="w-full flex justify-center">
-                      <div className="w-full px-4 md:px-8 lg:px-12 ">
-                      <Header basket={basket}/>
-                      </div>
-                      </div> 
-             
-                      <div className="flex justify-center w-full mt-2">
-                      <div className="w-full px-4 md:px-8 lg:px-12 mx-auto  mt-2">
-                      <Navbar bannerHeight={bannerVisible ? fixedHeight : 0} /> 
-                        </div>
-                      </div>
-                     </div>
+        <div className = 'bg-white min-h-screen py-12 flex flex-col'>
+        
+        {bannerVisible && (
+            <div className="fixed top-0 left-0 w-full z-50 flex justify-center">
+                <div className="w-full px-4 md:px-8 lg:px-12 max-w-7xl">
+                    <Banner onClose={() => setBannerVisible(false)} />
+                </div>
+            </div>
+        )}
+                    
+        
+        <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col">
+            <div className="w-full flex justify-center">
+                <div className="w-full px-4 md:px-8 lg:px-12 max-w-7xl">
+                    <Header basket={basket}/>
+                </div>
+            </div> 
+                            
+            <div className="flex justify-center w-full mt-2">
+                <div className="w-full px-4 md:px-8 lg:px-12 mx-auto max-w-7xl mt-2">
+                    <Navbar bannerHeight={bannerVisible ? fixedHeight : 0} /> 
+                </div>
+            </div>
+        </div>
 
 
         <div className='flex items-center justify-center gap-8 mt-40'>
@@ -76,7 +83,7 @@ const Checkout: React.FC = () => {
         </div>
 
     
-        <div className ='grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mt-2 '>
+        <div className ='grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mt-1 '>
 
             <div className = 'space-y-8'>
                 <section>
@@ -124,7 +131,12 @@ const Checkout: React.FC = () => {
             </div>
 
             <div className='bg-[#ffffb2] p-6 space-y-4 h-75 mt-12'>
-                <button className='bg-[#ffc300] text-white py-2 w-full rounded hover:bg:ebb400'>Place Order</button>
+                <Link
+                href="/OrderConfirmation"
+                className="bg-[#ffc300] text-white py-2 w-full rounded hover:bg-[#ebb400] block text-center"
+                >
+                    Place Order
+                </Link>
                 <hr className='border-t-1 border-black mb-5'/>
                 <h2 className='text-xl font-bold text-[#2c2c2c]'>Order Summary</h2>
 

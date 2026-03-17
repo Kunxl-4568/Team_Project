@@ -45,6 +45,10 @@ Route::get('/about-us', function () {
     return Inertia::render('AboutUs');
 });
 
+Route::get('/OrderConfirmation', function () {
+    return Inertia::render('order-confirmation');
+});
+
 //login and register routes
 Route::middleware('guest')->group(function () {
     // Login routes
