@@ -7,7 +7,8 @@ import Carousel from "@/components/Carousel"
 import {Header} from "@/components/Header";
 import ProductCard from "@/components/Productcard";
 import Footer from "@/components/Footer";
-import Basket from "@/components/Basket";
+// import Basket from "@/components/Basket";
+import Chatbot from '@/components/Chatbot';
 
 
 export default function Home() {
@@ -127,6 +128,8 @@ const products = [
           </div>
         </div>
       </div>
+      {/* chatbot added (dont think this is the right place - remove later) */}
+        <Chatbot />
   
     </div>
   

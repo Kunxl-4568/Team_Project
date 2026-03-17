@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\ChatbotController;
 
 
 Route::get('/', function () {
@@ -90,6 +91,10 @@ Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear')
 
 //checkout
 Route::get('/Checkout', [CheckoutController::class, 'index'])->name('checkout');
+
+//Chatbot
+Route::post('/api/chatbot', [ChatbotController::class, 'chat'])->name('chatbot.chat');
+
 
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';
