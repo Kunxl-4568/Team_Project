@@ -118,7 +118,8 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                             </div>
 
                                 <div className="grid gap-2">
-                                    <Link
+                                    {/* changed Link to a tag to avoid OPTIONS request (daniya) */}
+                                    <a
                                     href="/auth/google"
                                     className="mx-auto"
                                     >
@@ -135,7 +136,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                                             />
 
                                     </Button>
-                                    </Link>
+                                    </a>
                                
                             </div>
                     </>
