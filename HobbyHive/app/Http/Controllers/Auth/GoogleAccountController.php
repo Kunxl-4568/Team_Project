@@ -100,7 +100,7 @@ class GoogleAccountController extends Controller
                 'trace' => $e->getTraceAsString(),
             ]);
             
-            return redirect('/login')->with('error', 'Failed to login with Google: ' . $e->getMessage());
+            // return redirect('/login')->with('error', 'Failed to login with Google: ' . $e->getMessage());
         }
     }
 }

@@ -62,14 +62,14 @@ Route::middleware('guest')->group(function () {
     
     Route::post('/reset-password', [NewPasswordController::class, 'store'])
         ->name('password.update');
-
-     // Google OAuth routes
-    Route::get('/auth/google', [GoogleAccountController::class, 'redirect'])
-        ->name('auth.google');
-    
-    Route::get('/auth/google/callback', [GoogleAccountController::class, 'callback'])
-        ->name('auth.google.callback');
 });
+
+// Google OAuth routes
+Route::get('/auth/google', [GoogleAccountController::class, 'redirect'])
+    ->name('auth.google');
+
+Route::get('/auth/google/callback', [GoogleAccountController::class, 'callback'])
+    ->name('auth.google.callback');
 
 //destroy doesn't exist. uncomment when implemented
 
