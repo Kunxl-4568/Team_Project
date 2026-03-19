@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/preview-reset-password', function () {
     return Inertia::render('auth/reset-password', [
@@ -90,7 +91,8 @@ Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.dest
 Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 
 //checkout
-Route::get('/Checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 
 Route::prefix('admin')->group(function (){
     Route::get('/users', function (){
@@ -149,3 +151,15 @@ Route::post('/wishlist/toggle', [WishlistController::class, 'toggle'])->name('wi
 Route::post('/wishlist/clear', [WishlistController::class, 'clear'])->name('wishlist.clear');
 Route::delete('/wishlist/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
 Route::get('/wishlist/ids', [WishlistController::class, 'getWishlistIds'])->name('wishlist.ids');
+Route::get('/order-confirmation', function () {
+    return Inertia::render('OrderConfirmation');
+})->name('order.confirmation');
+
+
+// contact
+Route::post('/contact-us', [ContactController::class, 'store'])->name('contact.store');
+
+//order
+
+Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
+Route::get('/order-confirmation/{order}', [OrderController::class, 'confirmation'])->name('order.confirmation');

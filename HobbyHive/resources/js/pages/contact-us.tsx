@@ -6,6 +6,8 @@ import {Header} from "@/components/Header";
 import ProductCard from "@/components/Productcard";
 import Footer from "@/components/Footer";
 import Basket from "@/components/Basket";
+import { router } from "@inertiajs/react";
+
 
 export default function ContactUs() {
     const [bannerVisible, setBannerVisible] = useState(true);
@@ -21,20 +23,44 @@ export default function ContactUs() {
     };
     
     const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        console.log("submitted", formData);
-        
+  e.preventDefault();
+
+  router.post("/contact-us", formData, {
+    onSuccess: () => {
+      setShowSuccessMessage(true);
+
+      setFormData({
+        Fname: "",
+        Lname: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+
+      setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 5000);
+    },
+
+    onError: (errors) => {
+      console.log(errors);
+      alert("Form failed — check fields.");
+    },
+  });
+};
+
+
         // Show success message
-        setShowSuccessMessage(true);
+       // setShowSuccessMessage(true);
         
         // Clear form
-        setFormData({ Fname: "", Lname: "", email: "", phone: "", message: "" });
+       // setFormData({ Fname: "", Lname: "", email: "", phone: "", message: "" });
         
         // Hide message after 5 seconds
-        setTimeout(() => {
-            setShowSuccessMessage(false);
-        }, 5000);
-    };
+        //setTimeout(() => {
+           // setShowSuccessMessage(false);
+       // }, 5000);
+    
     
     return (
         <div className='min-h-screen bg-white p-6 bg-[url("/images/honeycomb.png")] bg-no-repeat bg-right-bottom bg-contain overflow-x-hidden' >
