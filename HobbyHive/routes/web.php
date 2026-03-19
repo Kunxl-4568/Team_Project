@@ -10,6 +10,8 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Auth\NewPasswordController;
 
 Route::get('/preview-reset-password', function () {
     return Inertia::render('auth/reset-password', [
@@ -28,7 +30,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::prefix('admin')
     ->name('admin.')
-    ->middleware(['auth', 'admin'])  // must be logged in AND admin
+    ->middleware(['auth', 'admin'])
     ->group(function () {
         Route::get('/dashboard', fn () => Inertia::render('admin/dashboard'))
             ->name('dashboard');
@@ -50,17 +52,28 @@ Route::middleware('guest')->group(function () {
     // Login routes
     Route::get('/login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
-    
+
     Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
     // Register routes
     Route::get('/register', [RegisteredUserController::class, 'create'])
         ->name('register');
-    
-    Route::post('/register', [RegisteredUserController::class, 'store']);
-});
 
-//destroy doesn't exist. uncomment when implemented
+    Route::post('/register', [RegisteredUserController::class, 'store']);
+
+    // Password Reset Routes
+    Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
+        ->name('password.request');
+
+    Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
+        ->name('password.email');
+
+    Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])
+        ->name('password.reset');
+
+    Route::post('/reset-password', [NewPasswordController::class, 'store'])
+        ->name('password.update');
+});
 
 Route::middleware('auth')->group(function () {
     // Logout route
@@ -137,9 +150,10 @@ require __DIR__ . '/auth.php';
 //Home page
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// Individual Product page & product context 
-Route::get('/products/{id}', [ProductController::class, 'show']) ->name('products.show');
+// Individual Product page & product context
+Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 
+// Wishlist
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
 Route::post('/wishlist/toggle', [WishlistController::class, 'toggle'])->name('wishlist.toggle');
 Route::post('/wishlist/clear', [WishlistController::class, 'clear'])->name('wishlist.clear');
