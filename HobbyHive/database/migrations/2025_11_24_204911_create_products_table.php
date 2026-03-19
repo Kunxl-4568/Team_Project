@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('image_url')->nullable();
             $table->integer('stock_quantity')->default(0);
             $table->timestamps();
+            $table->integer('low_stock_threshold')->default(5);
+            $table->string('stock_status')->default('in_stock');
         });
     }
 
