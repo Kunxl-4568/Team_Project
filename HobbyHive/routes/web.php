@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\ChatbotController;
+use App\Http\Controllers\Auth\GoogleAccountController;
 
 
 Route::get('/', function () {
@@ -63,6 +64,13 @@ Route::middleware('guest')->group(function () {
     Route::post('/reset-password', [NewPasswordController::class, 'store'])
         ->name('password.update');
 });
+
+// Google OAuth routes
+Route::get('/auth/google', [GoogleAccountController::class, 'redirect'])
+    ->name('auth.google');
+
+Route::get('/auth/google/callback', [GoogleAccountController::class, 'callback'])
+    ->name('auth.google.callback');
 
 //destroy doesn't exist. uncomment when implemented
 
