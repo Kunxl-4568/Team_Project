@@ -22,19 +22,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
        return Inertia::render('dashboard');
     })->name('dashboard');
 });
- Route::get('/dashboard', function () {
-        return Inertia::render('dashboard');
-})->name('dashboard');
 
 Route::prefix('admin')
     ->name('admin.')
-    ->middleware(['auth', 'admin'])  // must be logged in AND admin
+    ->middleware(['auth', 'admin'])
     ->group(function () {
         Route::get('/dashboard', fn () => Inertia::render('admin/dashboard'))
             ->name('dashboard');
-
         Route::get('/inventory', [InventoryController::class, 'index'])
             ->name('inventory');
+        Route::get('/users', fn () => Inertia::render('admin/users'))->name('users');
+        Route::get('/products', [InventoryController::class, 'index'])->name('products');
+        Route::get('/orders', fn () => Inertia::render('admin/orders'))->name('orders');
+        Route::get('/account', fn () => Inertia::render('admin/account'))->name('account');
     });
 
 Route::get('/contact-us', function () {
@@ -88,36 +88,6 @@ Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear')
 //checkout
 Route::get('/Checkout', [CheckoutController::class, 'index'])->name('checkout');
 
-Route::prefix('admin')->group(function (){
-    Route::get('/users', function (){
-        return inertia('admin/users');
-    });
-});
-
-Route::prefix('admin')->group(function (){
-    Route::get('/products', function (){
-        return inertia('admin/products');
-    });
-});
-
-Route::prefix('admin')->group(function (){
-    Route::get('/dashboard', function (){
-        return inertia('admin/dashboard');
-    });
-});
-
-Route::prefix('admin')->group(function (){
-    Route::get('/orders', function (){
-        return inertia('admin/orders');
-    });
-});
-
-Route::prefix('admin')->group(function (){
-    Route::get('/account', function (){
-        return inertia('admin/account');
-    });
-});
-
 Route::get('admin/users/{id}', function ($id) {
     return Inertia::render('admin/ViewUserPage', [
         'id' => $id
@@ -129,10 +99,6 @@ Route::get('admin/orders/{id}', function ($id) {
         'id' => $id
     ]);
 });
-
-
-require __DIR__ . '/settings.php';
-require __DIR__ . '/auth.php';
 
 //Home page
 Route::get('/', [HomeController::class, 'index'])->name('home');
