@@ -2,7 +2,7 @@
 import {useEffect} from'react';
 import PasswordResetLinkController from '@/actions/App/Http/Controllers/Auth/PasswordResetLinkController';
 import { login } from '@/routes';
-import { Form, Head } from '@inertiajs/react';
+import { Form, Head, useForm } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-react';
 
 import InputError from '@/components/input-error';
@@ -10,11 +10,26 @@ import TextLink from '@/components/text-link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import AuthLayout from '@/layouts/auth-layout';
+import { FormEventHandler } from 'react';
 
-export default function ForgotPassword({ status }: { status?: string }) {
+interface ForgotPasswordProps {
+    status?: string;
+}
+
+export default function ForgotPassword({ status }: ForgotPasswordProps) {
     useEffect(() => {
         document.documentElement.classList.remove('dark')
     }, []);
+
+
+    const { data, setData, post, processing, errors } = useForm({
+        email: '',
+    });
+
+    const submit: FormEventHandler = (e) => {
+        e.preventDefault();
+        post('/forgot-password');
+    };
     return (
     <>
     {/*<div className="forgot-password-page">*/}
@@ -83,3 +98,4 @@ export default function ForgotPassword({ status }: { status?: string }) {
 
     );
 }
+
