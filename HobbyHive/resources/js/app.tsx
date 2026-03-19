@@ -4,6 +4,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
 import { initializeTheme } from './hooks/use-appearance';
 import Chatbot from './components/Chatbot';
+import WishlistToast from './components/WishlistToast';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -19,6 +20,7 @@ createInertiaApp({
         root.render(
             <>
                 <App {...props} />
+                <WishlistToast />
                 <Chatbot />
             </>
         );
