@@ -12,10 +12,9 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\Auth\GoogleAccountController;
 
-
-Route::get('/', function () {
-    return Inertia::render('Home');
-})->name('home');
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WishlistController;
 
 Route::get('/preview-reset-password', function () {
     return Inertia::render('auth/reset-password', [
@@ -23,11 +22,25 @@ Route::get('/preview-reset-password', function () {
     ]);
 });
 
-// Route::middleware(['auth', 'verified'])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return Inertia::render('dashboard');
-//     })->name('dashboard');
-// });
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+       return Inertia::render('dashboard');
+    })->name('dashboard');
+});
+ Route::get('/dashboard', function () {
+        return Inertia::render('dashboard');
+})->name('dashboard');
+
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware(['auth', 'admin'])  // must be logged in AND admin
+    ->group(function () {
+        Route::get('/dashboard', fn () => Inertia::render('admin/dashboard'))
+            ->name('dashboard');
+
+        Route::get('/inventory', [InventoryController::class, 'index'])
+            ->name('inventory');
+    });
 
 Route::get('/contact-us', function () {
     return Inertia::render('contact-us');
@@ -35,6 +48,10 @@ Route::get('/contact-us', function () {
 
 Route::get('/about-us', function () {
     return Inertia::render('AboutUs');
+});
+
+Route::get('/OrderConfirmation', function () {
+    return Inertia::render('order-confirmation');
 });
 
 //login and register routes
@@ -149,3 +166,15 @@ Route::post('/api/chatbot', [ChatbotController::class, 'chat'])->name('chatbot.c
 
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';
+
+//Home page
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Individual Product page & product context 
+Route::get('/products/{id}', [ProductController::class, 'show']) ->name('products.show');
+
+Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
+Route::post('/wishlist/toggle', [WishlistController::class, 'toggle'])->name('wishlist.toggle');
+Route::post('/wishlist/clear', [WishlistController::class, 'clear'])->name('wishlist.clear');
+Route::delete('/wishlist/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
+Route::get('/wishlist/ids', [WishlistController::class, 'getWishlistIds'])->name('wishlist.ids');

@@ -24,6 +24,8 @@ const buttonVariants = cva(
 
         google: "w-64 cursor-pointer  transition-transform hover:scale-110",
 
+        
+
 
 
       },

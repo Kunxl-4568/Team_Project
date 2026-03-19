@@ -4,6 +4,8 @@ import {router} from "@inertiajs/react";
 
 export default function Users() {
     const [openRow, setOpenRow] = useState<number | null>(null);
+    const [search, setSearch] = useState("");
+    const [statusFilter, setStatusFilter] = useState("All");
     const users = [
         {
             id: "#1234",
@@ -28,10 +30,45 @@ export default function Users() {
         }
     ];
 
+    const filteredUsers = users.filter(user => {
+        const matchesSearch =
+            user.id.toLowerCase().includes(search.toLowerCase()) ||
+            user.name.toLowerCase().includes(search.toLowerCase()) ||
+            user.email.toLowerCase().includes(search.toLowerCase());
+
+            const matchesStatus =
+               statusFilter === "All" || user.status === statusFilter;
+            
+            return matchesSearch && matchesStatus;
+    });
+
 
     return (
         <AdminLayout title="Users">
-            <p className="text-[#2c2c2c] mb-8">{users.length} users found</p>
+            <p className="text-[#2c2c2c] mb-8">{filteredUsers.length} users found</p>
+            
+            <div className = "text-[#2c2c2c] mb-8 flex gap-2">
+                <input
+                   type="text"
+                   placeholder = "Search by ID, customer or email"
+                   value={search}
+                   onChange={(e) => setSearch(e.target.value)}
+                   className="border border-gray-300 rounded-lg px-3 py-2 w-72 text-sm outline-none focus:border-[#2c2c2c]"
+                />
+
+                <select
+                   value={statusFilter}
+                   onChange={(e) => setStatusFilter(e.target.value)}
+                   className="border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:border-[#2c2c2c]"
+                >
+                    <option value="All">All statuses</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+
+                </select>   
+
+            </div>
+
             <div className = "bg-white rounded-xl overflow-hidden ">
                 <table className = "w-full border-collapse">
                     <thead>
@@ -46,7 +83,7 @@ export default function Users() {
                     </thead>
 
             <tbody>
-                {users.map((user, index) => (
+                {filteredUsers.map((user, index) => (
                     <tr key={index} className="border-b last:border-none border-[#e8e3e3] transition-transform ">
                     <td className="p-4 text-[#2c2c2c]">{user.id}</td>
                     <td className="p-4 text-[#2c2c2c]">{user.name}</td>
