@@ -33,7 +33,7 @@ class CartController extends Controller
             $product = $item->product;
             return [
                 'id' => $item->id,
-                'product_id' => $product->product_id,
+                'product_id' => $product->id,
                 'title' => $product->name,
                 'image' => $product->image_url, 
                 'price' => (float) $item->price,
@@ -97,7 +97,7 @@ class CartController extends Controller
 
         // Check if item already exists in cart
         $cartItem = CartItem::where('cart_id', $cart->id)
-            ->where('product_id', $request->product_id)
+            ->where('product_product_id', $request->product_id)
             ->first();
         if ($cartItem) {
             // Update quantity
@@ -107,7 +107,7 @@ class CartController extends Controller
             // Create new cart item
             CartItem::create([
                 'cart_id' => $cart->id,
-                'product_id' => $request->product_id,
+                'product_product_id' => $request->product_id,
                 'quantity' => $request->quantity,
                 'price' => $product->price 
             ]);
