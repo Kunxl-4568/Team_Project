@@ -25,7 +25,7 @@ export default function ProductCard({
   onToggleWishlist,
 }: ProductCardProps) {
   return (
-    <div className="relative bg-white rounded-lg text-[#2C2C2C] shadow h-full text-center overflow-hidden flex flex-col mx-4 dark:bg-yellow-500 dark:text-white transition-all duration-300">
+    <div className="relative bg-white rounded-lg text-[#2C2C2C] shadow h-full text-center overflow-hidden flex flex-col mx-4 dark:bg-[#FFC300] dark:text-white transition-all duration-300">
 
       <button onClick={() => router.visit("/register")}
         className="absolute top-2 right-2 z-10 cursor-pointer m-2"

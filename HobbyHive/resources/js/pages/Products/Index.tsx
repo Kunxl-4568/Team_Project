@@ -78,7 +78,7 @@ export default function Products() {
                 </div>
 
                 <div className="flex justify-center w-full mt-2">
-                    <div className="w-full px-4 md:px-8 lg:px-12 mx-auto mt-2 dark:bg-neutral-900">
+                    <div className="w-full px-4 md:px-8 lg:px-12 mx-auto mt-2">
                         <Navbar bannerHeight={bannerVisible ? fixedHeight : 0} />
                     </div>
                 </div>

@@ -6,7 +6,7 @@ import { Link } from "@inertiajs/react";
 
 export default function Footer() {
     return (
-      <footer className="bg-yellow-500 px-4 md:px-8 lg:px-12 py-6 mt-6 rounded">
+      <footer className="bg-[#FFC300] px-4 md:px-8 lg:px-12 py-6 mt-6 rounded">
     <div className="grid grid-cols-1 md:grid-cols-2 max-w-7xl mx-auto text-center">
                 
                 <div className="mx-auto">

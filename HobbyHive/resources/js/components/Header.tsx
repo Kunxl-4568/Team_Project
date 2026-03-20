@@ -46,7 +46,7 @@ export function Header({ basket = [] }: HeaderProps) {
 
   return (
     
-    <div className="w-full px-4 flex items-center text-[#2C2C2C] dark:text-white font-slab mt-8">
+    <div className="w-full px-4 flex items-center text-[#2C2C2C] dark:text-white font-slab mt-8 transition-all duration-300">
 
       {/* Logo */}
 
