@@ -38,7 +38,7 @@ const CartSummary: React.FC<CartSummaryProps> =({subtotal, onCheckout}) => {
                 
             
             
-            <Link href='/Checkout' className='block bg-[#ffc300] hover:bg-[#f8be00] dark:bg-[#2c2c2c] dark:text-white dark:hover:bg-black text-[#2c2c2c] text-center px-y py-2 rounded w-65 justify-center mt-3 transition-colors duration-300' onClick={onCheckout}>
+            <Link href='/Checkout' className='block bg-[#ffc300] hover:bg-[#f8be00] dark:bg-[#2c2c2c] dark:hover:bg-neutral-700 dark:text-white  text-[#2c2c2c] text-center px-y py-2 rounded w-65 justify-center mt-3 transition-colors duration-300' onClick={onCheckout}>
                 PROCEED TO CHECKOUT
             </Link>
 

@@ -120,7 +120,7 @@ const CartPage: React.FC = () => {
              </div>
 
       {/* Progress */}
-      <div className="flex items-center justify-center gap-8 mt-47">
+      <div className="flex items-center justify-center gap-8 mt-48">
         <div className="flex flex-col items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-[#ffc300] flex items-center justify-center text-[#2c2c2c] font-bold">
             1
@@ -138,7 +138,7 @@ const CartPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-white max-w-6xl mx-auto p-10 min-h-[500px] mt-5 mb-20 rounded-lg dark:bg-[#FFC300] transition-all duration-300">
+      <div className="bg-white max-w-6xl mx-auto p-10 min-h-[500px] mt-5 mb-20 rounded-lg dark:bg-[#FFC300] transition-all duration-300 shadow-2xl">
         <div className="flex items-center mb-3">
           <Link
             href="/products"

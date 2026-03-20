@@ -25,7 +25,7 @@ export function Search({initialQuery =""}: SearchProps) {
     onChange={(e) => setQuery(e.target.value)}
     className="grow p-2 border placeholder:text-[#BDBDBD] placeholder:text-base dark: text-white border-[#2C2C2C] dark:border-white dark:bg-neutral-800 dark:text-white dark:placeholder:text-[#BDBDBD] font-slab text-[#2C2C2C] rounded focus:outline-none focus:ring-2 focus:ring-black"
   />
-  <button type="submit" className="px-4 b rounded bg-[#FFC300] text-[#2C2C2C] dark: font-slab shadow-sm border-0 mx-auto cursor-pointer hover:bg-[#f8be00]">Search</button>
+  <button type="submit" className="px-4 b rounded  bg-[#FFC300] text-[#2C2C2C] dark: font-slab shadow-sm border-0 mx-auto cursor-pointer hover:bg-[#f8be00]">Search</button>
 
 </form>
 

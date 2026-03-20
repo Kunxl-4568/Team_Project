@@ -32,7 +32,7 @@ export default function ProductCard({
       >
         <Heart
           className={`w-7 h-7 ${
-            isInWishlist ? "fill-red-500 text-yellow-500" : "fill-none text-[#2C2C2C] hover:fill-yellow-400 hover:text-yellow-400 shadow-2xl"
+            isInWishlist ? "fill-red-500 text-yellow-500" : "fill-none text-[#ffc300] hover:fill-yellow-400 hover:text-yellow-400 shadow-2xl dark:text-[#2C2C2C] dark:hover:fill-[#2C2C2C] dark:hover:text-[#2C2C2C]"
           }`}
         />
       </button>

@@ -36,11 +36,11 @@ const Checkout: React.FC = () => {
     const vat = subtotal * 0.2;
     const total = subtotal + shipping + vat;
     return(
-         <div className="bg-white min-h-screen flex flex-col mt-12">
+         <div className="bg-[#fff8dc]  min-h-screen flex flex-col mt-12 dark:bg-neutral-900 transition-all duration-300">
              
                    
              
-                   <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col">
+                   <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white dark:bg-neutral-900 transition-all duration-300 flex flex-col">
                      <div className="w-full flex justify-center">
                       <div className="w-full px-4 md:px-8 lg:px-12 ">
                       <Header basket={basket}/>
@@ -55,28 +55,28 @@ const Checkout: React.FC = () => {
                      </div>
 
 
-        <div className='flex items-center justify-center gap-8 mt-40'>
+        <div className='flex items-center justify-center gap-8 mt-43 mb-4'>
             <div className='flex flex-col items-center gap-2'>
-                <div className='w-8 h-8 rounded-full border-black flex items-center justify-center text-[#2c2c2c] font-bold'>
+                <div className="w-8 h-8 rounded-full border border-black flex items-center justify-center text-[#2c2c2c] dark:bg-neutral-700 dark:text-white font-bold">
                     1
                 </div>
-                <span className='text-[#2c2c2c] font-semibold text-xs'>Cart</span>
+                <span className='text-[#2c2c2c] font-semibold text-xs dark:text-white'>Cart</span>
             </div>
 
             <div className = 'h-0.5 w-30 bg-[#2c2c2c]'></div>
 
             <div className='flex flex-col items-center gap-2'>
-                <div className='w-8 h-8 rounded-full bg-[#ffc300]   flex items-center justify-center text-[#2c2c2c] font-bold'>
+                <div className="w-8 h-8 rounded-full bg-[#ffc300] flex items-center justify-center text-[#2c2c2c] font-bold">
                     2
                 </div>
-                <span className='text-[#2c2c2c] font-semibold text-xs'>Checkout</span>
+                <span className='text-[#2c2c2c] font-semibold text-xs dark:text-white'>Checkout</span>
             </div>
 
 
         </div>
 
     
-        <div className ='grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mt-2 '>
+        <div className ='grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mt-2 dark:bg-[#FFC300] bg-white shadow-2xl p-10 rounded-lg transition-all duration-300'>
 
             <div className = 'space-y-8'>
                 <section>
@@ -88,9 +88,9 @@ const Checkout: React.FC = () => {
                             <input type='text' placeholder='City' className='w-full border rounded border-black px-3 py-2 text-[#2c2c2c]'/>
                             <input type='text' placeholder='Postal Code' className='w-full border rounded border-black px-3 py-2 text-[#2c2c2c]'/>
                         </div>
-                        <div className='flex gap-4'>
-                            <button className='bg-[#ffc300] text-[#2c2c2c] px-4 py-4 rounded-lg hover:bg-dark yellow w-90 h-12 hover:underline'>Save this Address</button>
-                            <button className='text-[#2c2c2c] border border-black rounded-lg w-40 h-12 hover:underline'>Cancel</button>
+                        <div className='flex justify-center'>
+                            <button className='bg-[#ffc300] text-[#2c2c2c] px-4 py-4 rounded-lg hover:bg-dark yellow w-90 h-12 dark:bg-[#2c2c2c] dark:text-white cursor-pointer dark:hover:bg-neutral-700'>Save this Address</button>
+                            
                         </div>
                     </div>
                 </section>
@@ -99,9 +99,9 @@ const Checkout: React.FC = () => {
                     <h2 className='text-xl font-bold text-[#2c2c2c] mb-4'>Payment Method</h2>
                     <div className='border border-black border py-4 px-4'>
                     <select className='w-full border rounded border-black px-3 py-2 text-[#2c2c2c] mb-4'>
-                        <option>Credit or Debit Card</option>
-                        <option>Google Pay</option>
-                        <option>PayPal</option>
+                        <option className='dark:bg-neutral-900 dark:text-white'>Credit or Debit Card</option>
+                        <option className='dark:bg-neutral-900 dark:text-white'>Google Pay</option>
+                        <option className='dark:bg-neutral-900 dark:text-white'>PayPal</option>
                     </select>
                     <div className='space-y-4'>
                         <input type='text' placeholder='Card Number' className='border rounded px-3 py-2 text-[#2c2c2c] w-full'/>
@@ -114,17 +114,17 @@ const Checkout: React.FC = () => {
                             <input type ='checkbox' />
                             Save this Address for future use
                         </label>
-                        <div className = 'flex gap-4'>
-                            <button className = 'bg-[#ffc300] text-[#2c2c2c] rounded-lg px-4 py-rounded hover:bg-dark yellow w-90 h-12 hover:underline'>Save this Card</button>
-                            <button className='text-[#2c2c2c] w-40 h-12 border border-black rounded-lg hover:underline'>Cancel</button>
+                        <div className = 'flex justify-center'>
+                            <button className = 'bg-[#ffc300] text-[#2c2c2c] rounded-lg px-4 py-rounded hover:bg-dark yellow w-90 h-12 dark:bg-[#2c2c2c] dark:hover:bg-neutral-700 dark:text-white cursor-pointer'>Save this Card</button>
+                            
                         </div>
                     </div>
                     </div>
                 </section>
             </div>
 
-            <div className='bg-[#ffffb2] p-6 space-y-4 h-75 mt-12'>
-                <button className='bg-[#ffc300] text-white py-2 w-full rounded hover:bg:ebb400'>Place Order</button>
+            <div className=' border border-black rounded p-6 space-y-4 h-75 mt-12 '>
+                <button className='bg-[#ffc300] text-[#2c2c2c] py-2 w-full rounded hover:bg:ebb400 cursor-pointer dark:bg-[#2c2c2c] dark:text-white dark:hover:bg-neutral-700'>Place Order</button>
                 <hr className='border-t-1 border-black mb-5'/>
                 <h2 className='text-xl font-bold text-[#2c2c2c]'>Order Summary</h2>
 
@@ -157,6 +157,7 @@ const Checkout: React.FC = () => {
 
         </div>
         <NavFooter items={[]}/>
+        <Footer />
         </div>
     );
 };

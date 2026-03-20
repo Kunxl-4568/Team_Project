@@ -66,7 +66,7 @@ const products = [
 
   return (
 
-    <div className="bg-white min-h-screen flex flex-col dark:bg-neutral-900 transition-all duration-300 ">
+    <div className="bg-white  min-h-screen flex flex-col dark:bg-neutral-900 transition-all duration-300 ">
 
       {bannerVisible && (
         <div className="top-0 left-0 w-full z-50 flex justify-center">
