@@ -59,7 +59,7 @@ export default function Products() {
     };
 
     return (
-        <div className="bg-white min-h-screen flex flex-col">
+        <div className="bg-white min-h-screen flex flex-col dark:bg-neutral-900 transition-all duration-300">
             <Head title="Products" />
 
             {bannerVisible && (
@@ -70,7 +70,7 @@ export default function Products() {
                 </div>
             )}
 
-            <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col">
+            <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col dark:bg-neutral-900">
                 <div className="w-full flex justify-center">
                     <div className="w-full px-4 md:px-8 lg:px-12">
                         <Header basket={basket} />
@@ -78,7 +78,7 @@ export default function Products() {
                 </div>
 
                 <div className="flex justify-center w-full mt-2">
-                    <div className="w-full px-4 md:px-8 lg:px-12 mx-auto mt-2">
+                    <div className="w-full px-4 md:px-8 lg:px-12 mx-auto mt-2 dark:bg-neutral-900">
                         <Navbar bannerHeight={bannerVisible ? fixedHeight : 0} />
                     </div>
                 </div>
