@@ -73,8 +73,8 @@ export function Header({ basket = [] }: HeaderProps) {
               onClick={() => router.post('/logout')}
               className="flex flex-col items-center"
             >
-              <UserIcon className="w-10 h-10 text-[#2c2c2c] dark:text-[#ffc300]" />
-              <span className="text-sm text-[#2c2c2c] dark:text-white mt-1">Logout</span>
+              <UserIcon className="w-10 h-10 text-[#2c2c2c] dark:text-[#ffc300] cursor-pointer" />
+              <span className="text-sm text-[#2c2c2c] dark:text-white mt-1 cursor-pointer">Logout</span>
             </button>
           </div>
         ) : (
