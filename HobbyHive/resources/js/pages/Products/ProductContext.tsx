@@ -109,11 +109,11 @@ return (
         {/*Main chunk of details*/}
         <div>
             <p className="text-gray-500">{product.category.name}</p>
-            <h1 className="text-3xl mt-2">{product.name}</h1>
+            <h1 className="text-3xl text-[#2c2c2c] mt-2">{product.name}</h1>
         
 
         <div className="flex items-center gap-4 mt-4">
-            <p className="text-2xl">£{product.price.toFixed(2)}</p>
+            <p className="text-2xl text-[#2c2c2c]">£{product.price.toFixed(2)}</p>
         
 
         {product.isOnSale && product.originalPrice && (
@@ -130,7 +130,7 @@ return (
          </div>
 
 <div className="w-full px-4 md:px-8 lg:px-12 mx-auto max-w-7xl mt-16">
-    <h2 className="text-sxl font-slab mb-6">You might also like</h2>
+    <h2 className="text-sxl font-slab mb-6 text-[#2c2c2c]">You might also like</h2>
     <ProductContextCarousel 
     products={randomProducts}
     onAddToBasket={handleAddToBasket}

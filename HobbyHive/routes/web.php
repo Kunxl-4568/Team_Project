@@ -49,6 +49,63 @@ Route::get('/OrderConfirmation', function () {
     return Inertia::render('order-confirmation');
 });
 
+use App\Models\Wishlist;
+
+Route::get('/dashboard', function () {
+    $wishlist = auth()->check()
+        ? Wishlist::where('user_id', auth()->id())->with(['items.product'])->first()
+        : Wishlist::where('session_id', session()->getId())->with(['items.product'])->first();
+
+    $wishlistItems = $wishlist
+        ? $wishlist->items->map(function ($item) {
+            $product = $item->product;
+            return [
+                'id' => $item->id,
+                'product_id' => $product->product_id,
+                'title' => $product->name,
+                'image' => $product->image_url,
+                'price' => (float) $product->price,
+            ];
+        })
+        : [];
+
+        $orderItems = [
+            [
+            'id' => 1,
+            'product_id' => 10,
+            'title' => 'Monopoly',
+            'image' => '/images/Monopoly.png',
+            'status' => 'Processing',
+            'trackingStep' => 1,
+        ],
+        [
+            'id' => 2,
+            'product_id' => 11,
+            'title' => 'Monopoly Deluxe',
+            'image' => '/images/Paint-set.png',
+            'status' => 'Shipped',
+            'trackingStep' => 2,
+        ],
+        [
+            'id' => 3,
+            'product_id' => 12,
+            'title' => 'Monopoly Classic',
+            'image' => '/images/Monopoly.png',
+            'status' => 'Delivered',
+            'trackingStep' => 3,
+        ],
+    ];
+
+
+    return Inertia::render('UserDashboard/dashboard', [
+        'wishlistItems' => $wishlistItems,
+        'orderItems' => $orderItems,
+    ]);
+});
+
+
+
+
 //login and register routes
 Route::middleware('guest')->group(function () {
     // Login routes
@@ -149,3 +206,99 @@ Route::post('/wishlist/toggle', [WishlistController::class, 'toggle'])->name('wi
 Route::post('/wishlist/clear', [WishlistController::class, 'clear'])->name('wishlist.clear');
 Route::delete('/wishlist/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
 Route::get('/wishlist/ids', [WishlistController::class, 'getWishlistIds'])->name('wishlist.ids');
+
+Route::get('/orders', function () {
+    return Inertia::render('UserDashboard/PreviousOrders', [
+        'orders' => [
+            [
+                'id' => 1,
+                'date' => "2026-03-20",
+                'status' => 'Delivered',
+                'total' => 59.99,
+                'items' => [
+                    [
+                        'id' => 9,
+                        'product_id' => 1,
+                        'title' => 'Monopoly',
+                        'image' => '/images/Monopoly.png',
+                        'price' => 19.99,
+                        'quantity' => 1,
+                        'return_status' => 'None'
+                    ],
+                    [
+                        'id' => 11,
+                        'product_id' => 2,
+                        'title' => 'Jenga',
+                        'image' => '/images/Jenga.png',
+                        'price' => 19.99,
+                        'quantity' => 1,
+                        'return_status' => 'None'
+                    ]
+                ]
+            ],
+            [
+                'id' => 2,
+                'date' => "2026-03-20",
+                'status' => 'In Transit',
+                'total' => 59.99,
+                'items' => [
+                    [
+                        'id' => 10,
+                        'product_id' => 1,
+                        'title' => 'Beads',
+                        'image' => '/images/Beads.png',
+                        'price' => 19.99,
+                        'quantity' => 1,
+                        'return_status' => 'None'
+                    ],
+                    [
+                        'id' => 7,
+                        'product_id' => 3,
+                        'title' => 'Pencil case',
+                        'image' => '/images/Pencil-case.png',
+                        'price' => 3.99,
+                        'quantity' => 1,
+                        'return_status' => 'None'
+                    ],
+                    [
+                        'id' => 10,
+                        'product_id' => 1,
+                        'title' => 'Monopoly',
+                        'image' => '/images/Monopoly.png',
+                        'price' => 19.99,
+                        'quantity' => 1,
+                        'return_status' => 'None'
+                    ],
+                    [
+                        'id' => 10,
+                        'product_id' => 1,
+                        'title' => 'Monopoly',
+                        'image' => '/images/Monopoly.png',
+                        'price' => 19.99,
+                        'quantity' => 1,
+                        'return_status' => 'None'
+                    ],
+                    [
+                        'id' => 11,
+                        'product_id' => 2,
+                        'title' => 'Jenga',
+                        'image' => '/images/Jenga.png',
+                        'price' => 19.99,
+                        'quantity' => 1,
+                        'return_status' => 'None'
+                    ],
+                    [
+                        'id' => 11,
+                        'product_id' => 2,
+                        'title' => 'Jenga',
+                        'image' => '/images/Jenga.png',
+                        'price' => 19.99,
+                        'quantity' => 1,
+                        'return_status' => 'None'
+                    ],
+                    
+            ]
+        ]
+        ]
+    ]);
+});

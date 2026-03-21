@@ -31,7 +31,10 @@ function OrderConfirmation () {
                 </div>
             </div>
 
-            <div className='flex justify-center items-center mb-6 mt-6'>
+            
+            
+            <div className='flex justify-center items-center mb-6 mt-4'>
+
                 <div className='bg-white p-4 sm:p-8 rounded-lg w-full max-w-md shadow sm:mt-50 sm:ml-9 mt-25 ml-4'>
                     <div className='flex flex-col items-center'>
                         <img src="/icons/tick.svg" className="w-20 h-20 mb-5"/>
