@@ -29,7 +29,25 @@ export default function Register() {
             >
                 {({ processing, errors }) => (
                     <>
+
                         <div className="grid gap-6">
+
+                             <div className="grid gap-2">
+                                <Label htmlFor="name" className='sr-only'>Input your Name</Label> 
+                                <Input 
+                                    id="name"
+                                    type="text"
+                                    required
+                                    autoFocus
+                                    tabIndex={1}
+                                    autoComplete="name"
+                                    name="name"
+                                    placeholder="Name"
+                                    
+                                />
+                               <InputError message={errors.name} />
+                            </div>
+
                             <div className="grid gap-2">
                                 <Label htmlFor="email" className='sr-only'>Input your Email Address</Label> {/*sr-only label for screen readers, ive applied it to all labels.*/}
                                 <Input 
@@ -37,7 +55,7 @@ export default function Register() {
                                     type="email"
                                     required
                                     autoFocus
-                                    tabIndex={1}
+                                    tabIndex={2}
                                     autoComplete="email"
                                     name="email"
                                     placeholder="Email"
@@ -56,7 +74,7 @@ export default function Register() {
                                     id="email_confirmation"
                                     type="email"
                                     required
-                                    tabIndex={2}
+                                    tabIndex={3}
                                     autoComplete="email"
                                     name="email_confirmation"
                                     placeholder="Confirm Email"
@@ -73,7 +91,7 @@ export default function Register() {
                                     id="password"
                                     type="password"
                                     required
-                                    tabIndex={3}
+                                    tabIndex={4}
                                     autoComplete="new-password"
                                     name="password"
                                     placeholder="Password"
@@ -91,7 +109,7 @@ export default function Register() {
                                     id="password_confirmation"
                                     type="password"
                                     required
-                                    tabIndex={4}
+                                    tabIndex={5}
                                     autoComplete="new-password"
                                     name="password_confirmation"
                                     placeholder="Confirm Password"
@@ -105,7 +123,7 @@ export default function Register() {
                                 variant="auth"
                                 type="submit"
                                 className="mt-2 mx-auto h-11"
-                                tabIndex={5}
+                                tabIndex={6}
                                 data-test="register-user-button"
                             >
                                 {processing && (
@@ -125,7 +143,7 @@ export default function Register() {
                                     variant="google"
                                     type="button"
                                     className='mx-auto'
-                                    tabIndex={6}
+                                    tabIndex={7}
                                     data-test="google-register-button"
                                     
                                     >

@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Product;
 use App\Models\Category;
@@ -14,14 +13,12 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        Product::truncate(); // Clears the table before seeding, avoids duplicates
-        
-        // ensure categories exist and build name => id map
+        // No truncate here because products is referenced by stock_movements
+        // updateOrCreate already prevents duplicates
+
         $categories = Category::all()->pluck('id', 'name')->toArray();
 
         $products = [
-            //all- show all
-            //Seasonal
             [
                 'name' => 'Christmas Colouring Book',
                 'description' => 'Cozy Christmas Colouring book',
@@ -42,7 +39,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Mini Christmas Tree set',
-                'description' => 'Fun Festive Decoration\nEasy to set up and easy to dress up  ',
+                'description' => 'Fun Festive Decoration\nEasy to set up and easy to dress up',
                 'price' => 10.00,
                 'sale_price' => 10.00,
                 'category' => 'Seasonal',
@@ -51,16 +48,16 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Winter Wonderland Candle',
-                'description' => 'Soft vanilla scent that is perfect for chilled cozy evenings. ',
+                'description' => 'Soft vanilla scent that is perfect for chilled cozy evenings.',
                 'price' => 6.99,
                 'sale_price' => 6.99,
                 'category' => 'Seasonal',
                 'image_url' => '/images/Winter_Candle.png',
                 'stock_quantity' => 7,
             ],
-               [
+            [
                 'name' => 'Ceramic Pumpkin Spice mug',
-                'description' => 'Embrace the warmth and coziness of autumn with this personalized Pumpkin Spice gold handle ceramic mug.\n Comes with matching Coaster',
+                'description' => 'Embrace the warmth and coziness of autumn with this personalized Pumpkin Spice gold handle ceramic mug.\nComes with matching Coaster',
                 'price' => 20.00,
                 'sale_price' => 20.00,
                 'category' => 'Seasonal',
@@ -68,10 +65,9 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 18,
             ],
 
-            //new
-        [
+            [
                 'name' => 'Acrylic Paint Set',
-                'description' => 'Beginner friendly acrylic paint set.\n Comes with\n1x Canvas and easel\n4x paint brushes\n12x Acrylic Paints ',
+                'description' => 'Beginner friendly acrylic paint set.\nComes with\n1x Canvas and easel\n4x paint brushes\n12x Acrylic Paints',
                 'price' => 20.00,
                 'sale_price' => 20.00,
                 'category' => 'New',
@@ -88,7 +84,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 35,
             ],
             [
-                'name' => 'Customizable Notebook ',
+                'name' => 'Customizable Notebook',
                 'description' => 'Personalise your notebook with your own touch.',
                 'price' => 8.99,
                 'sale_price' => 8.99,
@@ -98,16 +94,16 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Oil Paints',
-                'description' => '5x oil paints.\n1x Colbalt Blue\n1x Yellow Ochre\n1x Viridian\n1x Cadmium Yellow\m1x Alizarin Crimson',
+                'description' => '5x oil paints.\n1x Colbalt Blue\n1x Yellow Ochre\n1x Viridian\n1x Cadmium Yellow\n1x Alizarin Crimson',
                 'price' => 15.00,
                 'sale_price' => 15.00,
                 'category' => 'New',
                 'image_url' => '/images/Artists_Oil_Paints.png',
                 'stock_quantity' => 15,
             ],
-               [
+            [
                 'name' => 'Stationary Kit',
-                'description' => 'Perfect back to school stationary set with all the essentialls',
+                'description' => 'Perfect back to school stationary set with all the essentials',
                 'price' => 9.99,
                 'sale_price' => 9.99,
                 'category' => 'New',
@@ -115,7 +111,6 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 20,
             ],
 
-            // art supplies
             [
                 'name' => 'Acrylic Paint and Brush set',
                 'description' => 'Fun, easy cleanup child friendly beginner paint set perfect for everyone.',
@@ -127,7 +122,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Watercolor Palette',
-                'description' => '£6 high quality waterColor paints in the a compact palette for easy use.',
+                'description' => '£6 high quality waterColor paints in a compact palette for easy use.',
                 'price' => 15.00,
                 'sale_price' => 15.00,
                 'category' => 'Art Supplies',
@@ -145,7 +140,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Paint Brush set',
-                'description' => 'High quality paint brushes\nMade from natural fibers for perfect brush strokes. ',
+                'description' => 'High quality paint brushes\nMade from natural fibers for perfect brush strokes.',
                 'price' => 15.00,
                 'sale_price' => 15.00,
                 'category' => 'Art Supplies',
@@ -154,14 +149,14 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Sketchbook',
-                'description' => 'A3 Sketchbook ideal for watercolor oil and acryilc',
+                'description' => 'A3 Sketchbook ideal for watercolor oil and acrylic',
                 'price' => 5.00,
                 'sale_price' => 5.00,
                 'category' => 'Art Supplies',
                 'image_url' => '/images/Sketchbook.png',
                 'stock_quantity' => 30,
             ],
-            //Toys & Games
+
             [
                 'name' => 'Hasbro Gaming Monopoly',
                 'description' => 'Strategy Board Game for 8+ Year Old Kids, 2-6 Players, Family Games for Children and Adults',
@@ -180,7 +175,7 @@ class ProductSeeder extends Seeder
                 'image_url' => '/images/Jenga.png',
                 'stock_quantity' => 20,
             ],
-                 [
+            [
                 'name' => 'Batman themed puzzle',
                 'description' => 'Challenging and fun puzzle for all ages.',
                 'price' => 12.99,
@@ -189,8 +184,8 @@ class ProductSeeder extends Seeder
                 'image_url' => '/images/Batman-Jigsaw-Puzzle.png',
                 'stock_quantity' => 25,
             ],
-                 [
-                'name' => 'Unicorn Plush ',
+            [
+                'name' => 'Unicorn Plush',
                 'description' => 'Soft and cuddly plush toy',
                 'price' => 10.99,
                 'sale_price' => 10.99,
@@ -200,7 +195,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Uno Deluxe',
-                'description' => 'Classic Card Game for Kids and Adults for Family Game Night\n Use as a Travel Game or Engaging Gift for Kids\n2 to 10 Players',
+                'description' => 'Classic Card Game for Kids and Adults for Family Game Night\nUse as a Travel Game or Engaging Gift for Kids\n2 to 10 Players',
                 'price' => 15.99,
                 'sale_price' => 15.99,
                 'category' => 'Toys & Games',
@@ -208,10 +203,9 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 50,
             ],
 
-            // textile crafts
             [
                 'name' => 'Friendship Bracelet set',
-                'description' => 'With this kit, you can create two vibrant friendship bracelets\n perfect for sharing with your best friend or a loved one',
+                'description' => 'With this kit, you can create two vibrant friendship bracelets perfect for sharing with your best friend or a loved one',
                 'price' => 7.00,
                 'sale_price' => 7.00,
                 'category' => 'Textile Crafts',
@@ -220,7 +214,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => '3FT Cream Yarn',
-                'description' => ' 3FT Yarn made from acrylic wool wool and natural fibers',
+                'description' => '3FT Yarn made from acrylic wool and natural fibers',
                 'price' => 3.00,
                 'sale_price' => 3.50,
                 'category' => 'Textile Crafts',
@@ -229,14 +223,14 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Circular Knitting Needles',
-                'description' => '12mm Circular Knitting Kneedles perfect for large projects',
+                'description' => '12mm Circular Knitting Needles perfect for large projects',
                 'price' => 9.99,
                 'sale_price' => 9.99,
                 'category' => 'Textile Crafts',
                 'image_url' => '/images/Circular-knitting-needles.png',
                 'stock_quantity' => 20,
             ],
-             [
+            [
                 'name' => '12mm crochet Hook',
                 'description' => '12mm Crochet Hook with removable Blue hand grip',
                 'price' => 2.99,
@@ -247,14 +241,14 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Jewellery Kit',
-                'description' => 'DIY jewellry kit with over 100 beads and charms to choose from',
+                'description' => 'DIY jewellery kit with over 100 beads and charms to choose from',
                 'price' => 15.00,
                 'sale_price' => 15.00,
                 'category' => 'Textile Crafts',
                 'image_url' => '/images/Jewellery-kit.png',
                 'stock_quantity' => 25,
             ],
-            // books
+
             [
                 'name' => 'The Lord of The Rings Book 1&2',
                 'description' => 'Continuing the story begun in The Hobbit, this is the first two part of Tolkien’s epic masterpiece.\nThe Lord of the Rings features detailed map of Middle-earth and the beginning of a new journey.',
@@ -282,7 +276,7 @@ class ProductSeeder extends Seeder
                 'image_url' => '/images/Alice-Through-The-looking-Glass.png',
                 'stock_quantity' => 33,
             ],
-                [
+            [
                 'name' => 'The Amazzing Spider-man Man on a Rampage',
                 'description' => 'The story features Spider-Man (Peter Parker) going on an aggressive search for the Master Planner',
                 'price' => 1.99,
@@ -300,7 +294,7 @@ class ProductSeeder extends Seeder
                 'image_url' => '/images/HarryPotter.png',
                 'stock_quantity' => 33,
             ],
-            //Offers
+
             [
                 'name' => 'Brother Sewing machine',
                 'description' => 'Mid/ High level sewing machine with additional accessories\nComes packaged with a wide table and free motion embroidery foot',
@@ -319,25 +313,35 @@ class ProductSeeder extends Seeder
                 'image_url' => '/images/Paint-set.png',
                 'stock_quantity' => 22,
             ],
-        
         ];
 
         foreach ($products as $p) {
-            // get or create category and obtain id
-            $categoryId = $categories[$p['category']] ?? Category::firstOrCreate(['name' => $p['category']])->id;
+            $categoryId = $categories[$p['category']]
+                ?? Category::firstOrCreate(['name' => $p['category']])->id;
 
-            // prepare attributes for product
-            $attrs = [
-                'description' => $p['description'],
-                'price' => $p['price'],
-                'sale_price' => $p['sale_price'],
-                'category_id' => $categoryId,
-                'image_url' => $p['image_url'],
-                'stock_quantity' => $p['stock_quantity'],
-            ];
+            $categories[$p['category']] = $categoryId;
 
-            // update existing by name or create new (prevents duplicates)
-            Product::updateOrCreate(['name' => $p['name']], $attrs);
+            $lowStockThreshold = $p['low_stock_threshold'] ?? max(1, (int) ($p['stock_quantity'] * 0.25));
+
+            $stockStatus = $p['stock_status'] ?? (
+                $p['stock_quantity'] <= 0
+                    ? 'out_of_stock'
+                    : ($p['stock_quantity'] <= $lowStockThreshold ? 'low_stock' : 'in_stock')
+            );
+
+            Product::updateOrCreate(
+                ['name' => $p['name']],
+                [
+                    'description' => $p['description'],
+                    'price' => $p['price'],
+                    'sale_price' => $p['sale_price'],
+                    'category_id' => $categoryId,
+                    'image_url' => $p['image_url'],
+                    'stock_quantity' => $p['stock_quantity'],
+                    'low_stock_threshold' => $lowStockThreshold,
+                    'stock_status' => $stockStatus,
+                ]
+            );
         }
     }
 }
