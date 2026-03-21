@@ -1,7 +1,7 @@
-import {useEffect} from 'react';
+import {useEffect, FormEventHandler} from 'react';
 import NewPasswordController from '@/actions/App/Http/Controllers/Auth/NewPasswordController';
 import { login } from '@/routes';
-import { Form, Head } from '@inertiajs/react';
+import { Form, Head, useForm } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-react';
 
 import InputError from '@/components/input-error';
@@ -20,6 +20,20 @@ export default function ResetPassword({ token, email }: ResetPasswordProps) {
     useEffect(() => {
         document.documentElement.classList.remove('dark')
     }, []);
+
+    const { data, setData, post, processing, errors, reset } = useForm({
+        token: token,
+        email: email,
+        password: '',
+        password_confirmation: '',
+    });
+
+    const submit: FormEventHandler = (e) => {
+        e.preventDefault();
+        post('/reset-password', {
+            onFinish: () => reset('password', 'password_confirmation'),
+        });
+    };
 
     return (
     <>
@@ -41,9 +55,9 @@ export default function ResetPassword({ token, email }: ResetPasswordProps) {
             >
                 {({ processing, errors }) => (
                     <div className="grid gap-5">
-                        {/*
+                        
                         <div className="grid gap-2">
-                            <Label htmlFor="email">Email</Label>
+                            {/* <Label htmlFor="email">Email</Label> */}
                             <Input
                                 id="email"
                                 type="email"
@@ -58,7 +72,7 @@ export default function ResetPassword({ token, email }: ResetPasswordProps) {
                                 className="mt-2"
                             />
                         </div>
-                        */}
+                       
 
                         <div className="grid gap-2">
                             {/*<Label htmlFor="password" className = 'text-[#2c2c2c]'>Password</Label>*/}
@@ -97,6 +111,7 @@ export default function ResetPassword({ token, email }: ResetPasswordProps) {
 
                         <div className='my-2 flex items-center justify-center'>
                          <Button
+                            variant="auth"
                             type="submit"
                             className="mt-2 w-45 bg-[#2c2c2c] text-white hover:bg-gray-800"
                             disabled={processing}

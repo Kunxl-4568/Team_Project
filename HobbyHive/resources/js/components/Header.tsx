@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { Heart, Moon, Sun, User as UserIcon } from "lucide-react";
 import { Search } from "./Search";
-import { Basket } from "./Basket";          
+import { Basket } from "./Basket";
 import { home, login, register } from "@/routes";
-// import { Link } from "@inertiajs/react";
 import { usePage, Link, router } from '@inertiajs/react';
 
 
 interface HeaderProps {
-  basket?: any[]; // change type later if you want
+  basket?: any[];
 }
 
 interface User {
@@ -24,7 +23,6 @@ interface PageProps {
     auth: {
         user: User | null;
     };
-    // Add other shared props here as needed
     flash?: {
         success?: string;
         error?: string;
@@ -33,7 +31,7 @@ interface PageProps {
     [key: string]: any;
 }
 
-export function Header({ basket = [] }: HeaderProps) {  
+export function Header({ basket = [] }: HeaderProps) {
   const basketAmount = basket.length;
   const [isWishlistWork, setIsWishlistWork] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false); 
@@ -59,8 +57,7 @@ export function Header({ basket = [] }: HeaderProps) {
             className="h-18 w-full"
           />
         </Link>
-        </div>
-     
+      </div>
 
       {/* Search */}
       <div className="w-xl flex-1 flex justify-center">
@@ -70,7 +67,7 @@ export function Header({ basket = [] }: HeaderProps) {
       {/* Right side: sign up, wishlist, basket, dark mode */}
       <div className="flex flex-row justify-end w-auto gap-12 shrink-0">
 
-        {/* Sign up / Logout */}
+        {/* Sign in / Logout */}
         {auth.user ? (
           <div className="flex flex-col items-center cursor-pointer w-16">
             <button 

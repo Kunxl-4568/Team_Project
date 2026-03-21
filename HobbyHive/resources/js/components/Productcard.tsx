@@ -1,5 +1,6 @@
 import { Heart, ShoppingBasket } from "lucide-react";
 import { router } from "@inertiajs/react";
+import { Link } from "@inertiajs/react";
 
 interface ProductCardProps {
   id: number;
@@ -24,11 +25,22 @@ export default function ProductCard({
   onAddToBasket,
   onToggleWishlist,
 }: ProductCardProps) {
+
+  const handleWishlistClick = () => {
+    router.post(
+      "/wishlist/toggle",
+      { product_id: id },
+      { preserveScroll: true }
+    );
+  };
+
   return (
     <div className="relative bg-white rounded-lg text-[#2C2C2C] shadow h-full text-center overflow-hidden flex flex-col mx-4 dark:bg-[#FFC300] dark:text-white transition-all duration-300">
 
-      <button onClick={() => router.visit("/register")}
+      <button
+        onClick={handleWishlistClick}
         className="absolute top-2 right-2 z-10 cursor-pointer m-2"
+        title={isInWishlist ? "Remove from wishlist" : "Add to wishlist"}
       >
         <Heart
           className={`w-7 h-7 ${
@@ -37,27 +49,24 @@ export default function ProductCard({
         />
       </button>
 
-      <div className="relative h-40 flex items-center justify-center  "> 
-      <img src={image} alt={name}
-      className = "w-full h-full object-contain mt-4"
-        
-        />
+      <Link href={`/products/${id}`} className="cursor-pointer block">
+        <div className="relative h-40 flex items-center justify-center">
+          <img src={image} alt={name} className="w-full h-full object-contain mt-4" />
         </div>
+      </Link>
 
-    
       {isOnSale && (
-        <p className="my-4 flex items-center justify-center bg-red-500 text-white px-3 py-1 rounded text-lg text-center font-bold"> LIMITED TIME SALE!</p>
+        <p className="my-4 flex items-center justify-center bg-red-500 text-white px-3 py-1 rounded text-lg text-center font-bold">
+          LIMITED TIME SALE!
+        </p>
       )}
 
       <div className="flex flex-col flex-1 px-2 text-center">
-      <h3 className="font-slab text-lg mt-4 text-[#2C2C2C]">{name}</h3>
-
+        <h3 className="font-slab text-lg mt-4 text-[#2C2C2C]">{name}</h3>
       </div>
 
-     
       <div className="flex justify-center items-center gap-2 mt-1">
         <p className="font-slab text-[#2C2C2C] text-xl font-semibold">£{price.toFixed(2)}</p>
-
         {isOnSale && originalPrice && (
           <p className="line-through text-gray-500 dark:text-gray-700"> £{originalPrice.toFixed(2)}</p>
         )}

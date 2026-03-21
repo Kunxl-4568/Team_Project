@@ -1,7 +1,6 @@
 import React from 'react';
 import NavBar from '../components/Navbar';
 import {NavFooter} from '../components/nav-footer';
-import { usePage } from '@inertiajs/react';
 import { useState, useRef, useEffect } from "react";
 import { Trash2, Plus, Minus, ArrowLeft } from 'lucide-react';
 import CartItem from "../components/CartItem";
@@ -13,6 +12,7 @@ import {Header} from "@/components/Header";
 import ProductCard from "@/components/Productcard";
 import Footer from "@/components/Footer";
 import Basket from "@/components/Basket";
+import { Link, router, usePage } from "@inertiajs/react";
 
 type CheckoutProps = {
     subtotal: number;

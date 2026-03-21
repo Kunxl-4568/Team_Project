@@ -1,68 +1,59 @@
 import { useState, useRef, useEffect } from "react";
+import { Head, usePage, router} from "@inertiajs/react";
 import Banner from "@/components/Banner";
 import Navbar from "@/components/Navbar";
 import Carousel from "@/components/Carousel"
 import {Header} from "@/components/Header";
 import ProductCard from "@/components/Productcard";
 import Footer from "@/components/Footer";
-import Basket from "@/components/Basket";
+import Chatbot from '@/components/Chatbot';
+// 
+
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  originalPrice?: number;
+  image: string;
+  isOnSale?: boolean;
+  isInWishlist: boolean;
+}
+
 
 
 export default function Home() {
+  const { products } = usePage<{ products: Product[] }>().props;
 
- const [basket,setBasket] = useState<number[]>([]);
+  const [basket, setBasket] = useState<number[]>([]);
 
-    const handleAddToBasket = (id: number) => {
-      setBasket(prev => {const updated = [...prev, id];
+  const handleAddToBasket = (id: number) => {
+    router.post('/cart', { product_id: id, quantity: 1 }, { preserveScroll: true });
+    setBasket(prev => {
+      const updated = [...prev, id];
       sessionStorage.setItem("basket", JSON.stringify(updated));
       return updated;
-    });  
-   };
+    });
+  };
+
+  // Toggle wishlist — calls backend, Inertia refreshes page with updated isInWishlist
+  const handleToggleWishlist = (id: number) => {
+    router.post('/wishlist/toggle', { product_id: id }, { preserveScroll: true });
+  };
 
   const [bannerVisible, setBannerVisible] = useState(true);
   const [fixedHeight, setFixedHeight] = useState(0);
   const fixedRef = useRef<HTMLDivElement>(null);
 
-useEffect(() => { 
-  if (fixedRef.current)  {
-    setFixedHeight(fixedRef.current.offsetHeight);
-  }
-}, [bannerVisible]); 
+  useEffect(() => {
+    if (fixedRef.current) {
+      setFixedHeight(fixedRef.current.offsetHeight);
+    }
+  }, [bannerVisible]);
 
   useEffect(() => {
     const stored = sessionStorage.getItem("basket");
     if (stored) setBasket(JSON.parse(stored));
-}, []);
-
-const products = [
-  {
-    id: 1,
-    name: "Jenga Classic Game",
-    price:25.00,
-    originalPrice: 30.00,
-    image:"/images/Jenga.png",
-    isOnSale: true,
-    isInWishlist:false,
-  },
-    {
-    id: 2,
-    name: "Faber-Castell Pencils 24 Pack",
-    price:30.00,
-    originalPrice: 25.00,
-    image:"/images/Faber Castell metal tin.png",
-    isOnSale: true,
-    isInWishlist:false,
-  },
-    {
-    id: 3,
-    name: "Finn Family Moomintroll Plush",
-    price:30.00,
-    originalPrice: 25.00,
-    image:"/images/Finn-Family-Moomintroll.png",
-    isOnSale: true,
-    isInWishlist:false,
-  }
-];
+  }, []);
 
   return (
 
@@ -111,16 +102,16 @@ const products = [
                 isOnSale={product.isOnSale}
                 isInWishlist={product.isInWishlist}
                 onAddToBasket={handleAddToBasket}
-                onToggleWishlist={(id) => console.log("Toggle wishlist:", id)}
+                onToggleWishlist={handleToggleWishlist}
               />
             ))}
           </div>
         </div>
       </div>
+      {/* chatbot added (dont think this is the right place - remove later) */}
+        <Chatbot />
 
-      
       <Footer />
-
     </div>
   );
 }
