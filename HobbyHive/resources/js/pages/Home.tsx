@@ -56,7 +56,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-white min-h-screen flex flex-col">
+
+    <div className="bg-white  min-h-screen flex flex-col dark:bg-neutral-900 transition-all duration-300 ">
 
       {bannerVisible && (
         <div className="top-0 left-0 w-full z-50 flex justify-center">
@@ -66,7 +67,7 @@ export default function Home() {
         </div>
       )}
 
-      <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col">
+      <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col dark:bg-neutral-900 transition-all duration-300 ">
         <div className="w-full flex justify-center">
           <div className="w-full px-4 md:px-8 lg:px-12">
             <Header basket={basket}/>
@@ -85,7 +86,7 @@ export default function Home() {
 
         <div className="w-full mt-10">
           <div className="flex items-center justify-between">
-            <h2 className="px-4 text-2xl font-slab text-black md:text-3xl mb-6">Products you will Love</h2>
+            <h2 className="px-4 text-2xl font-slab text-black dark:text-[#ffffff] transition-all duration-300  md:text-3xl mb-6">Products you will <span className="text-[#FFC300]"> LOVE </span></h2>
             <img src="/images/Bee doodle.png" alt="Bee doodle" className="h-12 md:h-16 lg:h-20 ml-4"/>
           </div>
 

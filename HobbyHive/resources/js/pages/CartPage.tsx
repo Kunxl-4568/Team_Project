@@ -62,11 +62,11 @@ const CartPage: React.FC = () => {
   // if cart is empty
   if (!cartItems || cartItems.length === 0) {
     return (
-      <div className="bg-white min-h-screen flex flex-col">
+      <div className="bg-white min-h-screen flex flex-col dark:bg-neutral-900 transition-all duration-300">
      
            
      
-           <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col">
+           <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col dark:bg-neutral-900 transition-all duration-300 ">
              <div className="w-full flex justify-center">
               <div className="w-full px-4 md:px-8 lg:px-12 ">
               <Header basket={basket}/>
@@ -80,17 +80,18 @@ const CartPage: React.FC = () => {
               </div>
              </div>
 
-            <div className="flex flex-col items-center justify-center flex-1 text-lg">
-              <p className="text-[#2c2c2c] mb-4">YOUR CART IS EMPTY</p>
+            <div className="flex flex-col items-center justify-center flex-1 text-2xl font-medium ">
+              <p className="text-[#2c2c2c] mb-4 dark:text-white">YOUR CART IS EMPTY</p>
               <Link
                 href="/products"
-                className="bg-[#ffc300] text-[#2c2c2c] px-4 py-2 rounded hover:underline"
+                className="bg-[#ffc300] text-[#2c2c2c] px-4 py-2 rounded cursor-pointer hover:bg-yellow-400"
               >
                 GO SHOPPING
               </Link>
             </div>
 
             <NavFooter items={[]} />
+            <Footer />
           </div>
         );
       }
@@ -100,11 +101,11 @@ const CartPage: React.FC = () => {
     
       
 
-       <div className="bg-[#fff8dc] min-h-screen flex flex-col pt-7">
+       <div className="bg-[#fff8dc] min-h-screen flex flex-col pt-7 dark:bg-neutral-900 transition-all duration-300 ">
      
            
      
-           <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col">
+           <div ref={fixedRef} className="fixed top-0 left-0 w-full z-40 bg-white flex flex-col dark:bg-neutral-900 transition-all duration-300 ">
              <div className="w-full flex justify-center">
               <div className="w-full px-4 md:px-8 lg:px-12 ">
               <Header basket={basket}/>
@@ -119,40 +120,40 @@ const CartPage: React.FC = () => {
              </div>
 
       {/* Progress */}
-      <div className="flex items-center justify-center gap-8 mt-47">
+      <div className="flex items-center justify-center gap-8 mt-48">
         <div className="flex flex-col items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-[#ffc300] flex items-center justify-center text-[#2c2c2c] font-bold">
             1
           </div>
-          <span className="text-[#2c2c2c] font-semibold text-xs">Cart</span>
+          <span className="text-[#2c2c2c] dark:text-white font-semibold text-xs">Cart</span>
         </div>
 
         <div className="h-0.5 w-30 bg-[#2c2c2c]" />
 
         <div className="flex flex-col items-center gap-2">
-          <div className="w-8 h-8 rounded-full border border-black flex items-center justify-center text-[#2c2c2c] font-bold">
+          <div className="w-8 h-8 rounded-full border border-black flex items-center justify-center text-[#2c2c2c] dark:bg-neutral-700 dark:text-white font-bold">
             2
           </div>
-          <span className="text-[#2c2c2c] font-semibold text-xs">Checkout</span>
+          <span className="text-[#2c2c2c] dark:text-white font-semibold text-xs">Checkout</span>
         </div>
       </div>
 
-      <div className="bg-white max-w-6xl mx-auto p-10 min-h-[500px] mt-5 mb-20 rounded-lg">
+      <div className="bg-white max-w-6xl mx-auto p-10 min-h-[500px] mt-5 mb-20 rounded-lg dark:bg-[#FFC300] transition-all duration-300 shadow-2xl">
         <div className="flex items-center mb-3">
           <Link
             href="/products"
-            className="text-[#2c2c2c] flex-grow text-left underline "
+            className="text-[#2c2c2c]  flex-grow text-left  "
           >
             Back to Shopping
           </Link>
 
-          <h1 className="text-[#2c2c2c] font-bold text-xl flex-grow mb-8 mt-5 mr-28 mx-auto">
+          <h1 className="text-[#2c2c2c]  font-bold text-xl flex-grow mb-8 mt-5 mr-28 mx-auto">
             Shopping Cart
           </h1>
 
           <button
             onClick={clearCart}
-            className="text-red-600 hover:text-red-800 text-sm"
+            className="text-red-700 hover:text-red-800 text-sm cursor-pointer"
           >
             Clear Cart
           </button>
@@ -160,7 +161,7 @@ const CartPage: React.FC = () => {
 
         <hr className="border-t-1 border-black mb-5" />
 
-        <h1 className="text-[#2c2c2c] mb-5">Cart Items</h1>
+        <h1 className="text-[#2c2c2c]  mb-5">Cart Items</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Items on the left */}
@@ -190,7 +191,9 @@ const CartPage: React.FC = () => {
       </div>
 
       <NavFooter items={[]} />
+      <Footer />
     </div>
+    
   );
 };
 

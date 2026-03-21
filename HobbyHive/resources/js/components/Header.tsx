@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Heart } from "lucide-react";
+import { Heart, Moon, Sun, User as UserIcon } from "lucide-react";
 import { Search } from "./Search";
 import { Basket } from "./Basket";
 import { home, login, register } from "@/routes";
@@ -33,13 +33,23 @@ interface PageProps {
 
 export function Header({ basket = [] }: HeaderProps) {
   const basketAmount = basket.length;
-  const { auth } = usePage<PageProps>().props;
+  const [isWishlistWork, setIsWishlistWork] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false); 
+  const { auth } = usePage<PageProps>().props; // for auth user data - used in logout
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+    document.documentElement.classList.toggle('dark');
+};
 
   return (
-    <div className="w-full px-4 flex items-center gap-2 text-[#2C2C2C] font-slab mt-8">
+    
+    <div className="w-full px-4 flex items-center text-[#2C2C2C] dark:text-white font-slab mt-8 transition-all duration-300">
 
       {/* Logo */}
+
       <div className="flex-none justify-start">
+      
         <Link href={home()}>
           <img
             src="/images/HobbyHiveLogo.png"
@@ -54,41 +64,65 @@ export function Header({ basket = [] }: HeaderProps) {
         <Search />
       </div>
 
-      {/* Right side: sign in, wishlist, basket */}
-      <div className="flex flex-row justify-end w-auto gap-4 mx-auto">
+      {/* Right side: sign up, wishlist, basket, dark mode */}
+      <div className="flex flex-row justify-end w-auto gap-12 shrink-0">
 
         {/* Sign in / Logout */}
         {auth.user ? (
-          <div className="flex flex-col items-center cursor-pointer hover:underline">
-            <button
+          <div className="flex flex-col items-center cursor-pointer w-16">
+            <button 
               onClick={() => router.post('/logout')}
               className="flex flex-col items-center"
             >
-              <img src="/images/Sign-up.png" alt="logout" className="h-12 w-12" />
-              <span className="text-sm text-[#2c2c2c]">Logout</span>
+              <UserIcon className="w-10 h-10 text-[#2c2c2c] dark:text-[#ffc300]" />
+              <span className="text-sm text-[#2c2c2c] dark:text-white mt-1">Logout</span>
             </button>
           </div>
         ) : (
-          <div className="flex flex-col items-center cursor-pointer hover:underline">
+          <div className="flex flex-col items-center cursor-pointer w-16">
             <Link href={register()} className="flex flex-col items-center">
-              <img src="/images/Sign-up.png" alt="sign up" className="h-12 w-12" />
-              <span className="text-sm text-[#2c2c2c]">Sign in</span>
+              <UserIcon className="w-10 h-10 text-[#2c2c2c] dark:text-[#ffc300]" />
+              <span className="text-sm mt-1">Sign in</span>
             </Link>
           </div>
         )}
 
-        {/* Wishlist — navigates to /wishlist page */}
-        <div className="flex flex-col items-center cursor-pointer w-8 h-10 whitespace-nowrap px-10 hover:underline">
-          <Link href="/wishlist" className="flex flex-col items-center">
-            <Heart className="w-8 h-10 text-[#2c2c2c] hover:fill-yellow-400 hover:text-yellow-400 transition-colors" />
-            <span className="text-sm mt-2 text-[#2c2c2c]">Wish List</span>
-          </Link>
+        {/* Wishlist */}
+        <div className="flex flex-col items-center cursor-pointer w-16 whitespace-nowrap">
+          <button
+            onClick={() => setIsWishlistWork(!isWishlistWork)}
+            className="cursor-pointer"
+          >
+            <Heart
+              className={`w-10 h-10 transition-colors ${
+                isWishlistWork
+                  ? "fill-yellow-500 text-yellow-500"
+                  : "text-[#2c2c2c] dark:text-[#ffc300]"
+              }`}
+            />
+          </button>
+          <span className="text-sm text-[#2c2c2c] dark:text-white mt-1">Wish List</span>
         </div>
 
         {/* Basket */}
-        <div className="flex flex-col items-center cursor-pointer w-8 h-10 pl-5 mt-1 hover:underline">
+        <div className="flex flex-col items-center cursor-pointer w-16">
           <Basket basket={basket} />
         </div>
+
+        {/* Dark Mode Toggle */}
+        <div className="flex flex-col items-center cursor-pointer w-16">
+          <button onClick={toggleDarkMode} className="w-10 h-10 cursor-pointer">
+            {isDarkMode ? (
+              <Sun className="w-10 h-10 text-[#2c2c2c] dark:text-[#ffc300]" />
+            ) : (
+              <Moon className="w-10 h-10 text-[#2c2c2c] dark:text-[#ffc300]" />
+            )}
+          </button>
+          <span className="text-sm text-[#2c2c2c] dark:text-white mt-1">
+            {isDarkMode ? "Light" : "Dark"}
+          </span>
+        </div>
+
       </div>
     </div>
   );

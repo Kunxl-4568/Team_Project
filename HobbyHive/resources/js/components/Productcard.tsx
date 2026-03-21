@@ -35,7 +35,7 @@ export default function ProductCard({
   };
 
   return (
-    <div className="relative bg-white rounded-lg text-[#2C2C2C] shadow h-full text-center overflow-hidden flex flex-col mx-4">
+    <div className="relative bg-white rounded-lg text-[#2C2C2C] shadow h-full text-center overflow-hidden flex flex-col mx-4 dark:bg-[#FFC300] dark:text-white transition-all duration-300">
 
       <button
         onClick={handleWishlistClick}
@@ -43,10 +43,8 @@ export default function ProductCard({
         title={isInWishlist ? "Remove from wishlist" : "Add to wishlist"}
       >
         <Heart
-          className={`w-6 h-6 transition-colors ${
-            isInWishlist
-              ? "fill-red-500 text-red-500"
-              : "fill-none text-[#2C2C2C] hover:fill-yellow-400 hover:text-yellow-400 shadow-2xl"
+          className={`w-7 h-7 ${
+            isInWishlist ? "fill-red-500 text-yellow-500" : "fill-none text-[#ffc300] hover:fill-yellow-400 hover:text-yellow-400 shadow-2xl dark:text-[#2C2C2C] dark:hover:fill-[#2C2C2C] dark:hover:text-[#2C2C2C]"
           }`}
         />
       </button>
@@ -70,16 +68,16 @@ export default function ProductCard({
       <div className="flex justify-center items-center gap-2 mt-1">
         <p className="font-slab text-[#2C2C2C] text-xl font-semibold">£{price.toFixed(2)}</p>
         {isOnSale && originalPrice && (
-          <p className="line-through text-gray-500">£{originalPrice.toFixed(2)}</p>
+          <p className="line-through text-gray-500 dark:text-gray-700"> £{originalPrice.toFixed(2)}</p>
         )}
       </div>
 
-      <button
-        onClick={() => onAddToBasket(id)}
-        className="mt-4 mx-auto w-58 bg-yellow-400 hover:bg-yellow-500 text-[#2C2C2C] font-slab my-4 py-2 rounded-lg flex items-center justify-center gap-2 cursor-pointer text-center shadow-sm"
-      >
-        <ShoppingBasket /> Add to Basket
-      </button>
+     
+       <button
+          onClick={() => onAddToBasket(id)}
+          className="mt-4  mx-auto w-58 bg-yellow-400 hover:bg-yellow-500 text-[#2C2C2C] font-slab my-4 py-2 rounded-lg flex items-center justify-center gap-2 cursor-pointer text-center shadow-sm dark:bg-[#2C2C2C] dark:hover:bg-neutral-700  dark:text-white transition-all duration-300"
+        >
+        <ShoppingBasket  />Add to Basket</button>
     </div>
   );
 }
